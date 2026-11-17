@@ -1,0 +1,749 @@
+{
+  "id": 3,
+  "judul": "Praktikum 3: Pembuluh Darah Ekstremitas Inferior",
+  "topik": "Pembuluh darah di ekstremitas bawah (ditampilkan sisi kanan pasien)",
+  "sisi": "kanan",
+  "tulangPola": [
+    "^Right (hip bone|femur|patella|tibia|fibula|talus|calcaneus|cuboid bone)$",
+    "^Right \\w+ (cuneiform|metatarsal) bone$",
+    "^\\w+ phalanx of right .*toe$",
+    "^(Navicular|Sesamoid) bone of right foot$",
+    "^(Sacrum|Fourth lumbar vertebra|Fifth lumbar vertebra)$"
+  ],
+  "set": {
+    "iliaka": [
+      "FJ3565",
+      "FJ3566",
+      "FJ3567",
+      "FJ3568",
+      "FJ3569",
+      "FJ3570",
+      "FJ3571",
+      "FJ3572"
+    ],
+    "gluteal": [
+      "FJ3616",
+      "FJ3606",
+      "FJ3610"
+    ],
+    "femoral": [
+      "FJ2143",
+      "FJ2144"
+    ],
+    "lcfa": [
+      "FJ2158",
+      "FJ2057"
+    ],
+    "perforantes": [
+      "FJ2127",
+      "FJ2203"
+    ],
+    "genus": [
+      "FJ2150",
+      "FJ2152",
+      "FJ2162",
+      "FJ2166",
+      "FJ2167",
+      "FJ2137"
+    ],
+    "popliteal": [
+      "FJ2170",
+      "FJ2171"
+    ],
+    "tibial": [
+      "FJ2130",
+      "FJ2172"
+    ],
+    "vFibular": [
+      "FJ2190",
+      "FJ2194",
+      "FJ2200"
+    ],
+    "kaki": [
+      "FJ2055",
+      "FJ2159",
+      "FJ2164",
+      "FJ2169",
+      "FJ2136"
+    ],
+    "saphena": [
+      "FJ2145",
+      "FJ2176"
+    ]
+  },
+  "scene": [
+    "@iliaka",
+    "@gluteal",
+    "@femoral",
+    "FJ3614",
+    "FJ2135",
+    "@lcfa",
+    "FJ2202",
+    "@perforantes",
+    "@genus",
+    "@popliteal",
+    "@tibial",
+    "@vFibular",
+    "@kaki",
+    "@saphena"
+  ],
+  "orientasi": [
+    {
+      "judul": "Seluruh tungkai bawah",
+      "teks": "Semua pembuluh di praktikum ini ditampilkan untuk SISI KANAN pasien saja. A. iliaca externa lewat di bawah ligamentum inguinale dan menjadi a. femoralis. Setelah menembus hiatus adductorius ia menjadi a. poplitea di belakang lutut, lalu bercabang menjadi a. tibialis anterior dan posterior.",
+      "kamera": {
+        "arah": "depan",
+        "zoom": 1.05
+      },
+      "tulang": "utuh",
+      "fokus": [
+        "@iliaka",
+        "@femoral",
+        "@popliteal",
+        "@tibial",
+        "@kaki",
+        "@saphena"
+      ]
+    },
+    {
+      "judul": "Regio glutea dari belakang",
+      "teks": "Pembuluh glutea keluar dari pelvis melalui foramen ischiadicum majus: pembuluh glutea superior lewat di atas m. piriformis, pembuluh glutea inferior dan pudenda interna lewat di bawahnya. Os coxae dan sacrum membantu membayangkan lokasinya.",
+      "kamera": {
+        "arah": [
+          -0.4,
+          0.1,
+          -1
+        ],
+        "zoom": 1.3
+      },
+      "tulang": "utuh",
+      "fokus": [
+        "@gluteal",
+        "FJ3569",
+        "FJ3570"
+      ]
+    },
+    {
+      "judul": "Fossa poplitea dari belakang",
+      "teks": "Di belakang lutut, a. poplitea letaknya paling dalam (menempel ke femur), v. poplitea di superfisialnya, dan n. tibialis paling superfisial (tidak ada di model). V. saphena parva naik di tengah betis lalu bermuara ke v. poplitea.",
+      "kamera": {
+        "arah": "belakang",
+        "zoom": 1.2
+      },
+      "tulang": "tembus",
+      "fokus": [
+        "@popliteal",
+        "@genus",
+        "FJ2176"
+      ]
+    }
+  ],
+  "grup": [
+    {
+      "judul": "Regio glutea",
+      "item": [
+        {
+          "key": "glutea-superior",
+          "latin": "A. & Vv. glutea superior",
+          "indonesia": "Arteri dan vena gluteal superior",
+          "status": "ada",
+          "mesh": [
+            "FJ3616"
+          ],
+          "konteks": [
+            "@iliaka"
+          ],
+          "kamera": {
+            "arah": [
+              -0.5,
+              0.1,
+              -1
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Hanya VENA glutea superior yang ada di model. A. glutea superior tidak ada.",
+          "ringkas": "A. glutea superior adalah cabang terbesar divisi posterior a. iliaca interna. Keluar dari pelvis melalui foramen ischiadicum majus di ATAS m. piriformis, bersama n. gluteus superior, untuk memperdarahi m. gluteus medius, minimus, dan maximus. Vv. gluteae superiores (venae comitantes) menyertainya dan bermuara ke v. iliaca interna.",
+          "jembatanKeledai": "Di atas piriformis hanya \"superior\": a./v./n. gluteus superior. Sisanya lewat di bawah piriformis."
+        },
+        {
+          "key": "glutea-inferior",
+          "latin": "A. & Vv. glutea inferior",
+          "indonesia": "Arteri dan vena gluteal inferior",
+          "status": "ada",
+          "mesh": [
+            "FJ3606"
+          ],
+          "konteks": [
+            "@iliaka",
+            "FJ3616"
+          ],
+          "kamera": {
+            "arah": [
+              -0.5,
+              0.1,
+              -1
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Hanya VENA glutea inferior yang ada di model. A. glutea inferior tidak ada.",
+          "ringkas": "A. glutea inferior adalah cabang divisi anterior a. iliaca interna. Keluar melalui foramen ischiadicum majus di BAWAH m. piriformis, bersama n. gluteus inferior dan n. ischiadicus, terutama untuk memperdarahi m. gluteus maximus. Venanya bermuara ke v. iliaca interna."
+        },
+        {
+          "key": "pudenda-interna",
+          "latin": "A. & Vv. pudenda interna",
+          "indonesia": "Arteri dan vena pudenda interna",
+          "status": "ada",
+          "mesh": [
+            "FJ3610"
+          ],
+          "konteks": [
+            "@iliaka",
+            "FJ3606"
+          ],
+          "kamera": {
+            "arah": [
+              -0.5,
+              0,
+              -1
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Hanya VENA pudenda interna yang ada di model. A. pudenda interna tidak ada.",
+          "ringkas": "A. pudenda interna adalah cabang divisi anterior a. iliaca interna dan arteri utama perineum. Keluar dari pelvis melalui foramen ischiadicum majus (di bawah piriformis), melingkari spina ischiadica, lalu masuk ke perineum melalui foramen ischiadicum minus. Di perineum ia berjalan di canalis pudendalis (Alcock) bersama n. pudendus.",
+          "asalNama": "Pudendum (Latin) = alat kelamin luar."
+        }
+      ]
+    },
+    {
+      "judul": "Regio femoris",
+      "item": [
+        {
+          "key": "v-femoralis",
+          "latin": "Vena femoralis",
+          "indonesia": "Vena femoralis",
+          "status": "ada",
+          "mesh": [
+            "FJ2144"
+          ],
+          "konteks": [
+            "FJ2143",
+            "FJ2145",
+            "FJ3568"
+          ],
+          "kamera": {
+            "arah": [
+              -0.3,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Lanjutan v. poplitea setelah melewati hiatus adductorius. Di trigonum femorale ia terletak MEDIAL dari a. femoralis, dan menerima v. saphena magna di hiatus saphenus. Setelah melewati bawah ligamentum inguinale, ia menjadi v. iliaca externa.",
+          "jembatanKeledai": "Isi trigonum femorale dari lateral ke medial: \"NAVEL\" → Nerve, Artery, Vein, Empty space (canalis femoralis), Lymphatics.",
+          "klinis": "Akses vena sentral di lipat paha: raba denyut a. femoralis, lalu tusuk sedikit medial darinya."
+        },
+        {
+          "key": "a-femoralis",
+          "latin": "Arteria femoralis",
+          "indonesia": "Arteri femoralis",
+          "status": "ada",
+          "mesh": [
+            "FJ2143"
+          ],
+          "konteks": [
+            "FJ2144",
+            "FJ3567",
+            "FJ3614",
+            "@lcfa",
+            "FJ2170"
+          ],
+          "kamera": {
+            "arah": [
+              -0.3,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Lanjutan a. iliaca externa di bawah ligamentum inguinale, kira-kira di titik tengah antara SIAS dan symphysis pubica (midinguinal point). Turun melalui trigonum femorale dan canalis adductorius (Hunter), lalu melewati hiatus adductorius dan menjadi a. poplitea.",
+          "klinis": "Denyut a. femoralis teraba di lipat paha. Ini akses utama untuk kateterisasi arteri (angiografi)."
+        },
+        {
+          "key": "epigastrica-superficialis",
+          "latin": "A. epigastrica superficialis",
+          "indonesia": "Arteri epigastrika superfisialis",
+          "status": "ada",
+          "mesh": [
+            "FJ3614"
+          ],
+          "konteks": [
+            "FJ2143",
+            "FJ2145"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Cabang superfisial a. femoralis tepat di bawah ligamentum inguinale. Menembus fascia cribrosa, lalu naik di jaringan subkutan dinding abdomen bawah ke arah umbilikus."
+        },
+        {
+          "key": "circumflexa-iliaca-superficialis",
+          "latin": "A. circumflexa iliaca superficialis",
+          "indonesia": "Arteri sirkumfleksa iliaka superfisialis",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2143",
+            "FJ3614"
+          ],
+          "kamera": {
+            "arah": [
+              -0.4,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Tidak ada di model. Pangkalnya di a. femoralis dekat ligamentum inguinale (disorot sebagai konteks).",
+          "ringkas": "Cabang superfisial kecil a. femoralis yang berjalan ke lateral, sejajar di bawah ligamentum inguinale, ke arah SIAS."
+        },
+        {
+          "key": "pudendae-externae",
+          "latin": "Aa. pudendae externae",
+          "indonesia": "Arteri pudenda eksterna",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2143",
+            "FJ2145"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Tidak ada di model.",
+          "ringkas": "Cabang superfisial dan profunda a. femoralis yang berjalan ke medial untuk memperdarahi kulit regio pubis dan genitalia eksterna (scrotum/labia majora)."
+        },
+        {
+          "key": "profunda-femoris",
+          "latin": "A. profunda femoris",
+          "indonesia": "Arteri femoralis profunda",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2143",
+            "@lcfa",
+            "@perforantes",
+            "FJ2135"
+          ],
+          "kamera": {
+            "arah": [
+              -0.5,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Batang a. profunda femoris tidak ada di model. Yang disorot sebagai konteks: a. femoralis, cabang-cabang a. profunda femoris yang ada di model (a. circumflexa femoris lateralis dan aa. perforantes), serta v. profunda femoris. (Daftar concept BodyParts3D mengelompokkan 'deep femoral artery' ke mesh lain, jadi tidak dipakai.)",
+          "ringkas": "Cabang terbesar a. femoralis, keluar dari sisi lateral-posterior sekitar 3–4 cm di bawah ligamentum inguinale. Turun di belakang a. femoralis, di antara m. adductor longus dan m. pectineus/adductor brevis, dan merupakan arteri utama paha.",
+          "jembatanKeledai": "Cabang a. profunda femoris: \"LMP\" → circumflexa femoris Lateralis, circumflexa femoris Medialis, Perforantes (biasanya 3, ditambah ujung terminalnya sebagai perforans ke-4).",
+          "perluDicek": [
+            "Jarak asal a. profunda femoris dari ligamentum inguinale (sering dikutip 3–4 cm) bervariasi antarsumber."
+          ]
+        },
+        {
+          "key": "circumflexa-femoris-lateralis",
+          "latin": "A. circumflexa lateralis femoris",
+          "indonesia": "Arteri sirkumfleksa femoris lateralis",
+          "status": "ada",
+          "mesh": [
+            "@lcfa"
+          ],
+          "konteks": [
+            "FJ2143"
+          ],
+          "kamera": {
+            "arah": [
+              -0.6,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Termasuk r. descendens-nya (FJ2057).",
+          "ringkas": "Biasanya cabang a. profunda femoris (kadang langsung dari a. femoralis). Berjalan ke lateral di bawah m. sartorius dan m. rectus femoris, lalu bercabang menjadi r. ascendens, r. transversus, dan r. descendens. Ikut membentuk anastomosis di sekitar collum femoris dan lutut."
+        },
+        {
+          "key": "circumflexa-femoris-medialis",
+          "latin": "A. circumflexa medialis femoris",
+          "indonesia": "Arteri sirkumfleksa femoris medialis",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2202",
+            "FJ2143"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              0,
+              1
+            ]
+          },
+          "tulang": "utuh",
+          "catatanModel": "Arterinya tidak ada di model. Yang disorot sebagai konteks adalah VENA circumflexa femoris medialis (FJ2202) yang menyertainya, sebagai petunjuk lokasi.",
+          "ringkas": "Biasanya cabang a. profunda femoris. Berjalan ke medial-posterior di antara m. iliopsoas dan m. pectineus, mengitari collum femoris dari belakang.",
+          "klinis": "Pemasok darah utama caput dan collum femoris. Fraktur collum femoris dapat merusak cabang-cabangnya dan menyebabkan nekrosis avaskular caput femoris."
+        },
+        {
+          "key": "aa-perforantes",
+          "latin": "Aa. perforantes femoris",
+          "indonesia": "Arteri perforantes",
+          "status": "terkait",
+          "mesh": [
+            "@perforantes"
+          ],
+          "konteks": [
+            "FJ2143",
+            "@lcfa"
+          ],
+          "kamera": {
+            "arah": [
+              -0.4,
+              0,
+              -1
+            ]
+          },
+          "tulang": "utuh",
+          "catatanModel": "Di model bernama 'Set of perforating arteries'. Posisinya di paha posterior sesuai, tetapi pangkalnya (a. profunda femoris) tidak ada, jadi tidak tersambung.",
+          "ringkas": "Biasanya tiga arteri dari a. profunda femoris (ujung terminal a. profunda femoris disebut perforans keempat). Menembus m. adductor magnus di dekat linea aspera untuk memperdarahi otot-otot paha posterior (hamstring).",
+          "asalNama": "Perforare = menembus, karena menembus perlekatan m. adductor magnus."
+        }
+      ]
+    },
+    {
+      "judul": "Regio poplitea",
+      "item": [
+        {
+          "key": "a-poplitea",
+          "latin": "Arteria poplitea",
+          "indonesia": "Arteri poplitea",
+          "status": "ada",
+          "mesh": [
+            "FJ2170"
+          ],
+          "konteks": [
+            "@genus",
+            "@tibial",
+            "FJ2143"
+          ],
+          "kamera": {
+            "arah": "belakang"
+          },
+          "tulang": "tembus",
+          "catatanModel": "Cabang-cabang aa. genus yang ada di model ditampilkan sebagai konteks.",
+          "ringkas": "Lanjutan a. femoralis mulai dari hiatus adductorius. Turun di fossa poplitea sebagai struktur yang paling dalam (menempel ke facies poplitea femoris dan kapsul sendi lutut), lalu berakhir di tepi bawah m. popliteus dengan bercabang menjadi a. tibialis anterior dan posterior.",
+          "asalNama": "Poples (Latin) = lipat lutut/hamstring.",
+          "pertanyaan": {
+            "no": 21,
+            "teks": "Cabang-cabang a. poplitea",
+            "jawaban": "• Aa. surales (ke m. gastrocnemius, soleus, plantaris)\n• Aa. genus: superior lateralis, superior medialis, media, inferior lateralis, inferior medialis (membentuk anastomosis di sekitar lutut)\n• Cabang terminal: a. tibialis anterior dan a. tibialis posterior\n(A. fibularis biasanya keluar dari a. tibialis posterior, bukan langsung dari a. poplitea.)"
+          },
+          "klinis": "Karena menempel ke femur, a. poplitea mudah cedera pada fraktur suprakondilar femur atau dislokasi lutut. Denyutnya diraba di fossa poplitea dengan lutut sedikit fleksi."
+        },
+        {
+          "key": "v-poplitea",
+          "latin": "Vena poplitea",
+          "indonesia": "Vena poplitea",
+          "status": "ada",
+          "mesh": [
+            "FJ2171"
+          ],
+          "konteks": [
+            "FJ2170",
+            "FJ2176"
+          ],
+          "kamera": {
+            "arah": "belakang"
+          },
+          "tulang": "tembus",
+          "ringkas": "Dibentuk oleh pertemuan vena-vena tibialis di tepi bawah m. popliteus. Naik di fossa poplitea di superfisial a. poplitea, menerima v. saphena parva, lalu menjadi v. femoralis di hiatus adductorius.",
+          "klinis": "Lokasi yang sering terkena trombosis vena dalam (DVT)."
+        }
+      ]
+    },
+    {
+      "judul": "Regio cruris",
+      "item": [
+        {
+          "key": "a-tibialis-anterior",
+          "latin": "A. tibialis anterior",
+          "indonesia": "Arteri tibialis anterior",
+          "status": "ada",
+          "mesh": [
+            "FJ2130"
+          ],
+          "konteks": [
+            "FJ2170",
+            "FJ2055"
+          ],
+          "kamera": {
+            "arah": [
+              -0.4,
+              0,
+              1
+            ]
+          },
+          "tulang": "utuh",
+          "ringkas": "Cabang terminal a. poplitea. Menembus ke depan di atas membrana interossea, lalu turun di kompartemen anterior tungkai bersama n. fibularis profundus. Di depan sendi pergelangan kaki ia menjadi a. dorsalis pedis.",
+          "klinis": "Pada sindrom kompartemen anterior, aliran a. tibialis anterior dapat terganggu."
+        },
+        {
+          "key": "a-tibialis-posterior",
+          "latin": "A. tibialis posterior",
+          "indonesia": "Arteri tibialis posterior",
+          "status": "ada",
+          "mesh": [
+            "FJ2172"
+          ],
+          "konteks": [
+            "FJ2170",
+            "FJ2159",
+            "FJ2164"
+          ],
+          "kamera": {
+            "arah": [
+              -0.6,
+              0,
+              -0.8
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Cabang terminal a. poplitea yang lebih besar. Turun di kompartemen posterior bersama n. tibialis, lalu lewat di belakang malleolus medialis dan bercabang menjadi a. plantaris medialis dan lateralis. Cabang terbesarnya adalah a. fibularis.",
+          "jembatanKeledai": "Urutan di belakang malleolus medialis (anterior → posterior): \"Tom, Dick And Very Nervous Harry\" → Tibialis posterior (tendo), flexor Digitorum longus, Arteri (tibialis posterior), Vena, Nervus tibialis, flexor Hallucis longus.",
+          "klinis": "Denyutnya diraba di antara malleolus medialis dan tendo Achilles."
+        },
+        {
+          "key": "a-fibularis",
+          "latin": "A. fibularis / A. peronea",
+          "indonesia": "Arteri fibularis (peroneal)",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "@vFibular",
+            "FJ2172"
+          ],
+          "kamera": {
+            "arah": [
+              -0.6,
+              0,
+              -0.8
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Arterinya tidak ada di model. Yang disorot sebagai konteks adalah VENA fibularis yang menyertainya, sebagai petunjuk lokasi, serta a. tibialis posterior (asalnya).",
+          "ringkas": "Cabang terbesar a. tibialis posterior, keluar sedikit di bawah m. popliteus. Turun di sisi lateral kompartemen posterior, dekat fibula (di dalam atau di belakang m. flexor hallucis longus), memperdarahi otot-otot sekitarnya dan fibula.",
+          "asalNama": "Fibula (Latin) = peniti/bros; peronē (Yunani) juga berarti peniti."
+        }
+      ]
+    },
+    {
+      "judul": "Regio pedis",
+      "item": [
+        {
+          "key": "a-dorsalis-pedis",
+          "latin": "A. dorsalis pedis",
+          "indonesia": "Arteri dorsalis pedis",
+          "status": "ada",
+          "mesh": [
+            "FJ2055"
+          ],
+          "konteks": [
+            "FJ2130",
+            "FJ2136"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              0.7,
+              0.7
+            ]
+          },
+          "tulang": "utuh",
+          "ringkas": "Lanjutan a. tibialis anterior di depan sendi pergelangan kaki. Berjalan di dorsum pedis, di sebelah lateral tendo m. extensor hallucis longus, menuju spatium interosseum I. Di sana ia memberi r. plantaris profundus (a. plantaris profunda) yang menembus ke telapak kaki.",
+          "klinis": "Denyutnya diraba di dorsum pedis, lateral tendo extensor hallucis longus. Penting untuk menilai perfusi kaki (misalnya pada kaki diabetik). Pada sebagian orang denyut ini tidak teraba karena variasi anatomi."
+        },
+        {
+          "key": "a-plantaris-lateralis",
+          "latin": "A. plantaris lateralis",
+          "indonesia": "Arteri plantaris lateralis",
+          "status": "ada",
+          "mesh": [
+            "FJ2159"
+          ],
+          "konteks": [
+            "FJ2172",
+            "FJ2169",
+            "FJ2164"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              -1,
+              0.1
+            ]
+          },
+          "tulang": "utuh",
+          "ringkas": "Cabang terminal a. tibialis posterior yang lebih besar. Berjalan ke lateral di telapak kaki di antara m. flexor digitorum brevis dan m. quadratus plantae, lalu melengkung ke medial membentuk arcus plantaris."
+        },
+        {
+          "key": "a-plantaris-medialis",
+          "latin": "A. plantaris medialis",
+          "indonesia": "Arteri plantaris medialis",
+          "status": "ada",
+          "mesh": [
+            "FJ2164"
+          ],
+          "konteks": [
+            "FJ2172",
+            "FJ2159"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              -1,
+              0.1
+            ]
+          },
+          "tulang": "utuh",
+          "ringkas": "Cabang terminal a. tibialis posterior yang lebih kecil. Berjalan di sisi medial telapak kaki di antara m. abductor hallucis dan m. flexor digitorum brevis, memperdarahi otot-otot ibu jari kaki."
+        },
+        {
+          "key": "arcus-plantaris",
+          "latin": "Arcus plantaris",
+          "indonesia": "Lengkung plantar",
+          "status": "ada",
+          "mesh": [
+            "FJ2169"
+          ],
+          "konteks": [
+            "FJ2159",
+            "FJ2136",
+            "FJ2055"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              -1,
+              0.1
+            ]
+          },
+          "tulang": "utuh",
+          "catatanModel": "A. plantaris profunda (FJ2136) dari a. dorsalis pedis ikut ditampilkan sebagai konteks.",
+          "ringkas": "Lengkung arteri di bagian dalam telapak kaki, setinggi basis ossa metatarsi. Mengeluarkan aa. metatarsales plantares.",
+          "pertanyaan": {
+            "no": 22,
+            "teks": "Pembentuk arcus plantaris",
+            "jawaban": "Terutama dibentuk oleh lanjutan a. plantaris lateralis, dilengkapi di medial oleh a. plantaris profunda (r. plantaris profundus) dari a. dorsalis pedis."
+          }
+        }
+      ]
+    },
+    {
+      "judul": "Vena-vena superfisialis",
+      "item": [
+        {
+          "key": "v-saphena-magna",
+          "latin": "V. saphena magna",
+          "indonesia": "Vena safena magna",
+          "status": "ada",
+          "mesh": [
+            "FJ2145"
+          ],
+          "konteks": [
+            "FJ2144"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Vena terpanjang di tubuh. Berasal dari ujung medial arcus venosus dorsalis pedis, lalu naik di DEPAN malleolus medialis bersama n. saphenus. Ia terus naik di sisi medial tungkai, di belakang condylus medialis femoris (sekitar satu telapak tangan di belakang patella), lalu di sisi medial paha.",
+          "asalNama": "Saphenous, kemungkinan dari Yunani saphenes = terlihat jelas, atau dari Arab al-safin. Asal pastinya diperdebatkan.",
+          "pertanyaan": {
+            "no": 23,
+            "teks": "Muara v. saphena magna",
+            "jawaban": "Ke vena femoralis, melalui hiatus saphenus (fossa ovalis) di fascia lata, kira-kira 3–4 cm inferolateral dari tuberculum pubicum, di trigonum femorale."
+          },
+          "klinis": "Sering dipakai sebagai graft pada operasi bypass koroner. Bila katupnya tidak berfungsi, terjadi varises.",
+          "perluDicek": [
+            "Etimologi 'saphena' diperdebatkan (Yunani vs Arab).",
+            "Jarak hiatus saphenus dari tuberculum pubicum bervariasi antarsumber."
+          ]
+        },
+        {
+          "key": "venaseksi-saphena-magna",
+          "latin": "V. saphena magna: lokasi venaseksi",
+          "indonesia": "Lokasi venaseksi vena safena magna",
+          "status": "ada",
+          "mesh": [
+            "FJ2145"
+          ],
+          "konteks": [],
+          "kamera": {
+            "arah": [
+              -0.6,
+              0.1,
+              0.8
+            ],
+            "fokusPin": true
+          },
+          "tulang": "utuh",
+          "catatanModel": "Kamera diarahkan ke pergelangan kaki medial, tempat venaseksi biasanya dilakukan.",
+          "ringkas": "Venaseksi (cut-down vena) adalah membuka kulit untuk mencapai vena secara langsung, dilakukan bila akses vena perkutan sulit (misalnya syok berat atau pada anak).",
+          "pertanyaan": {
+            "no": 24,
+            "teks": "Lokasi venaseksi v. saphena magna",
+            "jawaban": "Di depan (anterior) malleolus medialis. Di titik ini letak vena sangat konstan dan superfisial, langsung di atas tulang. Hati-hati dengan n. saphenus yang berjalan di sampingnya, karena bisa ikut terikat atau terpotong."
+          },
+          "pin": "venaseksiSaphena",
+          "pinLabel": "Lokasi venaseksi (perkiraan)"
+        },
+        {
+          "key": "v-saphena-parva",
+          "latin": "V. saphena parva",
+          "indonesia": "Vena safena parva",
+          "status": "ada",
+          "mesh": [
+            "FJ2176"
+          ],
+          "konteks": [
+            "FJ2171"
+          ],
+          "kamera": {
+            "arah": "belakang"
+          },
+          "tulang": "tembus",
+          "ringkas": "Berasal dari ujung lateral arcus venosus dorsalis pedis, lalu naik di BELAKANG malleolus lateralis bersama n. suralis. Ia terus naik di garis tengah betis di antara kedua caput m. gastrocnemius.",
+          "asalNama": "Parva = kecil.",
+          "pertanyaan": {
+            "no": 25,
+            "teks": "Muara v. saphena parva",
+            "jawaban": "Ke vena poplitea, di fossa poplitea, setelah menembus fascia profunda. (Variasi: kadang bermuara lebih tinggi ke v. femoralis atau v. saphena magna.)"
+          }
+        }
+      ]
+    }
+  ]
+}

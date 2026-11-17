@@ -1,0 +1,2294 @@
+{
+  "id": 1,
+  "judul": "Praktikum 1: Jantung",
+  "topik": "Jantung in situ dan jantung lepasan, pembuluh-pembuluh besar di rongga toraks, abdomen, dan pelvis",
+  "tulangPola": [
+    "^(Left|Right) (first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth) rib$",
+    "^(Left|Right) \\w+ costal cartilage$",
+    "^(Manubrium|Body of sternum|Xiphoid process|Sacrum)$",
+    "^(Left|Right) (clavicle|hip bone)$",
+    "^\\w+ (thoracic|lumbar) vertebra$"
+  ],
+  "set": {
+    "dinding": [
+      "FJ2439",
+      "FJ2438",
+      "VENT_R",
+      "VENT_L"
+    ],
+    "rongga": [
+      "FJ2424",
+      "FJ2423",
+      "FJ2425",
+      "FJ2422"
+    ],
+    "trikuspid": [
+      "FJ2421",
+      "FJ2433",
+      "FJ2436"
+    ],
+    "mitral": [
+      "FJ2420",
+      "FJ2432"
+    ],
+    "katupAorta": [
+      "FJ2435",
+      "FJ2426",
+      "FJ2431"
+    ],
+    "katupPulmonal": [
+      "FJ2417",
+      "FJ2427",
+      "FJ2434"
+    ],
+    "papilerKanan": [
+      "FJ2419",
+      "FJ2430",
+      "FJ2437"
+    ],
+    "papilerKiri": [
+      "FJ2429",
+      "FJ2418"
+    ],
+    "katup": [
+      "@trikuspid",
+      "@mitral",
+      "@katupAorta",
+      "@katupPulmonal",
+      "@papilerKanan",
+      "@papilerKiri"
+    ],
+    "lca": [
+      "FJ2737"
+    ],
+    "lad": [
+      "FJ2631"
+    ],
+    "ladCabang": [
+      "FJ2632",
+      "FJ2633",
+      "FJ2634",
+      "FJ2635",
+      "FJ2636",
+      "FJ2637",
+      "FJ2638",
+      "FJ2639",
+      "FJ2640",
+      "FJ2641",
+      "FJ2642",
+      "FJ2643",
+      "FJ2644",
+      "FJ2645",
+      "FJ2646",
+      "FJ2647",
+      "FJ2648",
+      "FJ2732",
+      "FJ2733",
+      "FJ2734"
+    ],
+    "lcx": [
+      "FJ2649",
+      "FJ2650",
+      "FJ2651",
+      "FJ2652",
+      "FJ2653",
+      "FJ2654"
+    ],
+    "rca": [
+      "FJ2723"
+    ],
+    "rcaCabang": [
+      "FJ2670",
+      "FJ2676",
+      "FJ2671",
+      "FJ2673",
+      "FJ2677",
+      "FJ2714",
+      "FJ2715",
+      "FJ2716",
+      "FJ2717",
+      "FJ2718",
+      "FJ2719",
+      "FJ2720",
+      "FJ2721",
+      "FJ2722",
+      "FJ2735",
+      "FJ2736"
+    ],
+    "pda": [
+      "FJ2692",
+      "FJ2693",
+      "FJ2694",
+      "FJ2695",
+      "FJ2696",
+      "FJ2697",
+      "FJ2698",
+      "FJ2699",
+      "FJ2700"
+    ],
+    "rmarg": [
+      "FJ2667",
+      "FJ2668",
+      "FJ2672",
+      "FJ2674",
+      "FJ2675"
+    ],
+    "sinusKoroner": [
+      "FJ2655"
+    ],
+    "vCordisMagna": [
+      "FJ2656"
+    ],
+    "vIVAnterior": [
+      "FJ2657",
+      "FJ2658",
+      "FJ2659",
+      "FJ2660",
+      "FJ2661",
+      "FJ2662",
+      "FJ2663",
+      "FJ2664",
+      "FJ2665"
+    ],
+    "vCordisMedia": [
+      "FJ2678",
+      "FJ2679",
+      "FJ2680",
+      "FJ2681",
+      "FJ2682",
+      "FJ2683",
+      "FJ2684",
+      "FJ2685",
+      "FJ2686",
+      "FJ2687",
+      "FJ2688",
+      "FJ2689",
+      "FJ2690",
+      "FJ2691"
+    ],
+    "vCordisParva": [
+      "FJ2724",
+      "FJ2731"
+    ],
+    "vLainJantung": [
+      "FJ2701",
+      "FJ2702",
+      "FJ2706",
+      "FJ2707",
+      "FJ2708",
+      "FJ2709",
+      "FJ2710",
+      "FJ2711",
+      "FJ2712",
+      "FJ2713",
+      "FJ2725",
+      "FJ2730",
+      "FJ2727",
+      "FJ2728",
+      "FJ2729"
+    ],
+    "koroner": [
+      "@lca",
+      "@lad",
+      "@ladCabang",
+      "@lcx",
+      "@rca",
+      "@rcaCabang",
+      "@pda",
+      "@rmarg",
+      "@sinusKoroner",
+      "@vCordisMagna",
+      "@vIVAnterior",
+      "@vCordisMedia",
+      "@vCordisParva",
+      "@vLainJantung"
+    ],
+    "jantung": [
+      "@dinding",
+      "@katup",
+      "@koroner"
+    ],
+    "vPulmonales": [
+      "FJ3020",
+      "FJ3040",
+      "FJ2925",
+      "FJ2933",
+      "FJ2944",
+      "FJ2950",
+      "FJ2955"
+    ],
+    "aPulmonales": [
+      "FJ3019",
+      "FJ2924"
+    ],
+    "cabangArkus": [
+      "FJ3417",
+      "FJ3483",
+      "FJ3479"
+    ],
+    "aorta": [
+      "FJ3413",
+      "FJ3411",
+      "FJ1931",
+      "FJ1932"
+    ],
+    "vVBrakiosefalika": [
+      "FJ3583",
+      "FJ3482"
+    ],
+    "leherDasar": [
+      "FJ3587",
+      "FJ3486",
+      "FJ3585",
+      "FJ3485",
+      "FJ3579",
+      "FJ3564"
+    ],
+    "vci": [
+      "FJ3441",
+      "FJ3659"
+    ],
+    "azygos": [
+      "FJ3416",
+      "FJ3434",
+      "FJ1981"
+    ],
+    "aIliakaKomunis": [
+      "FJ3565",
+      "FJ3464"
+    ],
+    "vIliakaKomunis": [
+      "FJ3566",
+      "FJ3465"
+    ],
+    "aIliakaEksterna": [
+      "FJ3567",
+      "FJ3466"
+    ],
+    "vIliakaEksterna": [
+      "FJ3568",
+      "FJ3484",
+      "FJ3522",
+      "FJ3523",
+      "FJ3524"
+    ],
+    "aIliakaInterna": [
+      "FJ3569",
+      "FJ3468"
+    ],
+    "vIliakaInterna": [
+      "FJ3570",
+      "FJ3571",
+      "FJ3572",
+      "FJ3607",
+      "FJ3608",
+      "FJ3609",
+      "FJ3469",
+      "FJ3470",
+      "FJ3471"
+    ],
+    "iliaka": [
+      "@aIliakaKomunis",
+      "@vIliakaKomunis",
+      "@aIliakaEksterna",
+      "@vIliakaEksterna",
+      "@aIliakaInterna",
+      "@vIliakaInterna"
+    ],
+    "thorasikaInterna": [
+      "FJ1937",
+      "FJ1972"
+    ],
+    "pembuluhBesar": [
+      "@vVBrakiosefalika",
+      "FJ3645",
+      "FJ2966",
+      "@aPulmonales",
+      "@vPulmonales",
+      "@aorta",
+      "@cabangArkus",
+      "@leherDasar",
+      "@vci",
+      "@azygos",
+      "@iliaka",
+      "@thorasikaInterna"
+    ]
+  },
+  "scene": [
+    "@jantung",
+    "@rongga",
+    "@pembuluhBesar",
+    "FJ3427"
+  ],
+  "hanyaSaatDipilih": [
+    "FJ3427"
+  ],
+  "orientasi": [
+    {
+      "judul": "Jantung di dalam rongga dada",
+      "teks": "Jantung terletak di mediastinum medius, di belakang sternum dan cartilago costalis II–VI. Kira-kira dua pertiga massanya ada di kiri garis tengah. Coba putar modelnya dan lihat bahwa jantung duduk di atas diaphragma, di antara kedua paru (paru tidak ditampilkan).",
+      "kamera": {
+        "arah": "depan",
+        "zoom": 1.5
+      },
+      "tulang": "utuh",
+      "fokus": [
+        "@jantung",
+        "FJ3413",
+        "FJ3411",
+        "FJ2966",
+        "FJ3645"
+      ]
+    },
+    {
+      "judul": "Sumbu jantung miring",
+      "teks": "Dengan tulang dibuat tembus, terlihat sumbu panjang jantung miring: dari basis (belakang-atas-kanan) ke apex (depan-bawah-kiri). Akibatnya, yang paling banyak terlihat dari depan adalah ventrikel kanan. Di cadaver, setelah sternum dan perikardium dibuka, permukaan yang pertama kamu lihat juga sebagian besar ventrikel kanan.",
+      "kamera": {
+        "arah": "depan",
+        "zoom": 1.6
+      },
+      "tulang": "tembus",
+      "fokus": [
+        "@jantung"
+      ]
+    },
+    {
+      "judul": "Dilihat dari kiri",
+      "teks": "Dari sisi kiri pasien: jantung ada di depan, aorta descendens dan vertebra di belakang. Atrium kiri adalah ruang jantung yang paling posterior (bagian dari basis cordis), tepat di depan esofagus.",
+      "kamera": {
+        "arah": "kiri",
+        "zoom": 1.7
+      },
+      "tulang": "tembus",
+      "fokus": [
+        "@jantung",
+        "FJ1931",
+        "FJ3411"
+      ]
+    },
+    {
+      "judul": "Pembuluh besar sampai panggul",
+      "teks": "Aorta turun di depan kolumna vertebralis, menembus diaphragma, lalu bercabang dua menjadi a. iliaca communis kanan dan kiri. Vena cava inferior berjalan di sebelah kanan aorta. Tulang panggul (os coxae dan sacrum) membantu kamu membayangkan letak pembuluh iliaca di cadaver.",
+      "kamera": {
+        "arah": "depan",
+        "zoom": 1.15
+      },
+      "tulang": "tembus",
+      "fokus": [
+        "@aorta",
+        "@vci",
+        "@iliaka",
+        "@jantung"
+      ]
+    }
+  ],
+  "grup": [
+    {
+      "judul": "Pelindung jantung",
+      "item": [
+        {
+          "key": "pericardium-fibrosum",
+          "latin": "Pericardium fibrosum",
+          "indonesia": "Perikardium fibrosa",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "tembus",
+          "catatanModel": "BodyParts3D tidak memodelkan perikardium. Yang disorot adalah jantung yang dibungkusnya.",
+          "ringkas": "Kantong jaringan ikat padat, lapisan terluar pembungkus jantung. Di bawah melekat ke centrum tendineum diaphragma, di atas menyatu dengan tunika adventitia pembuluh-pembuluh besar. Karena sifatnya tidak elastis, ia mencegah jantung meregang berlebihan.",
+          "asalNama": "Peri- (Yunani: sekitar) + kardia (jantung). Fibrosum = berserat.",
+          "klinis": "Karena tidak bisa melar, penumpukan cairan atau darah di cavum pericardii dengan cepat bisa menekan jantung (tamponade jantung)."
+        },
+        {
+          "key": "pericardium-serosum-parietale",
+          "latin": "Pericardium serosum: lamina parietalis",
+          "indonesia": "Perikardium serosa, lapisan parietal",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "tembus",
+          "catatanModel": "Tidak dimodelkan di BodyParts3D.",
+          "ringkas": "Lapisan serosa yang melapisi permukaan dalam perikardium fibrosa. Di pangkal pembuluh besar, lapisan ini berbalik (refleksi) menjadi lamina visceralis.",
+          "asalNama": "Parietalis dari paries (Latin: dinding), yaitu lapisan yang menempel ke dinding kantong."
+        },
+        {
+          "key": "epicardium",
+          "latin": "Lamina visceralis / Epicardium",
+          "indonesia": "Perikardium serosa, lapisan viseral (epikardium)",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "catatanModel": "Epikardium melekat erat ke permukaan jantung dan tidak dimodelkan terpisah. Bayangkan sebagai lapisan tipis mengilap di permukaan jantung yang disorot.",
+          "ringkas": "Lapisan serosa yang melekat langsung di permukaan jantung dan menjadi lapisan terluar dinding jantung. Pembuluh koroner berjalan di bawahnya, di dalam lemak subepikardial.",
+          "asalNama": "Epi- (Yunani: di atas) + kardia. Visceralis dari viscus (organ): lapisan yang menempel pada organ."
+        },
+        {
+          "key": "cavum-sinus-pericardii",
+          "latin": "Cavum pericardii, sinus transversus & sinus obliquus pericardii",
+          "indonesia": "Rongga perikardium dan sinus-sinusnya",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ3413",
+            "FJ2966",
+            "FJ3645",
+            "@vPulmonales",
+            "FJ3441",
+            "FJ2438"
+          ],
+          "pin": "sinusTransversus",
+          "pinLabel": "Sinus transversus (perkiraan)",
+          "kamera": {
+            "arah": [
+              0.55,
+              0.25,
+              -0.8
+            ],
+            "zoom": 0.8
+          },
+          "tulang": "hilang",
+          "catatanModel": "Ruang-ruang ini tidak dimodelkan. Pin menunjukkan lokasi kira-kira sinus transversus: celah di antara aorta ascendens + truncus pulmonalis (depan) dan atrium kiri + VCS (belakang). Sinus obliquus ada di belakang atrium kiri, dikelilingi vv. pulmonales dan VCI.",
+          "ringkas": "Cavum pericardii adalah ruang potensial di antara lamina parietalis dan visceralis, berisi sedikit cairan serosa supaya jantung bisa bergerak tanpa gesekan. Sinus transversus dan sinus obliquus adalah 'kantong' di dalam cavum ini yang terbentuk karena cara perikardium serosa berbalik di sekitar pembuluh besar.",
+          "pertanyaan": {
+            "no": 1,
+            "teks": "Cavum pericardii, sinus transversus, dan sinus obliquus: letak dan cara menemukannya",
+            "jawaban": "• Cavum pericardii: ruang potensial di antara lamina parietalis dan lamina visceralis perikardium serosa, berisi sedikit cairan serosa.\n• Sinus transversus pericardii: lorong di belakang aorta ascendens dan truncus pulmonalis, di depan vena cava superior dan atrium. Cara mencarinya: masukkan jari dari kiri ke kanan di belakang aorta dan truncus pulmonalis. Makna klinis: saat operasi jantung, klem atau ligatur dilewatkan lewat sinus ini untuk menjepit aorta dan truncus pulmonalis.\n• Sinus obliquus pericardii: kantong buntu di belakang atrium kiri, dibatasi oleh refleksi perikardium di sekitar vv. pulmonales dan vena cava inferior. Cara mencarinya: angkat apex jantung ke atas, lalu masukkan jari di belakang jantung."
+          }
+        },
+        {
+          "key": "n-phrenicus",
+          "latin": "Nervus phrenicus",
+          "indonesia": "Saraf frenikus",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "@dinding",
+            "@vVBrakiosefalika",
+            "FJ3645"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "tembus",
+          "catatanModel": "BodyParts3D tidak memuat n. phrenicus. Di cadaver, cari di permukaan lateral perikardium fibrosa, di depan radix pulmonis, bersama a./v. pericardiacophrenica.",
+          "ringkas": "Berasal dari rami anteriores C3–C5. Turun melalui toraks di antara perikardium fibrosa dan pleura mediastinalis, di depan radix pulmonis, menuju diaphragma. N. phrenicus dexter berjalan di sisi kanan VCS dan atrium kanan. N. phrenicus sinister berjalan di atas ventrikel kiri.",
+          "asalNama": "Phren (Yunani) = diafragma. Dulu orang Yunani mengira jiwa berada di diafragma, sehingga kata ini juga menjadi akar kata 'frenetik' dan 'skizofrenia'.",
+          "jembatanKeledai": "\"C3, 4, 5 keeps the diaphragm alive.\"",
+          "pertanyaan": {
+            "no": 2,
+            "teks": "Daerah persarafan n. phrenicus",
+            "jawaban": "• Motorik: diaphragma (satu-satunya persarafan motorik diaphragma).\n• Sensorik: perikardium (fibrosa dan lamina parietalis serosa), pleura mediastinalis, pleura diaphragmatica bagian sentral, dan peritoneum di bawah bagian sentral diaphragma.\nKlinis: nyeri dari daerah ini bisa dirasakan di bahu (nyeri alih ke dermatom C4)."
+          }
+        },
+        {
+          "key": "a-v-pericardiacophrenica",
+          "latin": "A. & V. pericardiacophrenica",
+          "indonesia": "Arteri dan vena perikardiakofrenika",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "@thorasikaInterna",
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "tembus",
+          "catatanModel": "Tidak ada di model. Yang disorot adalah a. thoracica interna, asal arteri ini.",
+          "ringkas": "A. pericardiacophrenica adalah cabang a. thoracica interna. Ia berjalan bersama n. phrenicus di antara perikardium fibrosa dan pleura mediastinalis, memperdarahi perikardium, pleura, dan diaphragma. Venanya bermuara ke v. thoracica interna atau v. brachiocephalica.",
+          "asalNama": "Pericardio- (perikardium) + phrenica (diafragma): sesuai dua daerah yang diperdarahinya.",
+          "perluDicek": [
+            "Muara v. pericardiacophrenica (v. thoracica interna vs v. brachiocephalica) bisa berbeda antarsumber."
+          ]
+        }
+      ]
+    },
+    {
+      "judul": "Jantung in situ dan pembuluh-pembuluh darah besar",
+      "item": [
+        {
+          "key": "v-brachiocephalica-dextra",
+          "latin": "V. brachiocephalica dextra",
+          "indonesia": "Vena brakiosefalika kanan",
+          "status": "ada",
+          "mesh": [
+            "FJ3583"
+          ],
+          "konteks": [
+            "FJ3587",
+            "FJ3585",
+            "FJ3645"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "tembus",
+          "ringkas": "Dibentuk oleh pertemuan v. jugularis interna dan v. subclavia dextra di belakang ujung sternal klavikula kanan. Pendek dan hampir vertikal, lalu bersatu dengan v. brachiocephalica sinistra membentuk vena cava superior.",
+          "asalNama": "Brachium (lengan) + kephale (kepala): vena ini mengalirkan darah dari lengan dan kepala-leher.",
+          "jembatanKeledai": "Brakiosefalika = 'lengan + kepala': lihat dua vena yang membentuknya (dari lengan: v. subclavia; dari kepala: v. jugularis interna)."
+        },
+        {
+          "key": "v-brachiocephalica-sinistra",
+          "latin": "V. brachiocephalica sinistra",
+          "indonesia": "Vena brakiosefalika kiri",
+          "status": "ada",
+          "mesh": [
+            "FJ3482"
+          ],
+          "konteks": [
+            "FJ3486",
+            "FJ3485",
+            "FJ3645",
+            "@cabangArkus"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "tembus",
+          "ringkas": "Dibentuk di belakang ujung sternal klavikula kiri, lalu menyeberang miring ke kanan di belakang manubrium sterni dan di depan cabang-cabang arcus aortae. Panjangnya kira-kira dua kali v. brachiocephalica dextra.",
+          "asalNama": "Sama dengan sisi kanan: brachium (lengan) + kephale (kepala).",
+          "klinis": "Karena menyeberang di depan cabang arcus aortae, vena ini bisa tertekan oleh aneurisma arcus aortae."
+        },
+        {
+          "key": "vcs",
+          "latin": "Vena cava superior",
+          "indonesia": "Vena kava superior",
+          "status": "ada",
+          "mesh": [
+            "FJ3645"
+          ],
+          "konteks": [
+            "@vVBrakiosefalika",
+            "FJ3416",
+            "FJ2439"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "tembus",
+          "ringkas": "Dibentuk oleh kedua v. brachiocephalica, setinggi tepi bawah cartilago costalis I kanan. Turun di sisi kanan aorta ascendens dan bermuara ke atrium kanan. Sebelum masuk perikardium, ia menerima v. azygos dari belakang. VCS mengalirkan darah dari tubuh di atas diaphragma, kecuali paru dan jantung.",
+          "asalNama": "Cava (Latin: berongga) karena ukurannya besar seperti rongga. Superior = atas.",
+          "klinis": "Sindrom vena cava superior: penekanan VCS (misalnya oleh tumor paru atau mediastinum) menyebabkan wajah, leher, dan lengan bengkak serta vena-vena dada melebar."
+        },
+        {
+          "key": "truncus-pulmonalis",
+          "latin": "Truncus pulmonalis",
+          "indonesia": "Batang arteri pulmonalis",
+          "status": "ada",
+          "mesh": [
+            "FJ2966"
+          ],
+          "konteks": [
+            "@aPulmonales",
+            "FJ3413",
+            "FJ3411",
+            "VENT_R"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "ringkas": "Keluar dari conus arteriosus (infundibulum) ventrikel kanan, naik ke kiri-belakang di depan aorta ascendens, lalu bercabang menjadi a. pulmonalis dextra dan sinistra di bawah arcus aortae. Membawa darah miskin oksigen ke paru.",
+          "asalNama": "Truncus = batang; pulmo = paru.",
+          "klinis": "Emboli paru: trombus (biasanya dari vena tungkai) bisa tersangkut di percabangan truncus pulmonalis (saddle embolus)."
+        },
+        {
+          "key": "a-pulmonales",
+          "latin": "Arteriae pulmonales",
+          "indonesia": "Arteri pulmonalis kanan dan kiri",
+          "status": "ada",
+          "mesh": [
+            "@aPulmonales"
+          ],
+          "konteks": [
+            "FJ2966",
+            "FJ3411",
+            "FJ3413",
+            "FJ3645"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "ringkas": "A. pulmonalis dextra lebih panjang. Ia berjalan horizontal di bawah arcus aortae, di belakang aorta ascendens dan VCS, menuju hilum paru kanan. A. pulmonalis sinistra lebih pendek, dan dihubungkan ke arcus aortae oleh lig. arteriosum.",
+          "asalNama": "Pulmo (Latin) = paru.",
+          "funFact": "Arteri pulmonalis adalah satu-satunya arteri pada orang dewasa yang membawa darah miskin oksigen."
+        },
+        {
+          "key": "vv-pulmonales",
+          "latin": "Venae pulmonales",
+          "indonesia": "Vena-vena pulmonalis",
+          "status": "ada",
+          "mesh": [
+            "@vPulmonales"
+          ],
+          "konteks": [
+            "FJ2438"
+          ],
+          "kamera": {
+            "arah": "belakang"
+          },
+          "tulang": "hilang",
+          "catatanModel": "Di model, 4 vena (superior dan inferior, kanan dan kiri) tersusun dari 7 potongan mesh.",
+          "ringkas": "Biasanya empat buah (dua dari tiap paru), membawa darah kaya oksigen ke atrium kiri. Mereka masuk ke dinding posterior atrium kiri, yaitu di basis cordis.",
+          "asalNama": "Pulmo = paru.",
+          "funFact": "Pada orang dewasa, vv. pulmonales adalah satu-satunya vena yang membawa darah kaya oksigen.",
+          "klinis": "Muara vv. pulmonales adalah sumber penting fibrilasi atrium. Tindakan ablasi 'isolasi vena pulmonalis' dilakukan di sini."
+        },
+        {
+          "key": "aorta-ascendens",
+          "latin": "Aorta ascendens",
+          "indonesia": "Aorta asendens",
+          "status": "ada",
+          "mesh": [
+            "FJ3413"
+          ],
+          "konteks": [
+            "FJ3411",
+            "FJ2966",
+            "@lca",
+            "@rca",
+            "@katupAorta"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "ringkas": "Bagian awal aorta, mulai dari ostium aortae ventrikel kiri. Panjangnya sekitar 5 cm dan masih berada di dalam perikardium. Di pangkalnya ada tiga sinus aortae, dan dari sinus kanan dan kiri keluar a. coronaria dextra dan sinistra. Ia berlanjut menjadi arcus aortae setinggi angulus sterni.",
+          "asalNama": "Aorta, dari Yunani aorte (yang diangkat/digantung). Ascendens = naik.",
+          "perluDicek": [
+            "Panjang ±5 cm adalah angka buku teks yang umum dipakai; bervariasi antarindividu."
+          ]
+        },
+        {
+          "key": "arcus-aortae",
+          "latin": "Arcus aortae",
+          "indonesia": "Lengkung aorta",
+          "status": "ada",
+          "mesh": [
+            "FJ3411"
+          ],
+          "konteks": [
+            "@cabangArkus",
+            "FJ3413",
+            "FJ1931",
+            "FJ2924"
+          ],
+          "kamera": {
+            "arah": [
+              0.6,
+              0.2,
+              0.8
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Lanjutan aorta ascendens. Mulai dan berakhir setinggi angulus sterni (diskus T4/T5). Arcus naik di depan a. pulmonalis dextra dan bifurcatio tracheae, lalu melengkung ke belakang dan ke kiri, turun di sisi kiri trakea dan esofagus sambil melewati radix pulmonis sinistra (bronchus principalis sinister).",
+          "asalNama": "Arcus = busur/lengkung.",
+          "jembatanKeledai": "\"ABC'S\": Aortic arch → Brachiocephalic trunk → left common Carotid → left Subclavian (urutan dari kanan ke kiri).",
+          "pertanyaan": {
+            "no": 3,
+            "teks": "Cabang-cabang arcus aortae",
+            "jawaban": "Urutan dari kanan ke kiri:\n1. Truncus brachiocephalicus, yang kemudian bercabang menjadi a. subclavia dextra dan a. carotis communis dextra.\n2. A. carotis communis sinistra.\n3. A. subclavia sinistra.\nKetiga cabang ini ikut ditampilkan (warna merah redup). Variasi yang sering ada: a. carotis communis sinistra keluar dari truncus brachiocephalicus (disebut 'bovine arch')."
+          }
+        },
+        {
+          "key": "lig-arteriosum",
+          "latin": "Ligamentum arteriosum (Botalli)",
+          "indonesia": "Ligamentum arteriosum",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ3411",
+            "FJ2924",
+            "FJ2966"
+          ],
+          "pin": "ligArteriosum",
+          "pinLabel": "Lig. arteriosum (perkiraan)",
+          "kamera": {
+            "arah": [
+              0.9,
+              0.2,
+              0.5
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Ligamentum ini tidak dimodelkan. Pin diletakkan di titik terdekat antara arcus aortae dan a. pulmonalis sinistra, tempat ligamentum ini seharusnya berada.",
+          "ringkas": "Pita jaringan ikat dari pangkal a. pulmonalis sinistra ke permukaan bawah arcus aortae. Ini sisa ductus arteriosus janin, yaitu pembuluh yang mengalirkan darah dari truncus pulmonalis ke aorta sehingga melewati paru yang belum berfungsi.",
+          "asalNama": "Eponim dari Leonardo Botallo, ahli bedah Italia abad ke-16.",
+          "funFact": "Ductus ini sebenarnya sudah dideskripsikan jauh sebelumnya oleh Galen, jadi eponim 'Botalli' sering disebut 'salah alamat'.",
+          "pertanyaan": {
+            "no": 4,
+            "teks": "Makna klinis lig. arteriosum",
+            "jawaban": "• N. laryngeus recurrens sinister melingkar di bawah arcus aortae tepat di sebelah lateral/posterior lig. arteriosum. Jadi ligamentum ini penanda penting, dan saraf tersebut berisiko cedera pada operasi di daerah ini (gejalanya suara serak).\n• Bila ductus arteriosus tidak menutup setelah lahir, terjadi PDA (patent ductus arteriosus): darah mengalir dari aorta ke a. pulmonalis (pirau kiri ke kanan), dengan bising kontinu 'machinery murmur'.\n• Koarktasio aorta biasanya terjadi di dekat tempat melekatnya ligamentum/ductus ini."
+          },
+          "perluDicek": [
+            "Klaim historis Galen vs Botallo: cek ke buku sejarah anatomi bila ingin dikutip."
+          ]
+        },
+        {
+          "key": "aorta-descendens",
+          "latin": "Aorta descendens",
+          "indonesia": "Aorta desendens",
+          "status": "ada",
+          "mesh": [
+            "FJ3427"
+          ],
+          "konteks": [
+            "FJ3411",
+            "@iliaka"
+          ],
+          "kamera": {
+            "arah": "kiri"
+          },
+          "tulang": "tembus",
+          "catatanModel": "Mesh 'Descending aorta' (FJ3427) mencakup bagian torakal dan abdominal sekaligus, jadi tumpang tindih dengan mesh aorta thoracica dan abdominalis. Mesh ini hanya ditampilkan saat struktur ini dipilih.",
+          "ringkas": "Lanjutan arcus aortae mulai setinggi T4/T5. Disebut aorta thoracica selama di toraks. Setelah menembus hiatus aorticus diaphragma (setinggi T12) namanya menjadi aorta abdominalis, sampai bercabang dua setinggi L4.",
+          "asalNama": "Descendens = turun."
+        },
+        {
+          "key": "aorta-thoracica",
+          "latin": "Aorta thoracica",
+          "indonesia": "Aorta torakalis",
+          "status": "ada",
+          "mesh": [
+            "FJ1931"
+          ],
+          "konteks": [
+            "FJ3411",
+            "FJ1932",
+            "FJ2438"
+          ],
+          "kamera": {
+            "arah": "kiri"
+          },
+          "tulang": "tembus",
+          "ringkas": "Bagian aorta descendens di mediastinum posterius. Awalnya di kiri corpus vertebra, lalu bergeser ke garis tengah saat turun. Cabang-cabangnya: aa. intercostales posteriores, a. subcostalis, rr. bronchiales, rr. oesophageales, rr. pericardiaci, dan aa. phrenicae superiores.",
+          "asalNama": "Thorax (Yunani) = dada."
+        },
+        {
+          "key": "aorta-abdominalis",
+          "latin": "Aorta abdominalis",
+          "indonesia": "Aorta abdominalis",
+          "status": "ada",
+          "mesh": [
+            "FJ1932"
+          ],
+          "konteks": [
+            "@aIliakaKomunis",
+            "@vci",
+            "FJ1931"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "tembus",
+          "ringkas": "Mulai di hiatus aorticus (T12), turun di depan corpus vertebra lumbalis, di kiri VCI, dan bercabang menjadi a. iliaca communis dextra dan sinistra setinggi L4. Cabang viseral tunggalnya: truncus coeliacus, a. mesenterica superior, dan a. mesenterica inferior. Cabang berpasangannya antara lain a. renalis, a. suprarenalis media, a. testicularis/ovarica, a. phrenica inferior, dan aa. lumbales.",
+          "asalNama": "Abdomen = perut.",
+          "jembatanKeledai": "Tinggi lubang diafragma: \"I 8 10 Eggs At 12\" → IVC (T8), Esophagus (T10), Aorta (T12).",
+          "klinis": "Aneurisma aorta abdominalis (AAA) paling sering terjadi di bawah a. renalis. Percabangan aorta setinggi L4 kira-kira sejajar umbilikus."
+        },
+        {
+          "key": "iliaca-communis",
+          "latin": "A. & V. iliaca communis",
+          "indonesia": "Arteri dan vena iliaka komunis",
+          "status": "ada",
+          "mesh": [
+            "@aIliakaKomunis",
+            "@vIliakaKomunis"
+          ],
+          "konteks": [
+            "FJ1932",
+            "@vci",
+            "@aIliakaEksterna",
+            "@aIliakaInterna"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "tembus",
+          "ringkas": "A. iliaca communis keluar dari percabangan aorta (L4) dan bercabang lagi menjadi a. iliaca externa dan interna di depan articulatio sacroiliaca. V. iliaca communis dibentuk oleh v. iliaca externa dan interna. Kedua v. iliaca communis bersatu setinggi L5, di kanan garis tengah, membentuk VCI di belakang a. iliaca communis dextra.",
+          "asalNama": "Ilium (tulang panggul) + communis (bersama).",
+          "klinis": "Sindrom May-Thurner: a. iliaca communis dextra menekan v. iliaca communis sinistra ke vertebra, sehingga trombosis vena dalam lebih sering terjadi di tungkai kiri."
+        },
+        {
+          "key": "iliaca-externa",
+          "latin": "A. & V. iliaca externa",
+          "indonesia": "Arteri dan vena iliaka eksterna",
+          "status": "ada",
+          "mesh": [
+            "@aIliakaEksterna",
+            "@vIliakaEksterna"
+          ],
+          "konteks": [
+            "@aIliakaKomunis",
+            "@vIliakaKomunis"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "tembus",
+          "ringkas": "A. iliaca externa berjalan di sepanjang tepi medial m. psoas major, lalu lewat di bawah ligamentum inguinale dan berubah nama menjadi a. femoralis. Cabangnya: a. epigastrica inferior dan a. circumflexa ilium profunda. Venanya berjalan di sebelah medial arteri.",
+          "asalNama": "Externa = luar, karena terutama memperdarahi tungkai bawah, di luar panggul."
+        },
+        {
+          "key": "iliaca-interna",
+          "latin": "A. & V. iliaca interna",
+          "indonesia": "Arteri dan vena iliaka interna",
+          "status": "ada",
+          "mesh": [
+            "@aIliakaInterna",
+            "@vIliakaInterna"
+          ],
+          "konteks": [
+            "@aIliakaKomunis",
+            "@vIliakaKomunis"
+          ],
+          "kamera": {
+            "arah": [
+              0.3,
+              0.1,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Masuk ke rongga panggul dan memperdarahi organ panggul, dinding panggul, regio glutea, perineum, dan sebagian paha medial. Umumnya terbagi menjadi divisi anterior (cabang viseral, a. obturatoria, a. pudenda interna, a. glutea inferior) dan divisi posterior (a. iliolumbalis, aa. sacrales laterales, a. glutea superior).",
+          "asalNama": "Interna = dalam (ke dalam rongga panggul).",
+          "catatanModel": "Di model, cabang-cabang a. iliaca interna tidak lengkap."
+        },
+        {
+          "key": "vci",
+          "latin": "Vena cava inferior",
+          "indonesia": "Vena kava inferior",
+          "status": "ada",
+          "mesh": [
+            "@vci"
+          ],
+          "konteks": [
+            "@vIliakaKomunis",
+            "FJ1932",
+            "FJ2439"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "tembus",
+          "catatanModel": "Di model, VCI terdiri dari dua mesh (bagian atas dan bawah).",
+          "ringkas": "Vena terbesar di tubuh. Dibentuk setinggi L5 oleh kedua v. iliaca communis, naik di kanan aorta, menembus centrum tendineum diaphragma (foramen venae cavae, setinggi T8), lalu bermuara ke atrium kanan.",
+          "asalNama": "Cava = berongga; inferior = bawah.",
+          "jembatanKeledai": "\"I 8 10 Eggs At 12\": IVC menembus diafragma setinggi T8."
+        },
+        {
+          "key": "v-azygos",
+          "latin": "Vena azygos",
+          "indonesia": "Vena azigos",
+          "status": "ada",
+          "mesh": [
+            "FJ3416"
+          ],
+          "konteks": [
+            "FJ3645",
+            "FJ3434",
+            "FJ1981",
+            "FJ1931"
+          ],
+          "kamera": {
+            "arah": "belakang"
+          },
+          "tulang": "tembus",
+          "ringkas": "Naik di mediastinum posterius di sisi kanan corpus vertebra thoracica. Setinggi T4 ia melengkung ke depan di atas radix pulmonis dextra dan bermuara ke VCS. Di kiri ada pasangannya: v. hemiazygos dan v. hemiazygos accessoria (ikut ditampilkan redup), yang menyeberang ke kanan untuk bermuara ke v. azygos.",
+          "asalNama": "A- (tanpa) + zygos (pasangan, Yunani): 'tanpa pasangan', karena hanya ada di sisi kanan.",
+          "pertanyaan": {
+            "no": 5,
+            "teks": "Fungsi utama v. azygos",
+            "jawaban": "• Mengalirkan darah dari dinding toraks posterior (vv. intercostales posteriores) dan dinding abdomen posterior bagian atas, juga vv. bronchiales, oesophageales, dan pericardiales, ke VCS.\n• Menjadi jalur kolateral antara VCI dan VCS: bila VCI tersumbat, darah dari tubuh bagian bawah tetap bisa kembali ke jantung lewat v. lumbalis ascendens lalu sistem azygos."
+          }
+        }
+      ]
+    },
+    {
+      "judul": "Struktur-struktur pada permukaan jantung",
+      "item": [
+        {
+          "key": "apex-cordis",
+          "latin": "Apex cordis",
+          "indonesia": "Puncak jantung",
+          "status": "terkait",
+          "mesh": [
+            "VENT_L"
+          ],
+          "konteks": [
+            "@dinding"
+          ],
+          "pin": "apex",
+          "pinLabel": "Apex (perkiraan)",
+          "kamera": {
+            "arah": [
+              0.6,
+              -0.3,
+              0.8
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Apex adalah bagian dari dinding ventrikel, bukan mesh tersendiri. Pin dihitung otomatis sebagai titik dinding ventrikel yang paling jauh dari atrium. Sorotan 'ventrikel kiri' berasal dari pembagian otomatis.",
+          "ringkas": "Ujung jantung yang mengarah ke depan, bawah, dan kiri. Dibentuk oleh ventrikel kiri. Pada orang dewasa biasanya terletak di belakang spatium intercostale V kiri, sekitar linea medioclavicularis.",
+          "asalNama": "Apex (Latin) = puncak/ujung.",
+          "klinis": "Ictus cordis (iktus kordis/denyut apeks) teraba di sini. Bila bergeser ke lateral atau bawah, curigai pembesaran ventrikel kiri. Ini juga titik auskultasi katup mitral."
+        },
+        {
+          "key": "basis-cordis",
+          "latin": "Basis cordis / Facies posterior cordis",
+          "indonesia": "Dasar jantung / permukaan posterior",
+          "status": "terkait",
+          "mesh": [
+            "FJ2438"
+          ],
+          "konteks": [
+            "@dinding",
+            "@vPulmonales"
+          ],
+          "pin": "basis",
+          "pinLabel": "Basis cordis (perkiraan)",
+          "kamera": {
+            "arah": "belakang"
+          },
+          "tulang": "hilang",
+          "ringkas": "Permukaan posterior jantung, berlawanan dengan apex. Terutama dibentuk oleh atrium kiri, ditambah sedikit atrium kanan. Vv. pulmonales bermuara di sini.",
+          "asalNama": "Basis = dasar. Disebut dasar karena letaknya berlawanan dengan apex (seperti alas kerucut), bukan karena berada di bawah.",
+          "funFact": "Sering tertukar: basis cordis TIDAK menghadap ke bawah. Ia menghadap ke belakang (posterior). Permukaan bawah jantung adalah facies diaphragmatica."
+        },
+        {
+          "key": "facies-sternocostalis",
+          "latin": "Facies anterior cordis / Facies sternocostalis",
+          "indonesia": "Permukaan depan (sternokostal)",
+          "status": "terkait",
+          "mesh": [
+            "VENT_R"
+          ],
+          "konteks": [
+            "@dinding"
+          ],
+          "pin": "faciesSternocostalis",
+          "pinLabel": "Facies sternocostalis",
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "catatanModel": "Yang disorot adalah dinding ventrikel kanan hasil pembagian otomatis.",
+          "ringkas": "Permukaan depan jantung yang menghadap sternum dan cartilago costalis. Sebagian besar dibentuk oleh ventrikel kanan, dengan atrium kanan di sebelah kanannya dan sedikit ventrikel kiri di sebelah kirinya.",
+          "asalNama": "Sternum + costa (iga)."
+        },
+        {
+          "key": "facies-diaphragmatica",
+          "latin": "Facies inferior / Facies diaphragmatica cordis",
+          "indonesia": "Permukaan bawah (diafragmatika)",
+          "status": "terkait",
+          "mesh": [
+            "VENT_L",
+            "VENT_R"
+          ],
+          "konteks": [
+            "@dinding",
+            "@pda",
+            "@vCordisMedia"
+          ],
+          "pin": "faciesDiaphragmatica",
+          "pinLabel": "Facies diaphragmatica (perkiraan)",
+          "kamera": {
+            "arah": "bawah"
+          },
+          "tulang": "hilang",
+          "ringkas": "Permukaan bawah jantung yang bertumpu di atas centrum tendineum diaphragma. Terutama dibentuk oleh ventrikel kiri dan sebagian ventrikel kanan, dipisahkan oleh sulcus interventricularis posterior.",
+          "asalNama": "Diaphragma (Yunani: sekat)."
+        },
+        {
+          "key": "margo-dexter",
+          "latin": "Margo dexter cordis",
+          "indonesia": "Tepi kanan jantung",
+          "status": "terkait",
+          "mesh": [
+            "FJ2439"
+          ],
+          "konteks": [
+            "@dinding",
+            "FJ3645",
+            "FJ3441"
+          ],
+          "pin": "margoDexter",
+          "pinLabel": "Margo dexter (perkiraan)",
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "ringkas": "Tepi kanan jantung dilihat dari depan. Dibentuk oleh atrium kanan, terbentang di antara VCS dan VCI.",
+          "klinis": "Pada foto toraks PA, batas kanan bayangan jantung dibentuk oleh atrium kanan."
+        },
+        {
+          "key": "margo-sinister",
+          "latin": "Margo sinister cordis / Margo obtusus",
+          "indonesia": "Tepi kiri jantung (tumpul)",
+          "status": "terkait",
+          "mesh": [
+            "VENT_L"
+          ],
+          "konteks": [
+            "@dinding",
+            "@lcx"
+          ],
+          "pin": "margoSinister",
+          "pinLabel": "Margo sinister (perkiraan)",
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "ringkas": "Tepi kiri jantung, terutama dibentuk oleh ventrikel kiri (dan sedikit auricula sinistra). Bentuknya membulat, sehingga disebut 'tumpul' (obtusus).",
+          "asalNama": "Obtusus (Latin) = tumpul."
+        },
+        {
+          "key": "margo-inferior",
+          "latin": "Margo inferior cordis / Margo acutus",
+          "indonesia": "Tepi bawah jantung (tajam)",
+          "status": "terkait",
+          "mesh": [
+            "VENT_R"
+          ],
+          "konteks": [
+            "@dinding",
+            "@rmarg"
+          ],
+          "pin": "margoInferior",
+          "pinLabel": "Margo inferior (perkiraan)",
+          "kamera": {
+            "arah": [
+              0,
+              -0.3,
+              1
+            ]
+          },
+          "tulang": "hilang",
+          "ringkas": "Tepi tajam di antara facies sternocostalis dan facies diaphragmatica. Terutama dibentuk oleh ventrikel kanan. R. marginalis dexter a. coronaria dextra berjalan di sepanjang tepi ini.",
+          "asalNama": "Acutus (Latin) = tajam."
+        },
+        {
+          "key": "sulcus-coronarius",
+          "latin": "Sulcus coronarius",
+          "indonesia": "Alur koroner (atrioventrikular)",
+          "status": "terkait",
+          "mesh": [
+            "@rca",
+            "@lcx",
+            "@sinusKoroner",
+            "@vCordisMagna",
+            "@vCordisParva"
+          ],
+          "konteks": [
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": [
+              0.4,
+              0.3,
+              -1
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Alurnya sendiri tidak dimodelkan. Yang disorot adalah pembuluh-pembuluh yang berjalan di dalamnya. Putar ke depan dan belakang untuk melihat lingkarannya.",
+          "ringkas": "Alur melingkar yang memisahkan atrium dari ventrikel, seperti mahkota yang melingkari jantung.",
+          "asalNama": "Corona = mahkota. Pembuluh yang melingkari jantung di alur ini juga dinamai 'koroner'.",
+          "pertanyaan": {
+            "no": 6,
+            "teks": "Isi sulcus coronarius",
+            "jawaban": "• A. coronaria dextra (bagian kanan sulcus)\n• R. circumflexus a. coronariae sinistrae (bagian kiri sulcus)\n• Sinus coronarius (bagian posterior sulcus)\n• V. cordis magna (bagian kiri, sebelum menjadi sinus coronarius)\n• V. cordis parva (bagian kanan-posterior)\nSemuanya terbungkus lemak subepikardial."
+          }
+        },
+        {
+          "key": "sulcus-iv-anterior",
+          "latin": "Sulcus interventricularis anterior",
+          "indonesia": "Alur interventrikular depan",
+          "status": "terkait",
+          "mesh": [
+            "@lad",
+            "@vIVAnterior"
+          ],
+          "konteks": [
+            "@dinding",
+            "@ladCabang"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "catatanModel": "Yang disorot adalah isi alur ini: r. interventricularis anterior dan vena yang menyertainya.",
+          "ringkas": "Alur di facies sternocostalis yang menandai letak septum interventriculare, memisahkan ventrikel kanan dan kiri dari depan. Berjalan dari sulcus coronarius ke arah apex."
+        },
+        {
+          "key": "sulcus-iv-posterior",
+          "latin": "Sulcus interventricularis inferior / posterior",
+          "indonesia": "Alur interventrikular bawah/belakang",
+          "status": "terkait",
+          "mesh": [
+            "@pda",
+            "@vCordisMedia"
+          ],
+          "konteks": [
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": "bawah"
+          },
+          "tulang": "hilang",
+          "catatanModel": "Yang disorot adalah isi alur ini: r. interventricularis posterior dan v. cordis media.",
+          "ringkas": "Alur di facies diaphragmatica yang menandai letak septum interventriculare dari bawah. Bertemu dengan sulcus interventricularis anterior di dekat apex (incisura apicis cordis)."
+        },
+        {
+          "key": "sulcus-terminalis",
+          "latin": "Sulcus terminalis cordis",
+          "indonesia": "Alur terminal",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2439",
+            "FJ3645",
+            "FJ3441"
+          ],
+          "kamera": {
+            "arah": [
+              -1,
+              0,
+              0.5
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Alur ini tidak tampak di model. Bayangkan sebagai alur dangkal di permukaan luar atrium kanan yang menghubungkan muara VCS dan VCI.",
+          "ringkas": "Alur dangkal di permukaan luar atrium kanan, dari sisi kanan VCS ke VCI. Di sisi dalam, alur ini sesuai dengan crista terminalis. Ia memisahkan sinus venarum (dinding halus) dari bagian atrium yang ber-mm. pectinati.",
+          "asalNama": "Terminalis = batas/akhir.",
+          "klinis": "Nodus sinuatrialis (SA node, pacu jantung alami) terletak di ujung atas sulcus/crista terminalis, dekat muara VCS."
+        }
+      ]
+    },
+    {
+      "judul": "Ruang jantung: Atrium dextrum",
+      "item": [
+        {
+          "key": "atrium-dextrum",
+          "latin": "Atrium dextrum",
+          "indonesia": "Serambi kanan",
+          "status": "ada",
+          "mesh": [
+            "FJ2439"
+          ],
+          "konteks": [
+            "FJ3645",
+            "FJ3441",
+            "@sinusKoroner",
+            "@trikuspid"
+          ],
+          "kamera": {
+            "arah": [
+              -0.8,
+              0.1,
+              0.6
+            ]
+          },
+          "tulang": "hilang",
+          "ringkas": "Menerima darah miskin oksigen dari VCS, VCI, dan sinus coronarius. Bagian belakangnya berdinding halus (sinus venarum), sedangkan bagian depan dan auricula-nya berdinding kasar karena mm. pectinati. Keduanya dibatasi oleh crista terminalis.",
+          "asalNama": "Atrium (Latin) = ruang depan/aula rumah Romawi: ruang tempat 'tamu' (darah) masuk sebelum ke ruang utama (ventrikel)."
+        },
+        {
+          "key": "atrium-dextrum-dalam",
+          "latin": "Atrium dextrum (rongga, mode Lihat dalam)",
+          "indonesia": "Rongga serambi kanan",
+          "status": "ada",
+          "mesh": [
+            "FJ2424"
+          ],
+          "konteks": [
+            "FJ2439",
+            "@trikuspid"
+          ],
+          "mode": "dalam",
+          "rongga": true,
+          "kamera": {
+            "arah": [
+              -0.8,
+              0.1,
+              0.6
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Yang disorot adalah 'Cavity of right atrium': volume darah di dalam atrium, bukan dindingnya.",
+          "ringkas": "Rongga atrium kanan. Dari sini darah mengalir melalui ostium atrioventriculare dextrum (katup trikuspid) ke ventrikel kanan."
+        },
+        {
+          "key": "auricula-dextra",
+          "latin": "Auricula dextra cordis",
+          "indonesia": "Aurikula kanan",
+          "status": "terkait",
+          "mesh": [
+            "FJ2439"
+          ],
+          "konteks": [
+            "FJ3413",
+            "@dinding"
+          ],
+          "pin": "auriculaDextra",
+          "pinLabel": "Auricula dextra (perkiraan)",
+          "kamera": {
+            "arah": [
+              0.2,
+              0.3,
+              1
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Auricula adalah bagian dari dinding atrium kanan (satu mesh). Pin dihitung otomatis dan perlu dicek di model.",
+          "ringkas": "Kantong otot berbentuk kerucut yang menjulur dari atrium kanan ke depan-atas, menutupi pangkal aorta ascendens. Permukaan dalamnya ber-mm. pectinati.",
+          "asalNama": "Auricula = telinga kecil (bentuknya mirip daun telinga anjing).",
+          "perluDicek": [
+            "Posisi pin auricula dextra dihitung otomatis dari geometri; cocokkan dengan atlas."
+          ]
+        },
+        {
+          "key": "mm-pectinati-dextri",
+          "latin": "Mm. pectinati atrii dextri",
+          "indonesia": "Otot pektinatus atrium kanan",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2439"
+          ],
+          "pin": "auriculaDextra",
+          "pinLabel": "Daerah auricula (perkiraan)",
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              0.2,
+              0.3,
+              1
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Permukaan dalam atrium di model halus, jadi otot ini tidak terlihat. Letaknya di dinding anterior atrium kanan dan di dalam auricula.",
+          "ringkas": "Rigi-rigi otot sejajar di dinding dalam bagian anterior atrium kanan dan auricula dextra, menjulur dari crista terminalis.",
+          "asalNama": "Pecten = sisir. Susunannya seperti gigi sisir."
+        },
+        {
+          "key": "crista-terminalis",
+          "latin": "Crista terminalis",
+          "indonesia": "Krista terminalis",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2439",
+            "FJ3645",
+            "FJ3441"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              -1,
+              0,
+              0.5
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Tidak dimodelkan. Letaknya di dinding dalam atrium kanan, sejajar sulcus terminalis di luar, dari muara VCS ke VCI.",
+          "ringkas": "Rigi otot di dinding dalam atrium kanan yang memisahkan sinus venarum (halus) dari bagian ber-mm. pectinati. Di luar, sesuai dengan sulcus terminalis.",
+          "asalNama": "Crista = jambul/rigi; terminalis = batas.",
+          "klinis": "Nodus SA terletak di ujung atas crista terminalis, dekat muara VCS."
+        },
+        {
+          "key": "fossa-ovalis",
+          "latin": "Fossa ovalis atrii dextri",
+          "indonesia": "Fossa ovalis",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2439",
+            "FJ2438"
+          ],
+          "pin": "septumInteratriale",
+          "pinLabel": "Septum interatriale (perkiraan)",
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              -1,
+              0.1,
+              0.1
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Tidak dimodelkan. Pin menunjukkan perkiraan daerah septum interatriale, yaitu daerah kontak dinding atrium kanan dan kiri. Fossa ovalis ada di sisi kanan septum ini.",
+          "ringkas": "Cekungan oval di septum interatriale, dilihat dari atrium kanan. Ini sisa foramen ovale janin. Tepinya yang menonjol disebut limbus fossae ovalis.",
+          "asalNama": "Fossa = cekungan; ovalis = lonjong.",
+          "klinis": "Pada sebagian orang dewasa (sering disebut sekitar seperempat), foramen ovale tidak menutup sempurna (PFO). Bisa juga terjadi defek septum atrium (ASD) tipe sekundum di daerah ini.",
+          "perluDicek": [
+            "Angka prevalensi PFO (sering dikutip ±25%) bervariasi antarsumber."
+          ]
+        },
+        {
+          "key": "ostium-sinus-coronarii",
+          "latin": "Ostium sinus coronarii",
+          "indonesia": "Muara sinus koroner",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "@sinusKoroner",
+            "FJ2439",
+            "FJ3441"
+          ],
+          "pin": "ostiumSinusCoronarii",
+          "pinLabel": "Ostium sinus coronarii (perkiraan)",
+          "kamera": {
+            "arah": [
+              -0.3,
+              -0.6,
+              -1
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Muaranya tidak dimodelkan. Pin diletakkan di titik sinus coronarius yang paling dekat dengan rongga atrium kanan.",
+          "ringkas": "Muara sinus coronarius ke atrium kanan, terletak di antara muara VCI dan ostium atrioventriculare dextrum. Dijaga oleh lipatan tipis, valvula sinus coronarii (katup Thebesius).",
+          "asalNama": "Ostium = mulut/muara."
+        },
+        {
+          "key": "ostium-av-dextrum",
+          "latin": "Ostium atrioventriculare dextrum",
+          "indonesia": "Lubang atrioventrikular kanan",
+          "status": "terkait",
+          "mesh": [
+            "@trikuspid"
+          ],
+          "konteks": [
+            "FJ2439",
+            "VENT_R"
+          ],
+          "pin": "ostiumAVDextrum",
+          "pinLabel": "Ostium AV dextrum (perkiraan)",
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              -0.6,
+              0.2,
+              0.8
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Lubangnya tidak dimodelkan. Yang disorot adalah katup trikuspid yang menjaga lubang ini.",
+          "ringkas": "Lubang antara atrium kanan dan ventrikel kanan, dijaga oleh valva tricuspidalis."
+        }
+      ]
+    },
+    {
+      "judul": "Ruang jantung: Ventriculus dexter",
+      "item": [
+        {
+          "key": "ventriculus-dexter",
+          "latin": "Ventriculus dexter",
+          "indonesia": "Bilik kanan",
+          "status": "ada",
+          "mesh": [
+            "VENT_R"
+          ],
+          "konteks": [
+            "@dinding",
+            "FJ2966"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "catatanModel": "Dinding ventrikel kanan dan kiri adalah SATU mesh di BodyParts3D. Batas kanan/kiri di sini adalah hasil pembagian otomatis (tiap segitiga ikut rongga ventrikel terdekat), bukan batas anatomis dari data.",
+          "ringkas": "Membentuk sebagian besar facies sternocostalis. Bagian masuknya (inflow) berdinding kasar karena trabeculae carneae. Bagian keluarnya, conus arteriosus (infundibulum), berdinding halus dan mengarah ke truncus pulmonalis. Keduanya dipisahkan oleh crista supraventricularis. Dindingnya lebih tipis dari ventrikel kiri.",
+          "asalNama": "Ventriculus = perut kecil (Latin)."
+        },
+        {
+          "key": "ventriculus-dexter-dalam",
+          "latin": "Ventriculus dexter (rongga, mode Lihat dalam)",
+          "indonesia": "Rongga bilik kanan",
+          "status": "ada",
+          "mesh": [
+            "FJ2423"
+          ],
+          "konteks": [
+            "VENT_R",
+            "@trikuspid",
+            "@katupPulmonal"
+          ],
+          "mode": "dalam",
+          "rongga": true,
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "ringkas": "Rongga ventrikel kanan berbentuk seperti bulan sabit pada potongan melintang, karena septum interventriculare menonjol ke arahnya (tekanan ventrikel kiri lebih tinggi)."
+        },
+        {
+          "key": "valva-tricuspidalis",
+          "latin": "Valva atrioventricularis dextra / Valva tricuspidalis",
+          "indonesia": "Katup trikuspid",
+          "status": "ada",
+          "mesh": [
+            "@trikuspid"
+          ],
+          "konteks": [
+            "@papilerKanan",
+            "FJ2439",
+            "VENT_R"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              -0.6,
+              0.2,
+              0.8
+            ]
+          },
+          "tulang": "hilang",
+          "ringkas": "Tiga daun katup: cuspis anterior, posterior, dan septalis. Daun katup diikat ke mm. papillares oleh chordae tendineae. Katup ini mencegah darah kembali ke atrium kanan saat ventrikel berkontraksi.",
+          "asalNama": "Tri (tiga) + cuspis (ujung runcing).",
+          "jembatanKeledai": "\"Try before you buy\": TRIkuspid di kanan, BIkuspid (mitral) di kiri. Atau: \"LAB RAT\" → Left Atrium Bicuspid, Right Atrium Tricuspid.",
+          "klinis": "Titik auskultasi katup trikuspid: ICS IV–V di tepi kiri sternum (parasternal kiri bawah)."
+        },
+        {
+          "key": "chordae-tricuspidalis",
+          "latin": "Chordae tendineae tricuspidalis",
+          "indonesia": "Korda tendinea katup trikuspid",
+          "status": "terkait",
+          "mesh": [
+            "@trikuspid"
+          ],
+          "konteks": [
+            "@papilerKanan"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              -0.6,
+              0.2,
+              0.8
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Di BodyParts3D, chordae tendineae tidak berdiri sendiri: tali-tali tipis ini menyatu dengan mesh daun katup. Yang disorot adalah daun katup beserta chordae-nya; ujung tali menuju m. papillaris (warna otot).",
+          "ringkas": "Tali-tali fibrosa tipis yang menghubungkan tepi dan permukaan ventrikular daun katup ke mm. papillares. Saat ventrikel berkontraksi, chordae menahan daun katup supaya tidak terbalik ke atrium (prolaps).",
+          "asalNama": "Chorda = tali/senar; tendinea = seperti tendo. Julukannya 'heart strings', senar jantung.",
+          "klinis": "Ruptur chordae (misalnya setelah infark atau endokarditis) menyebabkan regurgitasi katup akut."
+        },
+        {
+          "key": "crista-supraventricularis",
+          "latin": "Crista supraventricularis",
+          "indonesia": "Krista supraventrikularis",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "VENT_R",
+            "FJ2966",
+            "@trikuspid"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "catatanModel": "Tidak dimodelkan. Letaknya di atap ventrikel kanan, di antara katup trikuspid dan pangkal truncus pulmonalis.",
+          "ringkas": "Rigi otot melengkung di dinding dalam ventrikel kanan yang memisahkan bagian masuk (inflow, kasar) dari conus arteriosus (outflow, halus).",
+          "asalNama": "Supra- (di atas) + ventricularis."
+        },
+        {
+          "key": "trabeculae-carneae-dextri",
+          "latin": "Trabeculae carneae ventriculi dextri",
+          "indonesia": "Trabekula karnea ventrikel kanan",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "VENT_R",
+            "FJ2423"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "catatanModel": "Permukaan dalam ventrikel di model halus, jadi trabekula tidak terlihat.",
+          "ringkas": "Rigi-rigi otot tidak beraturan di dinding dalam bagian inflow ventrikel kanan. Ukurannya lebih kasar dibanding trabekula ventrikel kiri.",
+          "asalNama": "Trabecula = balok kecil; carneae = berdaging."
+        },
+        {
+          "key": "trabecula-septomarginalis",
+          "latin": "Trabecula septomarginalis (moderator band)",
+          "indonesia": "Pita moderator",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2419",
+            "VENT_R"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "catatanModel": "Tidak dimodelkan. Pita ini membentang dari septum ke m. papillaris anterior (disorot sebagai konteks).",
+          "ringkas": "Pita otot yang membentang dari septum interventriculare ke pangkal m. papillaris anterior ventrikel kanan.",
+          "asalNama": "Disebut 'moderator' karena dulu dikira berfungsi menahan ventrikel kanan agar tidak terlalu meregang.",
+          "pertanyaan": {
+            "no": 7,
+            "teks": "Fungsi trabecula septomarginalis",
+            "jawaban": "Membawa sebagian crus dextrum fasciculus atrioventricularis (berkas His cabang kanan, bagian dari sistem konduksi) langsung ke m. papillaris anterior. Dengan begitu m. papillaris anterior berkontraksi tepat waktu, mengencangkan chordae tendineae sebelum tekanan ventrikel naik penuh, sehingga katup trikuspid tidak prolaps."
+          }
+        },
+        {
+          "key": "mm-papillares-dextri",
+          "latin": "Mm. papillares ventriculi dextri",
+          "indonesia": "Otot papilaris ventrikel kanan",
+          "status": "ada",
+          "mesh": [
+            "@papilerKanan"
+          ],
+          "konteks": [
+            "@trikuspid",
+            "VENT_R"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "catatanModel": "Di model ada tiga: anterior (FJ2419), posterior (FJ2430), dan septalis (FJ2437).",
+          "ringkas": "Tiga otot berbentuk kerucut: anterior (paling besar), posterior, dan septalis. Ujungnya mengikat chordae tendineae. Otot ini berkontraksi sedikit sebelum ventrikel, mengencangkan chordae supaya katup trikuspid tidak terbalik.",
+          "asalNama": "Papilla = puting kecil (bentuknya)."
+        },
+        {
+          "key": "septum-interventriculare",
+          "latin": "Septum interventriculare",
+          "indonesia": "Sekat antarbilik",
+          "status": "terkait",
+          "mesh": [
+            "FJ2423",
+            "FJ2422"
+          ],
+          "konteks": [
+            "@lad",
+            "@pda"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              0.35,
+              -0.85,
+              0.4
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Septum TIDAK dimodelkan di BodyParts3D: mesh dinding ventrikel hanya berupa cangkang luar. Yang disorot adalah KEDUA rongga ventrikel (kanan dan kiri). Septum adalah dinding di celah antara keduanya. Pin diletakkan di titik terdekat antara kedua rongga. Di sini rongga kanan berwarna biru dan rongga kiri merah (bukan kuning) supaya celahnya terlihat.",
+          "ringkas": "Sekat antara ventrikel kanan dan kiri. Sebagian besar adalah pars muscularis yang tebal. Ada pars membranacea yang tipis di bagian atas-belakang, dekat katup aorta. Septum menonjol ke ventrikel kanan karena tekanan di ventrikel kiri lebih tinggi. Diperdarahi oleh rr. septales dari r. interventricularis anterior (sekitar 2/3 depan) dan posterior (sekitar 1/3 belakang).",
+          "klinis": "Defek septum ventrikel (VSD) paling sering terjadi di pars membranacea.",
+          "rongga": true,
+          "pin": "septumInterventriculare",
+          "pinLabel": "Septum (perkiraan)",
+          "warnaAsli": true
+        },
+        {
+          "key": "valva-trunci-pulmonalis-rv",
+          "latin": "Valva trunci pulmonalis (dari ventrikel kanan)",
+          "indonesia": "Katup pulmonal",
+          "status": "ada",
+          "mesh": [
+            "@katupPulmonal"
+          ],
+          "konteks": [
+            "VENT_R",
+            "@trikuspid"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              0.2,
+              0.6,
+              0.8
+            ]
+          },
+          "tulang": "hilang",
+          "ringkas": "Katup di ujung conus arteriosus, di pangkal truncus pulmonalis. Terdiri dari tiga valvula semilunaris (berbentuk bulan sabit). Mencegah darah kembali ke ventrikel kanan saat diastol.",
+          "klinis": "Titik auskultasi katup pulmonal: ICS II tepi kiri sternum."
+        }
+      ]
+    },
+    {
+      "judul": "Ruang jantung: Atrium sinistrum",
+      "item": [
+        {
+          "key": "atrium-sinistrum",
+          "latin": "Atrium sinistrum",
+          "indonesia": "Serambi kiri",
+          "status": "ada",
+          "mesh": [
+            "FJ2438"
+          ],
+          "konteks": [
+            "@vPulmonales",
+            "@mitral"
+          ],
+          "kamera": {
+            "arah": "belakang"
+          },
+          "tulang": "hilang",
+          "ringkas": "Membentuk sebagian besar basis cordis. Menerima darah kaya oksigen dari empat vv. pulmonales. Dindingnya hampir seluruhnya halus. Mm. pectinati hanya ada di dalam auricula sinistra.",
+          "asalNama": "Atrium = ruang depan.",
+          "klinis": "Atrium kiri terletak tepat di depan esofagus. Bila membesar (misalnya pada stenosis mitral), ia bisa menekan esofagus dan terlihat pada pemeriksaan barium esofagus. Ekokardiografi transesofageal (TEE) juga memanfaatkan kedekatan ini."
+        },
+        {
+          "key": "atrium-sinistrum-dalam",
+          "latin": "Atrium sinistrum (rongga, mode Lihat dalam)",
+          "indonesia": "Rongga serambi kiri",
+          "status": "ada",
+          "mesh": [
+            "FJ2425"
+          ],
+          "konteks": [
+            "FJ2438",
+            "@mitral",
+            "@vPulmonales"
+          ],
+          "mode": "dalam",
+          "rongga": true,
+          "kamera": {
+            "arah": "belakang"
+          },
+          "tulang": "hilang",
+          "ringkas": "Rongga atrium kiri. Darah mengalir dari sini lewat ostium atrioventriculare sinistrum (katup mitral) ke ventrikel kiri."
+        },
+        {
+          "key": "auricula-sinistra",
+          "latin": "Auricula sinistra cordis",
+          "indonesia": "Aurikula kiri",
+          "status": "terkait",
+          "mesh": [
+            "FJ2438"
+          ],
+          "konteks": [
+            "FJ2966",
+            "@dinding",
+            "@lca"
+          ],
+          "pin": "auriculaSinistra",
+          "pinLabel": "Auricula sinistra (perkiraan)",
+          "kamera": {
+            "arah": [
+              1,
+              0.2,
+              0.6
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Auricula adalah bagian dari dinding atrium kiri (satu mesh). Pin dihitung otomatis.",
+          "ringkas": "Kantong otot sempit dan memanjang dari atrium kiri yang menjulur ke depan, di sisi kiri pangkal truncus pulmonalis. Bagian dalamnya ber-mm. pectinati.",
+          "asalNama": "Auricula = telinga kecil.",
+          "klinis": "Pada fibrilasi atrium, darah mudah menggenang dan membeku di auricula sinistra. Trombus dari sini dapat menyebabkan stroke emboli.",
+          "perluDicek": [
+            "Posisi pin auricula sinistra dihitung otomatis dari geometri; cocokkan dengan atlas."
+          ]
+        },
+        {
+          "key": "vv-pulmonales-la",
+          "latin": "Vv. pulmonales (muara di atrium kiri)",
+          "indonesia": "Vena pulmonalis",
+          "status": "ada",
+          "mesh": [
+            "@vPulmonales"
+          ],
+          "konteks": [
+            "FJ2438"
+          ],
+          "kamera": {
+            "arah": "belakang"
+          },
+          "tulang": "hilang",
+          "ringkas": "Empat vena (superior dan inferior, dari kanan dan kiri) yang bermuara di dinding posterior atrium kiri. Muaranya tidak memiliki katup."
+        },
+        {
+          "key": "mm-pectinati-sinistri",
+          "latin": "Mm. pectinati atrii sinistri",
+          "indonesia": "Otot pektinatus atrium kiri",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2438"
+          ],
+          "pin": "auriculaSinistra",
+          "pinLabel": "Daerah auricula sinistra (perkiraan)",
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              1,
+              0.2,
+              0.6
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Tidak dimodelkan. Di atrium kiri, otot ini hanya ada di dalam auricula sinistra.",
+          "ringkas": "Rigi otot seperti gigi sisir. Berbeda dengan atrium kanan, di atrium kiri otot ini hanya ada di dalam auricula.",
+          "asalNama": "Pecten = sisir."
+        },
+        {
+          "key": "septum-interatriale",
+          "latin": "Septum interatriale",
+          "indonesia": "Sekat antarserambi",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2439",
+            "FJ2438"
+          ],
+          "pin": "septumInteratriale",
+          "pinLabel": "Septum interatriale (perkiraan)",
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              -1,
+              0.1,
+              0.1
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Tidak ada mesh septum interatriale. Pin diletakkan di pusat daerah kontak dinding atrium kanan dan kiri (jarak < 3 mm), jadi ini perkiraan.",
+          "ringkas": "Sekat antara atrium kanan dan kiri. Di sisi kanan terdapat fossa ovalis. Karena posisi jantung yang miring, septum ini menghadap ke depan-kanan, tidak lurus ke samping.",
+          "klinis": "Defek septum atrium (ASD) dan PFO terjadi di sini."
+        },
+        {
+          "key": "ostium-av-sinistrum",
+          "latin": "Ostium atrioventriculare sinistrum",
+          "indonesia": "Lubang atrioventrikular kiri",
+          "status": "terkait",
+          "mesh": [
+            "@mitral"
+          ],
+          "konteks": [
+            "FJ2438",
+            "VENT_L"
+          ],
+          "pin": "ostiumAVSinistrum",
+          "pinLabel": "Ostium AV sinistrum (perkiraan)",
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              0.8,
+              0,
+              -0.6
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Lubangnya tidak dimodelkan. Yang disorot adalah katup mitral yang menjaganya.",
+          "ringkas": "Lubang antara atrium kiri dan ventrikel kiri, dijaga oleh valva mitralis."
+        }
+      ]
+    },
+    {
+      "judul": "Ruang jantung: Ventriculus sinister",
+      "item": [
+        {
+          "key": "ventriculus-sinister",
+          "latin": "Ventriculus sinister",
+          "indonesia": "Bilik kiri",
+          "status": "ada",
+          "mesh": [
+            "VENT_L"
+          ],
+          "konteks": [
+            "@dinding",
+            "FJ3413"
+          ],
+          "kamera": {
+            "arah": [
+              1,
+              -0.2,
+              0.5
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Dinding ventrikel kanan dan kiri adalah SATU mesh di BodyParts3D. Batas kanan/kiri di sini adalah hasil pembagian otomatis (tiap segitiga ikut rongga ventrikel terdekat), bukan batas anatomis dari data.",
+          "ringkas": "Membentuk apex, margo sinister, dan sebagian besar facies diaphragmatica. Dindingnya kira-kira 2–3 kali lebih tebal dari ventrikel kanan karena memompa ke sirkulasi sistemik. Bagian keluarnya, vestibulum aortae, berdinding halus dan mengarah ke katup aorta.",
+          "asalNama": "Ventriculus = perut kecil."
+        },
+        {
+          "key": "ventriculus-sinister-dalam",
+          "latin": "Ventriculus sinister (rongga, mode Lihat dalam)",
+          "indonesia": "Rongga bilik kiri",
+          "status": "ada",
+          "mesh": [
+            "FJ2422"
+          ],
+          "konteks": [
+            "VENT_L",
+            "@mitral",
+            "@katupAorta",
+            "@papilerKiri"
+          ],
+          "mode": "dalam",
+          "rongga": true,
+          "kamera": {
+            "arah": [
+              1,
+              -0.2,
+              0.5
+            ]
+          },
+          "tulang": "hilang",
+          "ringkas": "Rongga ventrikel kiri berbentuk kerucut dan pada potongan melintang tampak bundar. Ia mengarah ke apex."
+        },
+        {
+          "key": "valva-mitralis",
+          "latin": "Valva atrioventricularis sinistra / Valva bicuspidalis / Valva mitralis",
+          "indonesia": "Katup mitral",
+          "status": "ada",
+          "mesh": [
+            "@mitral"
+          ],
+          "konteks": [
+            "@papilerKiri",
+            "FJ2438",
+            "VENT_L",
+            "@katupAorta"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              0.8,
+              0.1,
+              -0.6
+            ]
+          },
+          "tulang": "hilang",
+          "ringkas": "Dua daun katup: cuspis anterior (lebih besar, berbatasan dengan katup aorta) dan cuspis posterior. Diikat ke mm. papillares oleh chordae tendineae.",
+          "asalNama": "Mitra = topi uskup, karena dua daunnya mirip topi mitra uskup.",
+          "jembatanKeledai": "\"LAB RAT\": Left Atrium Bicuspid, Right Atrium Tricuspid.",
+          "klinis": "Titik auskultasi katup mitral: apex (ICS V linea medioclavicularis kiri). Kelainan yang sering: stenosis mitral (sering akibat demam rematik) dan prolaps katup mitral."
+        },
+        {
+          "key": "mm-papillares-sinistri",
+          "latin": "Mm. papillares ventriculi sinistri",
+          "indonesia": "Otot papilaris ventrikel kiri",
+          "status": "ada",
+          "mesh": [
+            "@papilerKiri"
+          ],
+          "konteks": [
+            "@mitral",
+            "VENT_L"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              1,
+              -0.2,
+              0.5
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "BodyParts3D menamai dua mesh ini 'lateral papillary muscle' (FJ2429) dan 'anterolateral head of lateral papillary muscle' (FJ2418). Itu tidak sama dengan istilah buku (m. papillaris anterior dan posterior), jadi di sini tidak diberi nama masing-masing.",
+          "ringkas": "Di buku teks: dua otot papilaris (anterior dan posterior), lebih besar daripada di ventrikel kanan. Masing-masing mengikat chordae ke kedua daun katup mitral.",
+          "asalNama": "Papilla = puting kecil.",
+          "klinis": "Ruptur m. papillaris setelah infark miokard menyebabkan regurgitasi mitral akut.",
+          "perluDicek": [
+            "Penamaan mesh BodyParts3D (lateral/anterolateral head) belum dicocokkan dengan anterior/posterior Terminologia Anatomica."
+          ]
+        },
+        {
+          "key": "chordae-mitralis",
+          "latin": "Chordae tendineae mitralis",
+          "indonesia": "Korda tendinea katup mitral",
+          "status": "terkait",
+          "mesh": [
+            "@mitral"
+          ],
+          "konteks": [
+            "@papilerKiri"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              1,
+              -0.2,
+              0.5
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Di BodyParts3D, chordae tendineae tidak berdiri sendiri: tali-tali tipis ini menyatu dengan mesh daun katup. Yang disorot adalah daun katup beserta chordae-nya; ujung tali menuju m. papillaris (warna otot).",
+          "ringkas": "Tali fibrosa yang menghubungkan daun katup mitral ke mm. papillares. Saat sistol, chordae menahan daun katup supaya tidak terdorong ke atrium kiri.",
+          "asalNama": "Chorda = tali."
+        },
+        {
+          "key": "trabeculae-carneae-sinistri",
+          "latin": "Trabeculae carneae ventriculi sinistri",
+          "indonesia": "Trabekula karnea ventrikel kiri",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "VENT_L",
+            "FJ2422"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              1,
+              -0.2,
+              0.5
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Permukaan dalam ventrikel di model halus.",
+          "ringkas": "Rigi-rigi otot di dinding dalam ventrikel kiri, lebih halus dan rapat dibanding di ventrikel kanan, terutama di daerah apex.",
+          "asalNama": "Trabecula = balok kecil; carneae = berdaging."
+        }
+      ]
+    },
+    {
+      "judul": "Radix aortae dan radix trunci pulmonalis",
+      "item": [
+        {
+          "key": "valva-aortae",
+          "latin": "Valva aortae / Valvulae semilunares aortae",
+          "indonesia": "Katup aorta",
+          "status": "ada",
+          "mesh": [
+            "@katupAorta"
+          ],
+          "konteks": [
+            "@lca",
+            "@rca",
+            "@katupPulmonal",
+            "@mitral"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              -0.2,
+              1,
+              -0.35
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "BodyParts3D memakai nama cusp lama: anterior (FJ2435), left posterior (FJ2426), right posterior (FJ2431). Di sini ketiganya disorot bersama.",
+          "ringkas": "Tiga valvula semilunaris di ostium aortae. Di belakang tiap valvula ada kantong dinding aorta (sinus aortae). A. coronaria dextra keluar dari sinus kanan dan a. coronaria sinistra dari sinus kiri. Sinus ketiga tidak mengeluarkan arteri koroner (non-coronary).",
+          "asalNama": "Semilunaris = setengah bulan (bentuk bulan sabit).",
+          "jembatanKeledai": "Urutan titik auskultasi: \"All Physicians Take Money\" → Aorta (ICS II kanan), Pulmonal (ICS II kiri), Trikuspid (ICS IV–V parasternal kiri), Mitral (apex, ICS V MCL kiri).",
+          "funFact": "Arteri koroner terisi terutama saat diastol, ketika katup aorta menutup dan darah 'memantul' ke sinus aortae.",
+          "perluDicek": [
+            "Padanan nama cusp lama BodyParts3D (anterior / left posterior / right posterior) dengan istilah klinis (right / left / non-coronary) belum diverifikasi."
+          ]
+        },
+        {
+          "key": "valva-trunci-pulmonalis",
+          "latin": "Valva trunci pulmonalis / Valvulae semilunares trunci pulmonalis",
+          "indonesia": "Katup pulmonal",
+          "status": "ada",
+          "mesh": [
+            "@katupPulmonal"
+          ],
+          "konteks": [
+            "@katupAorta"
+          ],
+          "mode": "dalam",
+          "kamera": {
+            "arah": [
+              0,
+              1,
+              0.4
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "BodyParts3D: left anterior cusp (FJ2417), right anterior cusp (FJ2434), posterior cusp (FJ2427).",
+          "ringkas": "Tiga valvula semilunaris di pangkal truncus pulmonalis. Posisinya sedikit lebih tinggi dan lebih anterior daripada katup aorta. Dilihat dari atas, kedua katup ini tampak bersebelahan.",
+          "klinis": "Titik auskultasi: ICS II tepi kiri sternum.",
+          "perluDicek": [
+            "Nama cusp di Terminologia Anatomica (anterior/dextra/sinistra) berbeda dengan nama di BodyParts3D; belum dipadankan."
+          ]
+        }
+      ]
+    },
+    {
+      "judul": "Pembuluh darah jantung",
+      "item": [
+        {
+          "key": "a-coronaria-sinistra",
+          "latin": "Arteria coronaria sinistra",
+          "indonesia": "Arteri koroner kiri",
+          "status": "ada",
+          "mesh": [
+            "@lca",
+            "@lad",
+            "@lcx"
+          ],
+          "konteks": [
+            "@ladCabang",
+            "FJ3413",
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": [
+              0.5,
+              0.55,
+              0.7
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "Sesuai daftar tilik (\"dan cabang-cabangnya\"), batang utama (FJ2737, sangat pendek) disorot bersama r. interventricularis anterior dan r. circumflexus. Cabang kecil lain ditampilkan sebagai konteks.",
+          "ringkas": "Keluar dari sinus aortae kiri, berjalan di antara truncus pulmonalis dan auricula sinistra, lalu segera bercabang menjadi r. interventricularis anterior dan r. circumflexus.",
+          "asalNama": "Coronaria = seperti mahkota, karena melingkari jantung.",
+          "klinis": "Sumbatan di batang utama a. coronaria sinistra (left main) sangat berbahaya karena mengganggu aliran ke kedua cabangnya sekaligus."
+        },
+        {
+          "key": "r-interventricularis-anterior",
+          "latin": "A. interventricularis anterior / R. interventricularis anterior a. coronariae sinistrae",
+          "indonesia": "Cabang interventrikular anterior (LAD)",
+          "status": "ada",
+          "mesh": [
+            "@lad"
+          ],
+          "konteks": [
+            "@ladCabang",
+            "@vIVAnterior",
+            "@lca",
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": "depan"
+          },
+          "tulang": "hilang",
+          "catatanModel": "Batang LAD (FJ2631) disorot. Cabang diagonal, conus, dan septal ditampilkan redup sebagai konteks.",
+          "ringkas": "Turun di sulcus interventricularis anterior menuju apex. Memperdarahi bagian depan kedua ventrikel dan sekitar 2/3 anterior septum interventriculare (lewat rr. septales). Cabang-cabangnya: rr. diagonales dan r. coni arteriosi.",
+          "asalNama": "Di klinik disebut LAD (left anterior descending).",
+          "klinis": "Sumbatan proksimal LAD dijuluki 'widowmaker' karena mengenai daerah ventrikel kiri yang luas.",
+          "pertanyaan": {
+            "no": 8,
+            "teks": "Lintasan r. interventricularis anterior dan pendampingnya",
+            "jawaban": "Melintas di sulcus interventricularis anterior bersama v. cordis magna (bagian awalnya, yang juga disebut v. interventricularis anterior)."
+          }
+        },
+        {
+          "key": "r-circumflexus",
+          "latin": "A. circumflexa cordis / R. circumflexus a. coronariae sinistrae",
+          "indonesia": "Cabang sirkumfleks",
+          "status": "ada",
+          "mesh": [
+            "@lcx"
+          ],
+          "konteks": [
+            "@vCordisMagna",
+            "@sinusKoroner",
+            "@lca",
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": [
+              1,
+              0.1,
+              -0.2
+            ]
+          },
+          "tulang": "hilang",
+          "ringkas": "Berjalan ke kiri di dalam sulcus coronarius, mengitari margo sinister ke facies posterior. Memperdarahi atrium kiri serta dinding lateral dan posterior ventrikel kiri. Cabangnya yang menyusuri margo sinister disebut r. marginalis sinister.",
+          "asalNama": "Circum (mengelilingi) + flexus (menekuk).",
+          "pertanyaan": {
+            "no": 9,
+            "teks": "Lintasan r. circumflexus dan pendampingnya",
+            "jawaban": "Melintas di sulcus coronarius (bagian kiri) bersama v. cordis magna, yang kemudian berlanjut menjadi sinus coronarius."
+          }
+        },
+        {
+          "key": "a-coronaria-dextra",
+          "latin": "Arteria coronaria dextra",
+          "indonesia": "Arteri koroner kanan",
+          "status": "ada",
+          "mesh": [
+            "@rca",
+            "@pda",
+            "@rmarg",
+            "@rcaCabang"
+          ],
+          "konteks": [
+            "FJ3413",
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": [
+              -0.6,
+              0.1,
+              0.8
+            ]
+          },
+          "tulang": "hilang",
+          "ringkas": "Keluar dari sinus aortae kanan, berjalan di antara auricula dextra dan truncus pulmonalis, lalu menyusuri sulcus coronarius kanan ke belakang. Cabangnya antara lain r. nodi sinuatrialis (pada sebagian besar orang), r. marginalis dexter, r. nodi atrioventricularis, dan r. interventricularis posterior.",
+          "asalNama": "Coronaria = seperti mahkota.",
+          "klinis": "Pada kebanyakan orang (dominansi kanan), r. interventricularis posterior berasal dari a. coronaria dextra. Karena itu sumbatan RCA sering menyebabkan infark inferior dan gangguan irama (nodus SA/AV).",
+          "perluDicek": [
+            "Persentase dominansi kanan dan asal r. nodi sinuatrialis bervariasi antarsumber (sering dikutip ±60–70%)."
+          ],
+          "catatanModel": "Sesuai daftar tilik (\"dan cabang-cabangnya\"), batang a. coronaria dextra disorot bersama cabang-cabangnya: r. interventricularis posterior, r. marginalis dexter, rr. ventriculares, dan r. coni arteriosi."
+        },
+        {
+          "key": "r-interventricularis-posterior",
+          "latin": "A. interventricularis inferior / posterior / R. interventricularis posterior a. coronariae dextrae",
+          "indonesia": "Cabang interventrikular posterior (PDA)",
+          "status": "ada",
+          "mesh": [
+            "@pda"
+          ],
+          "konteks": [
+            "@vCordisMedia",
+            "@rca",
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": "bawah"
+          },
+          "tulang": "hilang",
+          "ringkas": "Turun di sulcus interventricularis posterior menuju apex. Memperdarahi dinding inferior kedua ventrikel dan sekitar 1/3 posterior septum interventriculare.",
+          "asalNama": "Di klinik disebut PDA (posterior descending artery).",
+          "pertanyaan": {
+            "no": 10,
+            "teks": "Lintasan r. interventricularis posterior dan pendampingnya",
+            "jawaban": "Melintas di sulcus interventricularis posterior (inferior) bersama v. cordis media."
+          }
+        },
+        {
+          "key": "r-marginalis-dexter",
+          "latin": "Ramus marginalis dexter a. coronariae dextrae",
+          "indonesia": "Cabang marginal kanan",
+          "status": "ada",
+          "mesh": [
+            "@rmarg"
+          ],
+          "konteks": [
+            "@rca",
+            "@vCordisParva",
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": [
+              -0.3,
+              -0.3,
+              1
+            ]
+          },
+          "tulang": "hilang",
+          "ringkas": "Cabang a. coronaria dextra yang berjalan di sepanjang margo inferior (acutus) menuju apex. Memperdarahi ventrikel kanan."
+        },
+        {
+          "key": "sinus-coronarius",
+          "latin": "Sinus coronarius",
+          "indonesia": "Sinus koroner",
+          "status": "ada",
+          "mesh": [
+            "@sinusKoroner"
+          ],
+          "konteks": [
+            "@vCordisMagna",
+            "@vCordisMedia",
+            "@vCordisParva",
+            "@vLainJantung",
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": [
+              0,
+              -0.4,
+              -1
+            ]
+          },
+          "tulang": "hilang",
+          "ringkas": "Vena lebar di bagian posterior sulcus coronarius yang mengumpulkan sebagian besar darah vena jantung, lalu bermuara ke atrium kanan. Ia menerima v. cordis magna, v. cordis media, v. cordis parva, dan v. posterior ventriculi sinistri.",
+          "asalNama": "Sinus = lekukan/rongga lebar.",
+          "klinis": "Kateter dapat dimasukkan ke sinus coronarius, misalnya untuk memasang lead ventrikel kiri pada terapi resinkronisasi jantung (CRT)."
+        },
+        {
+          "key": "v-cordis-magna",
+          "latin": "V. magna cordis / V. cardiaca magna",
+          "indonesia": "Vena jantung besar",
+          "status": "ada",
+          "mesh": [
+            "@vCordisMagna",
+            "@vIVAnterior"
+          ],
+          "konteks": [
+            "@lad",
+            "@lcx",
+            "@sinusKoroner",
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": [
+              0.8,
+              0.2,
+              0.6
+            ]
+          },
+          "tulang": "hilang",
+          "catatanModel": "BodyParts3D memisah bagian awal vena ini sebagai 'anterior interventricular vein' (FJ2657–2665). Keduanya disorot bersama.",
+          "ringkas": "Mulai di dekat apex, naik di sulcus interventricularis anterior bersama LAD, lalu membelok ke kiri di sulcus coronarius bersama r. circumflexus, dan berlanjut menjadi sinus coronarius.",
+          "jembatanKeledai": "Pasangan vena-arteri di jantung: v. cordis magna ↔ LAD + circumflex; v. cordis media ↔ PDA; v. cordis parva ↔ r. marginalis dexter."
+        },
+        {
+          "key": "v-cordis-media",
+          "latin": "V. media cordis / V. cardiaca media",
+          "indonesia": "Vena jantung tengah",
+          "status": "ada",
+          "mesh": [
+            "@vCordisMedia"
+          ],
+          "konteks": [
+            "@pda",
+            "@sinusKoroner",
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": "bawah"
+          },
+          "tulang": "hilang",
+          "ringkas": "Naik di sulcus interventricularis posterior bersama r. interventricularis posterior, lalu bermuara ke ujung kanan sinus coronarius."
+        },
+        {
+          "key": "v-cordis-parva",
+          "latin": "V. parva cordis / V. cardiaca parva",
+          "indonesia": "Vena jantung kecil",
+          "status": "ada",
+          "mesh": [
+            "@vCordisParva"
+          ],
+          "konteks": [
+            "@rmarg",
+            "@sinusKoroner",
+            "@rca",
+            "@dinding"
+          ],
+          "kamera": {
+            "arah": [
+              -0.6,
+              -0.5,
+              0.6
+            ]
+          },
+          "tulang": "hilang",
+          "ringkas": "Menyertai r. marginalis dexter, lalu berjalan di sulcus coronarius kanan ke belakang dan bermuara ke sinus coronarius (atau langsung ke atrium kanan).",
+          "asalNama": "Parva = kecil."
+        }
+      ]
+    }
+  ]
+}

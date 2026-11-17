@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Atribusi · Atlas 3D Praktikum Anatomi</title>
+  <script type="module">import './src/style.css'</script>
+</head>
+<body class="home">
+  <main class="home-wrap prose">
+    <p><a href="./">← Kembali</a></p>
+    <h1>Atribusi dan lisensi</h1>
+    <p>Semua model 3D di situs ini berasal dari <b>BodyParts3D</b>, © The Database Center for Life Science, dengan lisensi <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Data diambil dari paket npm <code>@dagno/anatomy-model</code> versi 0.1.2, yang diolah oleh <a href="https://github.com/vinaysingh-05/human-atlas">Human Atlas</a> dan <a href="https://github.com/dagno-labs/anatomy-model">Dagno</a>.</p>
+
+    <h2>Perubahan yang dilakukan situs ini</h2>
+    <ul>
+      <li>Hanya mesh yang dibutuhkan tiap praktikum yang diambil, lalu posisinya dikuantisasi ke int16, indeks ke uint16, dan dikompres gzip.</li>
+      <li>Normal permukaan dihitung ulang di browser.</li>
+      <li>Mesh "Wall of ventricle" (FJ2428) dibagi menjadi bagian kanan dan kiri berdasarkan rongga ventrikel terdekat. Batas ini <b>perkiraan</b>, bukan batas anatomis dari data.</li>
+      <li>Titik penanda (pin) bertanda "perkiraan" dihitung otomatis dari geometri dan bukan bagian dari data asli.</li>
+    </ul>
+
+    <h2>ATTRIBUTION.md dari paket (asli)</h2>
+    <h3>BodyParts3D</h3>
+    <p>BodyParts3D, © The Database Center for Life Science, licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+    <ul>
+      <li>License: <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html">https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html</a> (updated 2025-02-27)</li>
+      <li>Dataset: <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html">https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html</a></li>
+      <li>Source geometry: <code>isa_BP3D_4.0_obj_99.zip</code>, BodyParts3D 4.0.</li>
+      <li>English names and relationships: the IS-A and PART-OF concept, element and inclusion tables from the same archive.</li>
+      <li>Publication: Mitsuhashi et al. (2009), BodyParts3D: 3D structure database for anatomical concepts. <a href="https://doi.org/10.1093/nar/gkn613">https://doi.org/10.1093/nar/gkn613</a></li>
+    </ul>
+    <p>The source OBJ comments mention an older CC BY-SA 2.1 Japan license. The current license of the database, linked above, supersedes that text and permits redistribution and adaptation under CC BY 4.0.</p>
+    <h3>Human Atlas</h3>
+    <p>The prepared model comes from <a href="https://github.com/vinaysingh-05/human-atlas">Human Atlas</a>, commit <code>f5d5b74</code>, which distributes it under CC BY 4.0. Its changes to the source:</p>
+    <ul>
+      <li>Axes and units converted from millimetres and Z-up to metres and Y-up.</li>
+      <li>The model translated so its feet rest at the origin.</li>
+      <li>Each mesh simplified with meshoptimizer within a 0.2% relative error.</li>
+      <li>Normals quantized to signed 16-bit.</li>
+      <li>Meshes packed into binary chunks, and grouped into display systems.</li>
+    </ul>
+    <p>All 2,234 source meshes are kept, and the 3,432 named FMA concepts of the combined hierarchy are listed, each with the meshes it covers. The identity of each mesh in the source is kept in the manifest.</p>
+    <h3>Dagno</h3>
+    <p>Dagno changed only the manifest: each chunk entry lists its gzip file by a relative name, and the uncompressed copies and absolute paths are removed. The geometry is unchanged.</p>
+    <h3>Scope</h3>
+    <p>BodyParts3D represents an adult male reference anatomy based on TARO MRI and anatomical illustration refinements. It is not a complete model of every human structure or variation. This model is an educational and visual reference, not a clinical tool.</p>
+
+    <h2>Catatan</h2>
+    <p>Situs ini adalah alat bantu belajar, bukan alat diagnosis atau klinis, dan bukan materi resmi departemen mana pun. Model menggambarkan satu anatomi referensi laki-laki dewasa, bukan semua variasi manusia.</p>
+  </main>
+</body>
+</html>

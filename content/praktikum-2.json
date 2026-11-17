@@ -1,0 +1,936 @@
+{
+  "id": 2,
+  "judul": "Praktikum 2: Pembuluh Darah Leher & Ekstremitas Superior",
+  "topik": "Pembuluh darah di regio leher dan ekstremitas atas (ditampilkan sisi kanan pasien)",
+  "sisi": "kanan",
+  "tulangPola": [
+    "^Right (clavicle|scapula|humerus|radius|ulna|scaphoid|lunate|triquetral|pisiform|trapezium|trapezoid|capitate|hamate)$",
+    "^Right \\w+ metacarpal bone$",
+    "^\\w+ phalanx of right (thumb|index finger|middle finger|ring finger|little finger)$",
+    "^\\w+ (cervical|thoracic) vertebra$",
+    "^(Atlas|Axis|Manubrium|Body of sternum|Mandible|Hyoid bone)$",
+    "^Right (first|second|third|fourth|fifth|sixth) rib$",
+    "^Right (first|second|third|fourth|fifth|sixth) costal cartilage$"
+  ],
+  "set": {
+    "pangkal": [
+      "FJ3411",
+      "FJ3417",
+      "FJ3583",
+      "FJ3645"
+    ],
+    "subklavia": [
+      "FJ3579"
+    ],
+    "aksila": [
+      "FJ2268",
+      "FJ2269"
+    ],
+    "subskapularCabang": [
+      "FJ2273",
+      "FJ2274",
+      "FJ2305",
+      "FJ2306"
+    ],
+    "cxHumeriPost": [
+      "FJ2291",
+      "FJ2292"
+    ],
+    "profundaCabang": [
+      "FJ2362",
+      "FJ2262"
+    ],
+    "lenganAtas": [
+      "FJ2271",
+      "FJ2341",
+      "FJ2277"
+    ],
+    "lenganBawah": [
+      "FJ2294",
+      "FJ2296",
+      "FJ2310",
+      "FJ2312"
+    ],
+    "tangan": [
+      "FJ2300",
+      "FJ2301",
+      "FJ2279",
+      "FJ2281"
+    ],
+    "superfisial": [
+      "FJ2272",
+      "FJ2270",
+      "FJ2286",
+      "FJ2287"
+    ],
+    "leher": [
+      "FJ3585",
+      "FJ3587",
+      "FJ3564",
+      "FJ1682",
+      "FJ1725",
+      "FJ1937",
+      "FJ2307",
+      "FJ2209",
+      "FJ2308",
+      "FJ2309",
+      "FJ2276",
+      "FJ2278",
+      "FJ1935"
+    ]
+  },
+  "scene": [
+    "@pangkal",
+    "@leher",
+    "@subklavia",
+    "@aksila",
+    "FJ1938",
+    "FJ2285",
+    "FJ2298",
+    "FJ2299",
+    "@subskapularCabang",
+    "FJ2264",
+    "FJ2265",
+    "@cxHumeriPost",
+    "@lenganAtas",
+    "@profundaCabang",
+    "@lenganBawah",
+    "@tangan",
+    "@superfisial"
+  ],
+  "orientasi": [
+    {
+      "judul": "Pangkal leher dan dada atas",
+      "teks": "Semua pembuluh di praktikum ini ditampilkan untuk SISI KANAN pasien saja. Mulai dari pangkalnya: truncus brachiocephalicus keluar dari arcus aortae, lalu bercabang menjadi a. carotis communis dextra (naik ke leher) dan a. subclavia dextra (ke lengan). Perhatikan klavikula dan iga I: a. subclavia melengkung di atas iga I.",
+      "kamera": {
+        "arah": "depan",
+        "zoom": 1.3
+      },
+      "tulang": "utuh",
+      "fokus": [
+        "@pangkal",
+        "@leher",
+        "@subklavia"
+      ]
+    },
+    {
+      "judul": "Seluruh ekstremitas atas",
+      "teks": "A. subclavia berganti nama menjadi a. axillaris di tepi lateral iga I, lalu menjadi a. brachialis di tepi bawah m. teres major. Di fossa cubiti, a. brachialis bercabang menjadi a. radialis dan a. ulnaris, yang kemudian membentuk arcus palmaris di tangan.",
+      "kamera": {
+        "arah": "depan",
+        "zoom": 1.05
+      },
+      "tulang": "tembus",
+      "fokus": [
+        "@subklavia",
+        "@aksila",
+        "@lenganAtas",
+        "@lenganBawah",
+        "@tangan"
+      ]
+    },
+    {
+      "judul": "Vena superfisial",
+      "teks": "Di bawah kulit ada dua vena superfisial utama: v. cephalica di sisi lateral (sisi ibu jari) dan v. basilica di sisi medial (sisi kelingking). Di fossa cubiti keduanya dihubungkan oleh v. mediana cubiti.",
+      "kamera": {
+        "arah": "depan",
+        "zoom": 1.05
+      },
+      "tulang": "tembus",
+      "fokus": [
+        "@superfisial"
+      ]
+    }
+  ],
+  "grup": [
+    {
+      "judul": "Pembuluh darah regio leher",
+      "item": [
+        {
+          "key": "v-jugularis-externa",
+          "latin": "V. jugularis externa",
+          "indonesia": "Vena jugularis eksterna",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ3585",
+            "FJ3587"
+          ],
+          "kamera": {
+            "arah": [
+              -0.6,
+              0.1,
+              0.8
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Tidak ada di BodyParts3D. Yang disorot sebagai konteks: v. jugularis interna dan v. subclavia, tempat v. jugularis externa biasanya bermuara.",
+          "ringkas": "Dibentuk di dekat angulus mandibulae, umumnya dari pertemuan v. retromandibularis (cabang posterior) dan v. auricularis posterior. Turun menyilang permukaan m. sternocleidomastoideus di bawah platysma, lalu menembus fascia profunda di atas klavikula dan bermuara ke v. subclavia.",
+          "asalNama": "Jugulum (Latin) = leher/tenggorokan.",
+          "klinis": "Sering terlihat menonjol saat tekanan vena sentral naik (misalnya gagal jantung kanan) dan bisa dipakai untuk akses vena.",
+          "perluDicek": [
+            "Pola pembentukan v. jugularis externa cukup bervariasi; cocokkan dengan atlas yang dipakai departemen."
+          ]
+        },
+        {
+          "key": "v-jugularis-interna",
+          "latin": "V. jugularis interna",
+          "indonesia": "Vena jugularis interna",
+          "status": "ada",
+          "mesh": [
+            "FJ3585"
+          ],
+          "konteks": [
+            "FJ3587",
+            "FJ3583",
+            "FJ3564"
+          ],
+          "kamera": {
+            "arah": [
+              -0.5,
+              0.1,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Di model hanya ada segmen pendek di leher bagian bawah.",
+          "ringkas": "Lanjutan sinus sigmoideus di foramen jugulare. Turun di dalam vagina carotica bersama a. carotis (medial) dan n. vagus (di belakang, di antara keduanya). Di belakang ujung sternal klavikula, ia bersatu dengan v. subclavia membentuk v. brachiocephalica.",
+          "asalNama": "Jugulum = leher.",
+          "klinis": "Tempat pemasangan kateter vena sentral (CVC), terutama di sisi kanan karena jalurnya lebih lurus ke VCS."
+        },
+        {
+          "key": "a-carotis-communis",
+          "latin": "A. carotis communis",
+          "indonesia": "Arteri karotis komunis",
+          "status": "ada",
+          "mesh": [
+            "FJ3564"
+          ],
+          "konteks": [
+            "FJ3417",
+            "FJ1682",
+            "FJ3579",
+            "FJ3585"
+          ],
+          "kamera": {
+            "arah": [
+              -0.3,
+              0.1,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Yang kanan keluar dari truncus brachiocephalicus, yang kiri langsung dari arcus aortae. Naik di dalam vagina carotica tanpa memberi cabang, lalu bercabang menjadi a. carotis interna dan externa setinggi tepi atas cartilago thyroidea (kira-kira C3/C4). Di percabangan ini ada sinus caroticus (baroreseptor) dan glomus caroticum (kemoreseptor).",
+          "asalNama": "Dari Yunani karoun = membuat tertidur/pingsan, karena menekan arteri ini bisa membuat orang pingsan.",
+          "klinis": "Denyut karotis diraba di tepi anterior m. sternocleidomastoideus. Pijat sinus caroticus dapat memperlambat denyut jantung."
+        },
+        {
+          "key": "a-carotis-interna",
+          "latin": "A. carotis interna",
+          "indonesia": "Arteri karotis interna",
+          "status": "ada",
+          "mesh": [
+            "FJ1682"
+          ],
+          "konteks": [
+            "FJ3564",
+            "FJ1725"
+          ],
+          "kamera": {
+            "arah": [
+              -0.6,
+              0,
+              0.8
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Mesh di model terutama menampilkan bagian atas arteri ini. Sambungannya ke a. carotis communis tidak selalu tampak menyatu.",
+          "ringkas": "Tidak memberi cabang di leher. Masuk ke kranium lewat canalis caroticus, lalu memperdarahi otak (bersama a. vertebralis, membentuk circulus arteriosus cerebri/Willisi) dan mata (lewat a. ophthalmica).",
+          "jembatanKeledai": "Interna = tidak bercabang di leher; Externa = banyak cabang di leher. \"Interna masuk ke dalam (kepala), externa ke luar (wajah).\"",
+          "klinis": "Plak aterosklerosis di pangkal a. carotis interna adalah penyebab penting stroke iskemik."
+        },
+        {
+          "key": "a-carotis-externa",
+          "latin": "A. carotis externa",
+          "indonesia": "Arteri karotis eksterna",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ3564",
+            "FJ1682"
+          ],
+          "kamera": {
+            "arah": [
+              -0.6,
+              0,
+              0.8
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Tidak ada di BodyParts3D. Arteri ini keluar dari percabangan a. carotis communis (disorot sebagai konteks), di sebelah anteromedial a. carotis interna.",
+          "ringkas": "Memperdarahi leher bagian depan, wajah, kulit kepala, dan sebagian besar struktur di luar kranium. Cabangnya: a. thyroidea superior, a. pharyngea ascendens, a. lingualis, a. facialis, a. occipitalis, a. auricularis posterior, lalu cabang terminal a. maxillaris dan a. temporalis superficialis.",
+          "jembatanKeledai": "\"Some Anatomists Like Freaking Out Poor Medical Students\": Superior thyroid, Ascending pharyngeal, Lingual, Facial, Occipital, Posterior auricular, Maxillary, Superficial temporal."
+        },
+        {
+          "key": "a-subclavia",
+          "latin": "A. subclavia",
+          "indonesia": "Arteri subklavia",
+          "status": "ada",
+          "mesh": [
+            "FJ3579"
+          ],
+          "konteks": [
+            "FJ3417",
+            "FJ3564",
+            "FJ1937",
+            "FJ2307",
+            "FJ2276",
+            "FJ2268"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              0.3,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Yang kanan keluar dari truncus brachiocephalicus, yang kiri dari arcus aortae. Melengkung di atas iga I dan dibagi menjadi tiga bagian oleh m. scalenus anterior. Bagian 1 (medial m. scalenus anterior): a. vertebralis, a. thoracica interna, truncus thyrocervicalis. Bagian 2 (di belakang otot): truncus costocervicalis. Bagian 3: a. dorsalis scapulae (bila ada). Di tepi lateral iga I ia menjadi a. axillaris.",
+          "asalNama": "Sub- (di bawah) + clavis (klavikula).",
+          "jembatanKeledai": "Cabang a. subclavia: \"VIT C & D\" → Vertebral, Internal thoracic, Thyrocervical trunk, Costocervical trunk, Dorsal scapular."
+        },
+        {
+          "key": "a-vertebralis",
+          "latin": "A. vertebralis",
+          "indonesia": "Arteri vertebralis",
+          "status": "ada",
+          "mesh": [
+            "FJ1725"
+          ],
+          "konteks": [
+            "FJ3579",
+            "FJ1682"
+          ],
+          "kamera": {
+            "arah": [
+              -0.7,
+              0.1,
+              0.7
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Mesh a. vertebralis di model dimulai kira-kira setinggi leher tengah. Bagian awalnya dari a. subclavia tidak ada, jadi tampak tidak tersambung.",
+          "ringkas": "Cabang pertama a. subclavia. Naik melalui foramen transversarium vertebra cervicalis VI sampai I, lalu masuk ke kranium lewat foramen magnum. Kedua a. vertebralis bersatu membentuk a. basilaris yang memperdarahi batang otak, serebelum, dan otak bagian belakang.",
+          "asalNama": "Vertebra = ruas tulang belakang, karena berjalan di dalam lubang-lubang vertebra.",
+          "klinis": "Bila a. subclavia tersumbat di proksimal pangkal a. vertebralis, darah bisa 'dicuri' mengalir terbalik dari a. vertebralis ke lengan (subclavian steal syndrome)."
+        },
+        {
+          "key": "a-thoracica-interna",
+          "latin": "A. thoracica interna",
+          "indonesia": "Arteri torakika interna (mamaria interna)",
+          "status": "ada",
+          "mesh": [
+            "FJ1937"
+          ],
+          "konteks": [
+            "FJ3579"
+          ],
+          "kamera": {
+            "arah": [
+              -0.4,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Keluar dari permukaan bawah a. subclavia, turun di belakang cartilago costalis sekitar 1 cm lateral dari tepi sternum. Memberi rr. intercostales anteriores dan a. pericardiacophrenica, lalu bercabang dua menjadi a. musculophrenica dan a. epigastrica superior.",
+          "asalNama": "Dulu disebut a. mammaria interna.",
+          "klinis": "Sering dipakai sebagai graft pada operasi bypass koroner (CABG), terutama disambungkan ke LAD."
+        },
+        {
+          "key": "truncus-thyrocervicalis",
+          "latin": "Truncus thyrocervicalis",
+          "indonesia": "Batang tirocervikal",
+          "status": "ada",
+          "mesh": [
+            "FJ2307"
+          ],
+          "konteks": [
+            "FJ3579",
+            "FJ2209",
+            "FJ2309",
+            "FJ2308"
+          ],
+          "kamera": {
+            "arah": [
+              -0.3,
+              0.2,
+              1
+            ],
+            "zoom": 0.7
+          },
+          "tulang": "hilang",
+          "catatanModel": "Batangnya sangat pendek di model. Cabang yang ada di model ikut ditampilkan: a. thyroidea inferior, a. transversa cervicis, dan a. cervicalis superficialis. A. suprascapularis tidak ada di model.",
+          "ringkas": "Batang pendek dari bagian pertama a. subclavia, di tepi medial m. scalenus anterior.",
+          "pertanyaan": {
+            "no": 11,
+            "teks": "Empat cabang truncus thyrocervicalis",
+            "jawaban": "1. A. thyroidea inferior\n2. A. cervicalis ascendens (sering keluar dari a. thyroidea inferior)\n3. A. transversa cervicis (a. transversa colli)\n4. A. suprascapularis"
+          },
+          "jembatanKeledai": "\"STAT\": Suprascapular, Transverse cervical, Ascending cervical, Thyroid (inferior).",
+          "perluDicek": [
+            "Polanya bervariasi (mis. a. cervicalis ascendens dari a. thyroidea inferior); cocokkan dengan jawaban yang diajarkan tutor."
+          ]
+        },
+        {
+          "key": "truncus-costocervicalis",
+          "latin": "Truncus costocervicalis",
+          "indonesia": "Batang kostoservikal",
+          "status": "ada",
+          "mesh": [
+            "FJ2276"
+          ],
+          "konteks": [
+            "FJ3579",
+            "FJ2278",
+            "FJ1935"
+          ],
+          "kamera": {
+            "arah": [
+              -0.6,
+              0.2,
+              -0.8
+            ],
+            "zoom": 0.7
+          },
+          "tulang": "hilang",
+          "catatanModel": "Batangnya sangat pendek di model. Kedua cabangnya ada di model dan ikut ditampilkan.",
+          "ringkas": "Keluar dari bagian kedua a. subclavia (di belakang m. scalenus anterior), berjalan ke belakang di atas pleura cervicalis.",
+          "pertanyaan": {
+            "no": 12,
+            "teks": "Dua cabang truncus costocervicalis",
+            "jawaban": "1. A. cervicalis profunda\n2. A. intercostalis suprema (a. intercostalis superior), yang memperdarahi spatium intercostale I dan II"
+          }
+        }
+      ]
+    },
+    {
+      "judul": "Ekstremitas superior: regio axillaris",
+      "item": [
+        {
+          "key": "a-v-axillaris",
+          "latin": "Arteria dan Vena axillaris",
+          "indonesia": "Arteri dan vena aksilaris",
+          "status": "ada",
+          "mesh": [
+            "@aksila"
+          ],
+          "konteks": [
+            "FJ3579",
+            "FJ3587",
+            "FJ2271",
+            "FJ1938",
+            "FJ2298",
+            "FJ2264",
+            "@cxHumeriPost"
+          ],
+          "kamera": {
+            "arah": [
+              -0.3,
+              -0.2,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "A. axillaris berjalan dari tepi lateral iga I sampai tepi bawah m. teres major. M. pectoralis minor (yang menyilang di depannya) membaginya menjadi tiga bagian. Bagian 1: a. thoracica superior. Bagian 2: a. thoracoacromialis dan a. thoracica lateralis. Bagian 3: a. subscapularis, a. circumflexa humeri anterior dan posterior. V. axillaris berjalan di sisi medial arteri dan dibentuk oleh v. basilica dan vv. brachiales.",
+          "asalNama": "Axilla = ketiak.",
+          "jembatanKeledai": "Jumlah cabang tiap bagian = nomor bagiannya (1, 2, 3). \"Screw The Lawyer Save A Patient\": Superior thoracic, Thoracoacromial, Lateral thoracic, Subscapular, Anterior & Posterior circumflex humeral."
+        },
+        {
+          "key": "thoracica-superior",
+          "latin": "A. & V. thoracica superior",
+          "indonesia": "Arteri dan vena torakika superior",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "@aksila"
+          ],
+          "kamera": {
+            "arah": [
+              -0.3,
+              -0.2,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Tidak ada di model. Pangkalnya ada di bagian pertama a. axillaris (disorot sebagai konteks).",
+          "ringkas": "Satu-satunya cabang bagian pertama a. axillaris. Pembuluh kecil yang memperdarahi spatium intercostale I–II dan m. serratus anterior bagian atas."
+        },
+        {
+          "key": "thoracica-lateralis",
+          "latin": "A. & V. thoracica lateralis",
+          "indonesia": "Arteri dan vena torakika lateralis",
+          "status": "ada",
+          "mesh": [
+            "FJ1938",
+            "FJ2285"
+          ],
+          "konteks": [
+            "@aksila"
+          ],
+          "kamera": {
+            "arah": [
+              -0.8,
+              -0.1,
+              0.6
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Cabang bagian kedua a. axillaris. Turun di sepanjang tepi lateral m. pectoralis minor, di permukaan m. serratus anterior, bersama n. thoracicus longus. Memperdarahi dinding toraks lateral, termasuk kelenjar payudara bagian lateral.",
+          "klinis": "Berperan penting dalam perdarahan payudara dan dijumpai saat diseksi aksila."
+        },
+        {
+          "key": "thoracoacromialis",
+          "latin": "A. & V. thoracoacromialis",
+          "indonesia": "Arteri dan vena torakoakromialis",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "@aksila"
+          ],
+          "kamera": {
+            "arah": [
+              -0.3,
+              0.1,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Tidak ada di model. Pangkalnya ada di bagian kedua a. axillaris, di balik m. pectoralis minor.",
+          "ringkas": "Batang pendek dari bagian kedua a. axillaris yang menembus fascia clavipectoralis lalu bercabang empat: r. pectoralis, r. deltoideus, r. acromialis, dan r. clavicularis.",
+          "jembatanKeledai": "4 cabang: \"CAD-P\" → Clavicular, Acromial, Deltoid, Pectoral."
+        },
+        {
+          "key": "subscapularis",
+          "latin": "A. & V. subscapularis",
+          "indonesia": "Arteri dan vena subskapularis",
+          "status": "ada",
+          "mesh": [
+            "FJ2298",
+            "FJ2299"
+          ],
+          "konteks": [
+            "@subskapularCabang",
+            "@aksila"
+          ],
+          "kamera": {
+            "arah": [
+              -0.9,
+              -0.1,
+              0.3
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Cabang terbesar a. axillaris (dari bagian ketiga). Turun di sepanjang tepi lateral m. subscapularis.",
+          "pertanyaan": {
+            "no": 13,
+            "teks": "Dua cabang a. subscapularis",
+            "jawaban": "1. A. circumflexa scapulae, yang melewati spatium triangulare (celah segitiga) ke fossa infraspinata dan ikut membentuk anastomosis di sekitar skapula.\n2. A. thoracodorsalis, yang mengikuti n. thoracodorsalis ke m. latissimus dorsi.\nKedua cabang ini ada di model dan ditampilkan sebagai konteks."
+          }
+        },
+        {
+          "key": "circumflexa-humeri-anterior",
+          "latin": "A. & V. circumflexa anterior humeri",
+          "indonesia": "Arteri dan vena sirkumfleksa humeri anterior",
+          "status": "ada",
+          "mesh": [
+            "FJ2264",
+            "FJ2265"
+          ],
+          "konteks": [
+            "@aksila",
+            "@cxHumeriPost"
+          ],
+          "kamera": {
+            "arah": [
+              -0.4,
+              0,
+              1
+            ]
+          },
+          "tulang": "utuh",
+          "ringkas": "Cabang kecil bagian ketiga a. axillaris yang melingkar di depan collum chirurgicum humeri, lalu beranastomosis dengan a. circumflexa humeri posterior."
+        },
+        {
+          "key": "circumflexa-humeri-posterior",
+          "latin": "A. & V. circumflexa posterior humeri",
+          "indonesia": "Arteri dan vena sirkumfleksa humeri posterior",
+          "status": "ada",
+          "mesh": [
+            "@cxHumeriPost"
+          ],
+          "konteks": [
+            "@aksila",
+            "FJ2264"
+          ],
+          "kamera": {
+            "arah": [
+              -0.6,
+              0,
+              -0.8
+            ]
+          },
+          "tulang": "utuh",
+          "catatanModel": "Hanya arterinya yang ada di model (2 potongan mesh). V. circumflexa humeri posterior tidak ada.",
+          "ringkas": "Lebih besar dari a. circumflexa humeri anterior. Keluar dari bagian ketiga a. axillaris, lalu berjalan ke belakang melewati spatium quadrangulare (celah segi empat) dan melingkari collum chirurgicum humeri dari belakang.",
+          "pertanyaan": {
+            "no": 14,
+            "teks": "Pendamping a. circumflexa humeri posterior di collum chirurgicum humeri",
+            "jawaban": "Bersama nervus axillaris, melalui spatium quadrangulare.\nKlinis: fraktur collum chirurgicum humeri dapat mencederai n. axillaris (menyebabkan kelemahan m. deltoideus dan mati rasa di kulit bahu lateral) dan a. circumflexa humeri posterior."
+          },
+          "jembatanKeledai": "Batas spatium quadrangulare: m. teres minor (atas), m. teres major (bawah), caput longum m. triceps (medial), collum chirurgicum humeri (lateral)."
+        }
+      ]
+    },
+    {
+      "judul": "Ekstremitas superior: regio brachii",
+      "item": [
+        {
+          "key": "a-v-brachialis",
+          "latin": "A. & V. brachialis",
+          "indonesia": "Arteri dan vena brakialis",
+          "status": "ada",
+          "mesh": [
+            "FJ2271",
+            "FJ2341"
+          ],
+          "konteks": [
+            "@aksila",
+            "FJ2277",
+            "FJ2294",
+            "FJ2310"
+          ],
+          "kamera": {
+            "arah": [
+              -0.3,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "catatanModel": "Vena di model bernama 'medial brachial vein'. Normalnya vv. brachiales berpasangan (venae comitantes) di kiri-kanan arteri.",
+          "ringkas": "Lanjutan a. axillaris mulai dari tepi bawah m. teres major. Turun di sulcus bicipitalis medialis bersama n. medianus. Di fossa cubiti, ia lewat di bawah aponeurosis bicipitalis lalu bercabang menjadi a. radialis dan a. ulnaris (kira-kira setinggi collum radii).",
+          "asalNama": "Brachium = lengan atas.",
+          "klinis": "Tempat mengukur tekanan darah (manset di lengan atas, stetoskop di fossa cubiti medial tendo biceps)."
+        },
+        {
+          "key": "profunda-brachii",
+          "latin": "A. & V. profunda brachii",
+          "indonesia": "Arteri dan vena brakialis profunda",
+          "status": "ada",
+          "mesh": [
+            "FJ2277"
+          ],
+          "konteks": [
+            "FJ2271",
+            "@profundaCabang"
+          ],
+          "kamera": {
+            "arah": [
+              -0.7,
+              0,
+              -0.7
+            ]
+          },
+          "tulang": "utuh",
+          "catatanModel": "Hanya arterinya yang ada di model. Cabang terminalnya (a. collateralis media dan a. collateralis radialis) ikut ditampilkan.",
+          "ringkas": "Cabang besar a. brachialis yang berjalan ke belakang, mengitari humerus di sulcus nervi radialis, lalu berakhir sebagai a. collateralis media dan a. collateralis radialis, yang ikut membentuk anastomosis di sekitar siku.",
+          "pertanyaan": {
+            "no": 15,
+            "teks": "Pendamping a. profunda brachii di sulcus nervi radialis",
+            "jawaban": "Bersama nervus radialis, di sulcus nervi radialis (sulcus spiralis) humeri.\nKlinis: fraktur corpus humeri dapat mencederai n. radialis (menyebabkan wrist drop) dan a. profunda brachii."
+          }
+        }
+      ]
+    },
+    {
+      "judul": "Ekstremitas superior: regio antebrachii",
+      "item": [
+        {
+          "key": "a-v-radialis",
+          "latin": "A. & V. radialis",
+          "indonesia": "Arteri dan vena radialis",
+          "status": "ada",
+          "mesh": [
+            "FJ2294",
+            "FJ2296"
+          ],
+          "konteks": [
+            "FJ2271",
+            "FJ2279"
+          ],
+          "kamera": {
+            "arah": [
+              -0.3,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Cabang lateral a. brachialis. Turun di bawah m. brachioradialis. Di distal lengan bawah ia letaknya superfisial, di sebelah lateral tendo m. flexor carpi radialis, lalu melewati tabatière anatomique (anatomical snuffbox) ke dorsum manus dan berakhir sebagai arcus palmaris profundus.",
+          "asalNama": "Radius (Latin) = jari-jari roda.",
+          "klinis": "Denyut nadi biasanya diraba di sini. Sering dipakai untuk analisis gas darah dan akses kateterisasi jantung. Tes Allen menilai sirkulasi kolateral melalui a. ulnaris sebelum tindakan."
+        },
+        {
+          "key": "a-v-ulnaris",
+          "latin": "A. & V. ulnaris",
+          "indonesia": "Arteri dan vena ulnaris",
+          "status": "ada",
+          "mesh": [
+            "FJ2310",
+            "FJ2312"
+          ],
+          "konteks": [
+            "FJ2271",
+            "FJ2300"
+          ],
+          "kamera": {
+            "arah": [
+              -0.3,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Cabang medial a. brachialis, yang lebih besar dari dua cabang terminalnya. Turun di bawah otot-otot fleksor, bersama n. ulnaris di distal. Ia memberi a. interossea communis, lalu masuk ke tangan melalui canalis ulnaris (Guyon) dan berakhir sebagai arcus palmaris superficialis.",
+          "asalNama": "Ulna (Latin) = siku/lengan."
+        }
+      ]
+    },
+    {
+      "judul": "Ekstremitas superior: regio manus",
+      "item": [
+        {
+          "key": "arcus-palmaris-superficialis",
+          "latin": "Arcus palmaris superficialis",
+          "indonesia": "Lengkung palmar superfisial",
+          "status": "ada",
+          "mesh": [
+            "FJ2300"
+          ],
+          "konteks": [
+            "FJ2310",
+            "FJ2294",
+            "FJ2279"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              0,
+              1
+            ]
+          },
+          "tulang": "utuh",
+          "catatanModel": "Lengkung vena superfisial (FJ2301) juga ada di model, tetapi tidak disorot di sini.",
+          "ringkas": "Lengkung arteri di telapak tangan, terletak di bawah aponeurosis palmaris dan lebih distal daripada arcus profundus (kira-kira setinggi garis distal ibu jari yang diabduksi penuh). Mengeluarkan aa. digitales palmares communes.",
+          "pertanyaan": {
+            "no": 16,
+            "teks": "Pembentuk arcus palmaris superficialis",
+            "jawaban": "Terutama dibentuk oleh a. ulnaris (ujung terminalnya), dilengkapi oleh r. palmaris superficialis a. radialis."
+          },
+          "jembatanKeledai": "Superficial = Ulnar (\"SU\"); Profundus = Radial (\"PR\")."
+        },
+        {
+          "key": "arcus-palmaris-profundus",
+          "latin": "Arcus palmaris profundus",
+          "indonesia": "Lengkung palmar dalam",
+          "status": "ada",
+          "mesh": [
+            "FJ2279"
+          ],
+          "konteks": [
+            "FJ2294",
+            "FJ2310",
+            "FJ2300"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              0,
+              1
+            ]
+          },
+          "tulang": "utuh",
+          "ringkas": "Lengkung arteri yang lebih dalam dan lebih proksimal, terletak di atas basis ossa metacarpi, di bawah tendo-tendo fleksor. Mengeluarkan aa. metacarpales palmares.",
+          "pertanyaan": {
+            "no": 17,
+            "teks": "Pembentuk arcus palmaris profundus",
+            "jawaban": "Terutama dibentuk oleh a. radialis (ujung terminalnya), dilengkapi oleh r. palmaris profundus a. ulnaris."
+          }
+        }
+      ]
+    },
+    {
+      "judul": "Vena-vena superfisial",
+      "item": [
+        {
+          "key": "v-cephalica",
+          "latin": "Vena cephalica",
+          "indonesia": "Vena sefalika",
+          "status": "ada",
+          "mesh": [
+            "FJ2272"
+          ],
+          "konteks": [
+            "FJ2269",
+            "FJ2287"
+          ],
+          "kamera": {
+            "arah": [
+              -0.5,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Berasal dari sisi radial jaringan vena dorsum manus, naik di sisi lateral lengan bawah dan lengan atas, lalu masuk ke sulcus deltopectoralis.",
+          "asalNama": "Dari Yunani kephale (kepala). Kemungkinan dari terjemahan nama Arab yang keliru; dulu dikira berhubungan dengan kepala.",
+          "pertanyaan": {
+            "no": 18,
+            "teks": "Muara v. cephalica",
+            "jawaban": "Ke vena axillaris. Ia naik di sulcus deltopectoralis, masuk ke trigonum clavipectorale (deltopectorale), menembus fascia clavipectoralis, lalu bermuara ke v. axillaris (bagian proksimalnya)."
+          },
+          "perluDicek": [
+            "Asal-usul nama 'cephalica' (salah terjemah dari bahasa Arab) adalah penjelasan yang sering dikutip, tetapi sumber primernya belum diverifikasi."
+          ]
+        },
+        {
+          "key": "v-basilica",
+          "latin": "Vena basilica",
+          "indonesia": "Vena basilika",
+          "status": "ada",
+          "mesh": [
+            "FJ2270"
+          ],
+          "konteks": [
+            "FJ2269",
+            "FJ2341",
+            "FJ2287"
+          ],
+          "kamera": {
+            "arah": [
+              -0.3,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Berasal dari sisi ulnar jaringan vena dorsum manus, naik di sisi medial lengan bawah dan lengan atas.",
+          "pertanyaan": {
+            "no": 19,
+            "teks": "Muara v. basilica",
+            "jawaban": "Sekitar pertengahan lengan atas, v. basilica menembus fascia profunda (hiatus basilicus) lalu bergabung dengan vv. brachiales membentuk v. axillaris di tepi bawah m. teres major."
+          }
+        },
+        {
+          "key": "v-mediana-antebrachii",
+          "latin": "Vena mediana antebrachii",
+          "indonesia": "Vena mediana lengan bawah",
+          "status": "ada",
+          "mesh": [
+            "FJ2286"
+          ],
+          "konteks": [
+            "FJ2270",
+            "FJ2272",
+            "FJ2287"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              0,
+              1
+            ]
+          },
+          "tulang": "tembus",
+          "ringkas": "Vena superfisial di tengah permukaan anterior lengan bawah, berasal dari jaringan vena palmar. Bermuara ke v. basilica, v. mediana cubiti, atau bercabang menjadi v. mediana cephalica dan v. mediana basilica. Polanya sangat bervariasi."
+        },
+        {
+          "key": "v-mediana-cubiti",
+          "latin": "Vena mediana cubiti",
+          "indonesia": "Vena mediana kubiti",
+          "status": "ada",
+          "mesh": [
+            "FJ2287"
+          ],
+          "konteks": [
+            "FJ2270",
+            "FJ2272",
+            "FJ2286",
+            "FJ2271"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              0,
+              1
+            ],
+            "zoom": 0.8
+          },
+          "tulang": "tembus",
+          "ringkas": "Vena penghubung di fossa cubiti yang berjalan miring dari v. cephalica (lateral-bawah) ke v. basilica (medial-atas).",
+          "asalNama": "Cubitus = siku.",
+          "pertanyaan": {
+            "no": 20,
+            "teks": "Makna klinis vena-vena di regio cubiti",
+            "jawaban": "Vena mediana cubiti (dan vena lain di fossa cubiti) adalah tempat favorit pungsi vena: pengambilan darah, pemasangan infus, dan transfusi. Alasannya: letaknya superfisial, besar, mudah terlihat dan teraba, serta relatif terfiksasi. Aponeurosis bicipitalis berada di bawahnya dan memisahkannya dari a. brachialis dan n. medianus, sehingga menjadi pelindung. Hati-hati menusuk terlalu dalam di sisi medial."
+          }
+        },
+        {
+          "key": "v-mediana-cephalica",
+          "latin": "Vena mediana cephalica",
+          "indonesia": "Vena mediana sefalika",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2272",
+            "FJ2286"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              0,
+              1
+            ],
+            "zoom": 0.8
+          },
+          "tulang": "tembus",
+          "catatanModel": "Tidak ada di model. BodyParts3D memakai pola v. mediana cubiti (satu vena penghubung), bukan pola 'M'.",
+          "ringkas": "Pada pola vena berbentuk 'M' di fossa cubiti, v. mediana antebrachii bercabang dua. Cabang lateralnya, v. mediana cephalica, bermuara ke v. cephalica."
+        },
+        {
+          "key": "v-mediana-basilica",
+          "latin": "Vena mediana basilica",
+          "indonesia": "Vena mediana basilika",
+          "status": "tidak-ada",
+          "mesh": [],
+          "konteks": [
+            "FJ2270",
+            "FJ2286"
+          ],
+          "kamera": {
+            "arah": [
+              -0.2,
+              0,
+              1
+            ],
+            "zoom": 0.8
+          },
+          "tulang": "tembus",
+          "catatanModel": "Tidak ada di model (lihat catatan v. mediana cephalica).",
+          "ringkas": "Cabang medial v. mediana antebrachii pada pola 'M', bermuara ke v. basilica. Letaknya dekat a. brachialis yang hanya dipisahkan oleh aponeurosis bicipitalis, jadi pungsi di vena ini harus hati-hati."
+        }
+      ]
+    }
+  ]
+}
