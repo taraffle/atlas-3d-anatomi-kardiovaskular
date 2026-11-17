@@ -23,7 +23,7 @@ K = '🫀 Praktikum 1'
 
 # ---------------- INTRO & ORIENTASI ----------------
 beat('Halo, calon dokter! Selamat datang di tur tiga dimensi jantung dan pembuluh darah besar.',
-     'orientasi-1', K, 'Atlas 3D Praktikum Anatomi', 'Praktikum 1: Jantung', card=dict(type='intro', head='Halo, calon dokter! 👋', text='Tur 3D Praktikum 1: jantung & pembuluh darah besar'), sfx='whoosh')
+     'orientasi-1', K, 'Anatomi Modul Kardiovaskular', 'Praktikum 1: Jantung', card=dict(type='intro', head='Halo, calon dokter! 👋', text='Tur 3D Praktikum 1: jantung & pembuluh darah besar'), sfx='whoosh')
 beat('Semua model di video ini berasal dari data anatomi asli BodyParts3D. Siapkan daftar tilikmu, yuk mulai!')
 beat('Pertama, orientasi. Jantung terletak di mediastinum medius, di belakang sternum dan tulang rawan iga kedua sampai keenam.',
      'orientasi-1', 'Orientasi', 'Jantung di rongga dada', 'Mediastinum medius', sfx='pop')

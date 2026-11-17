@@ -70,7 +70,7 @@ function beatAt(t) { return TL.beats.find((b) => t >= b.t0 && t < b.t1) || TL.be
     const card = bt.card && bt.card.type !== 'bab' ? bt.card : null
     const panel = `<span class="vp-kick">${esc(bt.kicker || '')}</span><div class="vp-ttl">${esc(bt.title || '')}</div><div class="vp-st">${esc(bt.sub_title || '')}</div>` +
       (card ? `<div class="vp-card ${card.type}"><span class="vp-h">${esc(card.head)}</span>${esc(card.text)}</div>` : '') +
-      `<div class="vp-foot"><b>Atlas 3D Praktikum Anatomi</b><br>Model 3D: BodyParts3D © The Database Center for Life Science, CC BY 4.0 (via @dagno/anatomy-model). Materi untuk belajar mandiri, bukan materi resmi departemen.</div>`
+      `<div class="vp-foot"><b>Atlas 3D · Anatomi Modul Kardiovaskular</b><br>Model 3D: BodyParts3D © The Database Center for Life Science, CC BY 4.0 (via @dagno/anatomy-model). Materi untuk belajar mandiri, bukan materi resmi departemen.</div>`
     const bab = bt.card && bt.card.type === 'bab' ? bt.card.head : ''
     const cd = bt.countdown ? String(Math.max(1, bt.countdown - Math.floor(t - bt.t0))) : ''
     const sub = cd ? '' : bt.sub

@@ -1,4 +1,4 @@
-# Atlas 3D Praktikum Anatomi
+# Atlas 3D · Anatomi Modul Kardiovaskular
 
 Situs atlas 3D untuk praktikum anatomi Modul Kardiovaskular. Bisa dibuka di HP dan berbahasa Indonesia. Semua model 3D berasal dari data anatomi asli BodyParts3D (lewat paket npm `@dagno/anatomy-model`, CC BY 4.0). Rincian atribusi ada di `atribusi.html`.
 
@@ -71,6 +71,10 @@ Arah sumbu model: +x = kiri pasien, +y = kepala, +z = depan.
 7. **Upload**: commit lalu push ke GitHub. Situs akan ter-update otomatis dalam 1–2 menit (lihat tab *Actions* di GitHub).
 
 Praktikum baru otomatis muncul di halaman utama. Tidak perlu mengubah kode.
+
+## Ganti nama situs (untuk modul lain)
+
+Nama yang tampil di halaman ada di `src/situs.js` (`label`, `nama`, `deskripsi`). Judul tab browser ada di tag `<title>` di `index.html`, `viewer.html`, dan `atribusi.html`. Untuk modul baru, kamu bisa menyalin seluruh repo ini menjadi repo baru (misalnya `atlas-3d-respirasi`), lalu mengganti nama di tempat-tempat itu dan mengisi `content/` dengan praktikum modul tersebut.
 
 ## Fitur belajar
 

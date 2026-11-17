@@ -2,6 +2,7 @@ import './style.css'
 import { attributionLine } from './attribution.js'
 import { progres } from './progress.js'
 import { pasangTombolTema } from './theme.js'
+import { SITUS } from './situs.js'
 
 const BASE = import.meta.env.BASE_URL
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
@@ -11,9 +12,9 @@ app.innerHTML = `
     <header class="hero">
       <div class="hero-emoji" aria-hidden="true">🩺</div>
       <button class="icon-btn theme-btn" id="tema"></button>
-      <div class="wave">Halo, calon dokter! 👋</div>
-      <h1>Atlas 3D Praktikum Anatomi</h1>
-      <p>Belajar Modul Kardiovaskular sebelum ketemu cadaver. Putar modelnya, tebak strukturnya, dan cek jawaban daftar tilikmu, dari HP, tablet, atau laptop.</p>
+      <div class="wave">${SITUS.label} · Halo, calon dokter! 👋</div>
+      <h1>${SITUS.nama}</h1>
+      <p>${SITUS.deskripsi}</p>
     </header>
 
     <h2 class="section-title">Pilih praktikum</h2>

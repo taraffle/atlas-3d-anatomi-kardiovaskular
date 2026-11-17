@@ -6,6 +6,7 @@ import { loadPraktikum } from './data.js'
 import { attributionLine } from './attribution.js'
 import { progres } from './progress.js'
 import { pasangTombolTema } from './theme.js'
+import { judulLengkap } from './situs.js'
 
 const BASE = import.meta.env.BASE_URL
 const params = new URLSearchParams(location.search)
@@ -684,7 +685,7 @@ async function main() {
       m.userData = { part: p, color: baseColor(p) }
       meshes.set(p.id, m); scene.add(m)
     }
-    document.title = `${meta.judul} · Atlas 3D Praktikum Anatomi`
+    document.title = `${meta.judul} · ${judulLengkap}`
     $('#judul').textContent = `${meta.ikon || ''} ${meta.judul}`.trim()
     seen = progres.get(PID).seen
     buildSteps(); buildList(); buildPickMap(); updateProgress()

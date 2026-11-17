@@ -6,7 +6,7 @@ ffmpeg -y -v error -stats -framerate 15 -i frames/%06d.jpg -i audio.wav \
   -c:v libx264 -preset medium -crf 23 -pix_fmt yuv420p -r 30 -tune animation \
   -c:a aac -b:a 128k -ar 44100 -af "loudnorm=I=-16:TP=-1.5:LRA=11" \
   -shortest -movflags +faststart \
-  -metadata title="Atlas 3D Praktikum Anatomi — Praktikum 1: Jantung" \
+  -metadata title="Atlas 3D · Anatomi Modul Kardiovaskular — Praktikum 1: Jantung" \
   -metadata comment="Model 3D: BodyParts3D (c) The Database Center for Life Science, CC BY 4.0" \
-  ../Praktikum1_Jantung_Atlas3D.mp4
-ffprobe -v error -show_entries format=duration,size -of default=nw=1 ../Praktikum1_Jantung_Atlas3D.mp4
+  ../AnatomiKV_Praktikum1_Jantung.mp4
+ffprobe -v error -show_entries format=duration,size -of default=nw=1 ../AnatomiKV_Praktikum1_Jantung.mp4
