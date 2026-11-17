@@ -1,6 +1,7 @@
 import './style.css'
 import { attributionLine } from './attribution.js'
 import { progres } from './progress.js'
+import { pasangTombolTema } from './theme.js'
 
 const BASE = import.meta.env.BASE_URL
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
@@ -9,6 +10,7 @@ app.innerHTML = `
   <main class="home-wrap">
     <header class="hero">
       <div class="hero-emoji" aria-hidden="true">🩺</div>
+      <button class="icon-btn theme-btn" id="tema"></button>
       <div class="wave">Halo, calon dokter! 👋</div>
       <h1>Atlas 3D Praktikum Anatomi</h1>
       <p>Belajar Modul Kardiovaskular sebelum ketemu cadaver. Putar modelnya, tebak strukturnya, dan cek jawaban daftar tilikmu, dari HP, tablet, atau laptop.</p>
@@ -40,6 +42,8 @@ app.innerHTML = `
     <footer class="attr small">${attributionLine(BASE)}</footer>
   </main>
 `
+
+pasangTombolTema(document.querySelector('#tema'))
 
 fetch(`${BASE}data/index.json`).then((r) => r.json()).then((list) => {
   document.querySelector('#list').innerHTML = list.map((p) => {

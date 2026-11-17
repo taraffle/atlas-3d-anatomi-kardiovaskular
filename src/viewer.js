@@ -5,6 +5,7 @@ import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer
 import { loadPraktikum } from './data.js'
 import { attributionLine } from './attribution.js'
 import { progres } from './progress.js'
+import { pasangTombolTema } from './theme.js'
 
 const BASE = import.meta.env.BASE_URL
 const params = new URLSearchParams(location.search)
@@ -57,6 +58,7 @@ document.querySelector('#app').innerHTML = `
   <header class="topbar">
     <a class="icon-btn" href="${BASE}" aria-label="Kembali ke daftar praktikum">←</a>
     <div class="title"><div id="judul">Memuat…</div><div id="counter" class="muted"></div></div>
+    <button class="icon-btn theme-btn" id="btn-tema"></button>
     <button class="icon-btn btn-kuis" id="btn-kuis" aria-label="Mode kuis">🎯 Kuis</button>
     <button class="icon-btn" id="btn-daftar" aria-label="Daftar struktur">☰</button>
     <div class="top-progress"><span id="top-progress"></span></div>
@@ -569,6 +571,7 @@ $('#btn-prev').onclick = () => go(cur - 1)
 $('#btn-next').onclick = () => go(cur + 1)
 $('#btn-daftar').onclick = () => { $('#drawer').hidden = false; $('#daftar .row.active')?.scrollIntoView({ block: 'center' }) }
 $('#btn-tutup').onclick = () => { $('#drawer').hidden = true }
+pasangTombolTema($('#btn-tema'))
 $('#btn-kuis').onclick = () => (quiz ? keluarKuis() : mulaiKuis())
 const toggleSheet = () => document.body.classList.toggle('sheet-open')
 $('#btn-info').onclick = toggleSheet
