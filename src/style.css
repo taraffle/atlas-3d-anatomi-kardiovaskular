@@ -186,9 +186,11 @@ body.quiz .btn-kuis { background: var(--lilac); color: #fff; }
 .bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.15s; }
 .loading-tip { max-width: 300px; font-size: 13.5px; color: var(--muted); }
 
-.sheet { flex: none; position: relative; background: var(--panel); border-radius: 22px 22px 0 0; margin-top: -14px; box-shadow: var(--sheet-shadow); padding: 0 16px; padding-bottom: env(safe-area-inset-bottom); max-height: 64dvh; display: flex; flex-direction: column; z-index: 2; }
-.sheet-handle { display: block; width: 100%; height: 20px; background: none; border: 0; cursor: pointer; padding: 0; }
-.sheet-handle span { display: block; width: 44px; height: 5px; border-radius: 5px; background: var(--handle); margin: 8px auto 0; }
+.sheet { flex: none; position: relative; background: var(--panel); border-radius: 22px 22px 0 0; margin-top: -14px; box-shadow: var(--sheet-shadow); padding: 0 16px; padding-bottom: env(safe-area-inset-bottom); display: flex; flex-direction: column; z-index: 2; overflow: hidden; touch-action: none; max-height: 70dvh; }
+.sheet-handle { flex: none; display: block; width: 100%; height: 26px; background: none; border: 0; cursor: grab; padding: 0; touch-action: none; }
+.sheet-handle span { display: block; width: 48px; height: 5px; border-radius: 5px; background: var(--handle); margin: 10px auto 0; }
+.sheet-head, #quiz, .nav, .sheet .attr { flex: none; }
+.sheet-head { cursor: grab; touch-action: none; }
 .grup-chip { display: inline-block; font-size: 11.5px; font-weight: 800; color: var(--primary-dark); background: var(--grup-bg); padding: 1px 9px; border-radius: 999px; }
 .sheet-head h1 { font-size: 18px; line-height: 1.25; margin: 5px 0 0; font-weight: 800; }
 #indo { font-size: 14px; }
@@ -204,8 +206,12 @@ body.quiz .btn-kuis { background: var(--lilac); color: #fff; }
 .btn:disabled { opacity: 0.35; }
 .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(255, 122, 89, 0.35); }
 .btn-ghost { background: transparent; border: 2px solid var(--line); }
-.sheet-body { display: none; overflow-y: auto; overscroll-behavior: contain; padding-bottom: 8px; }
-body.sheet-open .sheet-body { display: block; }
+.sheet-body { flex: 1 1 auto; min-height: 0; order: 5; overflow-y: auto; overscroll-behavior: contain; padding-bottom: 8px; touch-action: pan-y; }
+.sheet .attr { order: 6; }
+.attr-mini { display: none; position: absolute; right: 8px; bottom: 9px; font-size: 10px; font-weight: 700; color: var(--overlay-text); pointer-events: auto; }
+.attr-mini a { color: inherit; }
+body.sheet-tutup .attr-mini { display: block; }
+body.sheet-tutup .dir-from { bottom: 24px; }
 body.sheet-open #btn-info { border-color: var(--primary); color: var(--primary-dark); }
 .sheet-body h3 { font-size: 15px; margin: 14px 0 3px; font-weight: 800; }
 .sheet-body p { margin: 0 0 6px; }
@@ -281,6 +287,8 @@ body.quiz .sheet-head, body.quiz .nav, body.quiz .sheet-body { display: none !im
   #stage { grid-column: 1; grid-row: 2; min-width: 0; min-height: 0; }
   .sheet { grid-column: 2; grid-row: 2; max-height: none; min-height: 0; margin-top: 0; border-radius: 0; box-shadow: var(--side-shadow); padding-top: 12px; }
   .sheet-body { display: block; flex: 1; min-height: 0; }
+  .sheet { touch-action: auto; } .sheet-head { cursor: auto; }
+  .attr-mini { display: none !important; }
   .sheet-handle, #btn-info { display: none; }
   .nav { grid-template-columns: 1fr 1fr; }
   .chip { font-size: 13.5px; }

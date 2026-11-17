@@ -71,6 +71,7 @@ document.querySelector('#app').innerHTML = `
     <div class="dir dir-left" id="dir-left"></div>
     <div class="dir dir-right" id="dir-right"></div>
     <div class="dir-from" id="dir-from"></div>
+    <div class="attr-mini">Model: <a href="${BASE}atribusi.html">BodyParts3D, CC BY 4.0</a></div>
     <div class="toolbar">
       <div class="views" id="views"></div>
       <div class="toggles">
@@ -324,6 +325,7 @@ function renderInfo() {
     if (d.perluDicek?.length) h += `<div class="box check"><strong>⚠️ PERLU DICEK</strong>${d.perluDicek.map((x) => `<div>• ${esc(x)}</div>`).join('')}</div>`
     $('#body').innerHTML = h
   }
+  if (posisiSheet === 'ringkas') requestAnimationFrame(() => aturSheet('ringkas'))
   $('#btn-prev').disabled = cur === 0
   $('#btn-next').disabled = cur === steps.length - 1
   document.querySelectorAll('#daftar .row').forEach((r) => r.classList.toggle('active', +r.dataset.i === cur))
@@ -470,6 +472,7 @@ function renderKuis(pesan = '', pilihan = null) {
     <div class="quiz-opts">${opsi}</div>
     ${pesan ? `<div class="quiz-feedback">${pesan}</div>` : ''}
     ${quiz.dijawab ? `<div class="quiz-actions"><button class="btn btn-ghost" id="kuis-materi">📖 Lihat materi</button><button class="btn btn-primary" id="kuis-lanjut">${terakhir ? 'Lihat hasil 🏁' : 'Soal berikutnya ▶'}</button></div>` : ''}`
+  if (posisiSheet !== 'tutup') requestAnimationFrame(() => aturSheet(posisiSheet === 'buka' ? 'buka' : 'ringkas'))
   $('#kuis-keluar').onclick = keluarKuis
   $('#quiz .quiz-opts').onclick = (e) => {
     const b = e.target.closest('.quiz-opt'); if (!b || quiz.dijawab) return
@@ -483,7 +486,7 @@ function renderKuis(pesan = '', pilihan = null) {
     $('#kuis-materi').onclick = () => {
       const i = steps.findIndex((s) => s.type === 'item' && s.data.key === q.key)
       quiz = null; document.body.classList.remove('quiz'); go(i)
-      document.body.classList.add('sheet-open')
+      aturSheet('buka')
     }
   }
 }
@@ -536,6 +539,25 @@ function buildPickMap() {
 
 const ray = new THREE.Raycaster(), ndc = new THREE.Vector2()
 let down = null
+// Struktur mana yang ada di titik layar (x, y)?
+function pickAt(x, y) {
+  const r = canvas.getBoundingClientRect()
+  ndc.set(((x - r.left) / r.width) * 2 - 1, -((y - r.top) / r.height) * 2 + 1)
+  ray.setFromCamera(ndc, camera)
+  // Semua struktur yang terlihat bisa diketuk, termasuk yang sedang diredupkan.
+  // Pengecualian: tulang, dan dinding jantung yang dibuat transparan di mode "Lihat dalam"
+  // (supaya katup/otot di dalamnya tetap bisa diketuk).
+  const targets = [...meshes.values()].filter((m) => {
+    if (!m.visible || m.userData.part.system === 'skeletal') return false
+    if (dalam && DINDING_JANTUNG.has(m.userData.part.id) && m.material.opacity < 0.5) return false
+    return true
+  })
+  const hits = ray.intersectObjects(targets, false)
+  // Utamakan struktur yang jelas terlihat; struktur redup dipilih kalau tidak ada yang jelas di depannya.
+  const jelas = hits.find((h) => h.object.material.opacity >= 0.5)
+  const hit = jelas && hits[0].object.material.opacity < 0.5 && hits[0].distance < jelas.distance - 0.03 ? hits[0] : jelas || hits[0]
+  return hit || null
+}
 canvas.addEventListener('pointerdown', (e) => { down = { x: e.clientX, y: e.clientY, t: performance.now() } })
 canvas.addEventListener('pointerup', (e) => {
   if (!down || quiz) { down = null; return }
@@ -543,11 +565,7 @@ canvas.addEventListener('pointerup', (e) => {
   const quick = performance.now() - down.t < 500
   down = null
   if (moved > 8 || !quick) return
-  const r = canvas.getBoundingClientRect()
-  ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1)
-  ray.setFromCamera(ndc, camera)
-  const targets = [...meshes.values()].filter((m) => m.visible && m.material.opacity >= 0.2 && m.userData.part.system !== 'skeletal')
-  const hit = ray.intersectObjects(targets, false)[0]
+  const hit = pickAt(e.clientX, e.clientY)
   if (!hit) return
   const id = hit.object.userData.part.id
   if (meshToStep.has(id)) {
@@ -573,9 +591,65 @@ $('#btn-daftar').onclick = () => { $('#drawer').hidden = false; $('#daftar .row.
 $('#btn-tutup').onclick = () => { $('#drawer').hidden = true }
 pasangTombolTema($('#btn-tema'))
 $('#btn-kuis').onclick = () => (quiz ? keluarKuis() : mulaiKuis())
-const toggleSheet = () => document.body.classList.toggle('sheet-open')
+// ---------- panel bawah (HP/tablet tegak): bisa di-drag ke 3 posisi ----------
+// tutup = hanya pegangan · ringkas = nama + tombol · buka = materi lengkap
+const sheet = $('#sheet')
+const layarLebar = window.matchMedia('(min-width: 900px)')
+let posisiSheet = 'ringkas'
+function tinggiSheet(pos) {
+  const hTutup = $('#sheet-handle').offsetHeight + 6
+  if (pos === 'tutup') return hTutup
+  if (pos === 'buka') return Math.round(window.innerHeight * 0.68)
+  // ringkas: tinggi alami semua bagian kecuali isi materi
+  let h = 0
+  for (const el of sheet.children) if (el.id !== 'body' && el.offsetParent !== null) h += el.offsetHeight
+  return Math.min(h + 4, Math.round(window.innerHeight * 0.68))
+}
+function aturSheet(pos, animasi = true) {
+  if (layarLebar.matches) { sheet.style.height = ''; document.body.classList.remove('sheet-tutup'); return }
+  posisiSheet = pos
+  sheet.style.transition = animasi ? 'height 0.25s ease' : 'none'
+  sheet.style.height = `${tinggiSheet(pos)}px`
+  document.body.classList.toggle('sheet-open', pos === 'buka')
+  document.body.classList.toggle('sheet-tutup', pos === 'tutup')
+}
+const toggleSheet = () => aturSheet(posisiSheet === 'buka' ? 'ringkas' : 'buka')
 $('#btn-info').onclick = toggleSheet
-$('#sheet-handle').onclick = toggleSheet
+layarLebar.addEventListener?.('change', () => aturSheet(posisiSheet, false))
+window.addEventListener('resize', () => aturSheet(posisiSheet, false))
+
+let seret = null
+function mulaiSeret(e) {
+  if (layarLebar.matches || e.target.closest('button:not(.sheet-handle), a, summary')) return
+  seret = { y: e.clientY, h: sheet.offsetHeight, t: performance.now(), gerak: false, id: e.pointerId }
+  sheet.style.transition = 'none'
+}
+window.addEventListener('pointermove', (e) => {
+  if (!seret || e.pointerId !== seret.id) return
+  const dy = e.clientY - seret.y
+  if (Math.abs(dy) > 4) seret.gerak = true
+  if (!seret.gerak) return
+  const h = Math.max(tinggiSheet('tutup'), Math.min(tinggiSheet('buka'), seret.h - dy))
+  sheet.style.height = `${h}px`
+  e.preventDefault()
+}, { passive: false })
+window.addEventListener('pointerup', (e) => {
+  if (!seret || e.pointerId !== seret.id) return
+  const s = seret; seret = null
+  if (!s.gerak) { if (e.target.closest('.sheet-handle')) toggleSheet(); else aturSheet(posisiSheet); return }
+  // Pilih posisi terdekat; usapan cepat langsung ke arah usapan.
+  const h = sheet.offsetHeight, v = (e.clientY - s.y) / Math.max(1, performance.now() - s.t)
+  const urutan = ['tutup', 'ringkas', 'buka']
+  let pos = urutan.reduce((a, b) => (Math.abs(tinggiSheet(b) - h) < Math.abs(tinggiSheet(a) - h) ? b : a))
+  if (Math.abs(v) > 0.6) {
+    const i = urutan.indexOf(posisiSheet)
+    pos = v > 0 ? urutan[Math.max(0, i - 1)] : urutan[Math.min(2, i + 1)]
+  }
+  aturSheet(pos)
+})
+$('#sheet-handle').addEventListener('pointerdown', mulaiSeret)
+sheet.querySelector('.sheet-head').addEventListener('pointerdown', mulaiSeret)
+$('#quiz').addEventListener('pointerdown', (e) => { if (!e.target.closest('.quiz-opts, button')) mulaiSeret(e) })
 
 // ---------- start ----------
 // Mode rekam (?video=1): dipakai script pembuat video. Loop otomatis dimatikan; kamera dan render
@@ -619,7 +693,7 @@ async function main() {
     if (start < 0) { const m = hash.match(/^orientasi-(\d+)$/); start = m ? +m[1] - 1 : 0 }
     go(start, { instant: true })
     $('#loading').remove()
-    window.__atlas = { ready: true, meshes, camera, controls, go: (i) => go(i, { instant: true }), kuis: () => mulaiKuis(), soal: () => quiz && { kunci: quiz.q.key, opsi: quiz.opsi.map((o) => o.key) }, steps: () => steps.map((s) => (s.type === 'item' ? s.data.key : `orientasi-${s.i + 1}`)), cur: () => cur, pose: () => ({ pos: camera.position.toArray(), target: controls.target.toArray() }), renderAt, meta: () => meta }
+    window.__atlas = { ready: true, meshes, camera, controls, go: (i) => go(i, { instant: true }), kuis: () => mulaiKuis(), soal: () => quiz && { kunci: quiz.q.key, opsi: quiz.opsi.map((o) => o.key) }, steps: () => steps.map((s) => (s.type === 'item' ? s.data.key : `orientasi-${s.i + 1}`)), cur: () => cur, pose: () => ({ pos: camera.position.toArray(), target: controls.target.toArray() }), renderAt, meta: () => meta, pick: (x, y) => pickAt(x, y)?.object.userData.part.id ?? null }
   } catch (err) {
     console.error(err)
     $('#loading').innerHTML = `<div class="loading-emoji">😵</div><div class="loading-title">Waduh, gagal memuat</div><div class="loading-tip">${esc(err.message)}. Coba muat ulang halaman.</div><a class="btn btn-primary" href="${BASE}">Kembali</a>`
