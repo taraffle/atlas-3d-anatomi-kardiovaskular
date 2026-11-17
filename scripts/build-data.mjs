@@ -315,7 +315,7 @@ function buildPraktikum(file) {
   for (const it of items) if (it.pin && !landmarks[it.pin]) landmarks[it.pin] = LANDMARKS[it.pin]().map((x) => +x.toFixed(5))
 
   const meta = {
-    id: content.id, judul: content.judul, topik: content.topik,
+    id: content.id, judul: content.judul, topik: content.topik, ikon: content.ikon || '📘',
     quant: { min, step }, parts, landmarks, bones,
     orientasi: content.orientasi, grup: content.grup, hanyaSaatDipilih: content.hanyaSaatDipilih || [],
     sumber: { paket: '@dagno/anatomy-model@0.1.2', model: atlas.version },
@@ -326,7 +326,7 @@ function buildPraktikum(file) {
   console.log(`  ${parts.length} mesh (${bones.length} tulang), ${tri.toLocaleString('id')} segitiga`)
   console.log(`  biner: ${(raw.length / 1e6).toFixed(2)} MB → gzip ${(gz.length / 1e6).toFixed(2)} MB`)
   if (gz.length > 2e6) console.warn('  PERINGATAN: lebih dari 2 MB')
-  return { id: content.id, judul: content.judul, topik: content.topik, jumlahStruktur: items.length, ukuranMB: +(gz.length / 1e6).toFixed(2) }
+  return { id: content.id, judul: content.judul, topik: content.topik, ikon: content.ikon || '📘', warna: content.warna || '#ff7a59', warnaLatar: content.warnaLatar || '#fff1e4', jumlahStruktur: items.length, ukuranMB: +(gz.length / 1e6).toFixed(2) }
 }
 
 const files = readdirSync(join(ROOT, 'content')).filter((f) => /^praktikum-\d+\.json$/.test(f)).sort((a, b) => parseInt(a.match(/\d+/)) - parseInt(b.match(/\d+/)))

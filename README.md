@@ -52,7 +52,7 @@ Arah sumbu model: +x = kiri pasien, +y = kepala, +z = depan.
 
 ## Menambah praktikum baru
 
-1. **Salin** file yang paling mirip, misalnya `content/praktikum-3.json` → `content/praktikum-4.json`. Ganti `id` menjadi `4`, lalu ubah `judul` dan `topik`.
+1. **Salin** file yang paling mirip, misalnya `content/praktikum-3.json` → `content/praktikum-4.json`. Ganti `id` menjadi `4`, lalu ubah `judul`, `topik`, dan tampilan kartunya: `ikon` (satu emoji, misal `"🫁"`), `warna` (warna utama, misal `"#f59f00"`), dan `warnaLatar` (versi pucatnya, misal `"#fff3d6"`).
 2. **Cari ID mesh** untuk struktur yang kamu perlukan. Jalankan perintah ini (ganti kata kuncinya):
    ```bash
    node -e "const a=require('@dagno/anatomy-model/model/atlas.json');for(const p of a.parts)if(/renal/i.test(p.name))console.log(p.id,p.system,p.name)"
@@ -71,6 +71,11 @@ Arah sumbu model: +x = kiri pasien, +y = kepala, +z = depan.
 7. **Upload**: commit lalu push ke GitHub. Situs akan ter-update otomatis dalam 1–2 menit (lihat tab *Actions* di GitHub).
 
 Praktikum baru otomatis muncul di halaman utama. Tidak perlu mengubah kode.
+
+## Fitur belajar
+
+- **Progres**: struktur yang sudah dibuka diberi tanda ✓, disimpan di browser masing-masing pengguna (tidak dikirim ke mana pun).
+- **Kuis 🎯**: 10 soal acak dari struktur berstatus `"ada"`. Pengecoh diutamakan dari subtopik yang sama. Struktur baru otomatis ikut masuk kuis.
 
 ## Deploy
 

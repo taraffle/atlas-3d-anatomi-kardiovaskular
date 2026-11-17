@@ -2,6 +2,9 @@
   "id": 2,
   "judul": "Praktikum 2: Pembuluh Darah Leher & Ekstremitas Superior",
   "topik": "Pembuluh darah di regio leher dan ekstremitas atas (ditampilkan sisi kanan pasien)",
+  "ikon": "💪",
+  "warna": "#4c8dff",
+  "warnaLatar": "#e3eeff",
   "sisi": "kanan",
   "tulangPola": [
     "^Right (clavicle|scapula|humerus|radius|ulna|scaphoid|lunate|triquetral|pisiform|trapezium|trapezoid|capitate|hamate)$",

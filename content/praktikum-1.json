@@ -2,6 +2,9 @@
   "id": 1,
   "judul": "Praktikum 1: Jantung",
   "topik": "Jantung in situ dan jantung lepasan, pembuluh-pembuluh besar di rongga toraks, abdomen, dan pelvis",
+  "ikon": "🫀",
+  "warna": "#ff6b6b",
+  "warnaLatar": "#ffe5e5",
   "tulangPola": [
     "^(Left|Right) (first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth) rib$",
     "^(Left|Right) \\w+ costal cartilage$",

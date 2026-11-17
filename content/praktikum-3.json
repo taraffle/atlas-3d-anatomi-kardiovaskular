@@ -2,6 +2,9 @@
   "id": 3,
   "judul": "Praktikum 3: Pembuluh Darah Ekstremitas Inferior",
   "topik": "Pembuluh darah di ekstremitas bawah (ditampilkan sisi kanan pasien)",
+  "ikon": "🦵",
+  "warna": "#14b8a6",
+  "warnaLatar": "#dcf7f3",
   "sisi": "kanan",
   "tulangPola": [
     "^Right (hip bone|femur|patella|tibia|fibula|talus|calcaneus|cuboid bone)$",

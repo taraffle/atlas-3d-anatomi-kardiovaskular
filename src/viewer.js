@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js'
 import { loadPraktikum } from './data.js'
 import { attributionLine } from './attribution.js'
+import { progres } from './progress.js'
 
 const BASE = import.meta.env.BASE_URL
 const params = new URLSearchParams(location.search)
@@ -56,7 +57,9 @@ document.querySelector('#app').innerHTML = `
   <header class="topbar">
     <a class="icon-btn" href="${BASE}" aria-label="Kembali ke daftar praktikum">←</a>
     <div class="title"><div id="judul">Memuat…</div><div id="counter" class="muted"></div></div>
+    <button class="icon-btn btn-kuis" id="btn-kuis" aria-label="Mode kuis">🎯 Kuis</button>
     <button class="icon-btn" id="btn-daftar" aria-label="Daftar struktur">☰</button>
+    <div class="top-progress"><span id="top-progress"></span></div>
   </header>
   <div id="stage">
     <canvas id="c"></canvas>
@@ -74,12 +77,13 @@ document.querySelector('#app').innerHTML = `
       </div>
     </div>
     <div id="toast" class="toast" hidden></div>
-    <div id="loading" class="loading"><div>Memuat model 3D…</div><div class="bar"><span id="bar"></span></div><div class="muted small" id="loading-size"></div></div>
+    <div id="loading" class="loading"><div class="loading-emoji" id="loading-emoji">🩺</div><div class="loading-title">Menyiapkan model 3D…</div><div class="bar"><span id="bar"></span></div><div class="loading-tip" id="loading-tip"></div></div>
   </div>
   <section class="sheet" id="sheet">
     <button class="sheet-handle" id="sheet-handle" aria-label="Buka/tutup info"><span></span></button>
+    <div id="quiz"></div>
     <div class="sheet-head">
-      <div class="muted small" id="grup"></div>
+      <span class="grup-chip" id="grup"></span>
       <h1 id="latin"></h1>
       <div id="indo" class="muted"></div>
       <div id="badge"></div>
@@ -93,16 +97,25 @@ document.querySelector('#app').innerHTML = `
     <footer class="attr small">${attributionLine(BASE)}</footer>
   </section>
   <div class="drawer" id="drawer" hidden>
-    <div class="drawer-head"><strong>Daftar struktur</strong><button class="icon-btn" id="btn-tutup">✕</button></div>
+    <div class="drawer-head"><div><strong>Daftar struktur</strong><div class="drawer-progress" id="drawer-progress"></div></div><button class="icon-btn" id="btn-tutup">✕</button></div>
     <div class="drawer-body" id="daftar"></div>
   </div>
+  <div class="celebrate" id="celebrate" hidden><div class="celebrate-card" id="celebrate-card"></div></div>
 `
+const TIPS = [
+  '💡 Ketuk struktur mana pun di model untuk langsung membuka materinya.',
+  '💡 Coba tombol "Tulang: tembus" untuk membayangkan letak organ di cadaver.',
+  '💡 Selesai menelusuri? Uji dirimu dengan 🎯 Kuis!',
+  '💡 Label "Kiri pasien" di tepi layar ikut berputar bersama model. Nggak bakal ketukar kiri-kanan lagi.',
+  '💡 Jawaban daftar tilik disembunyikan dulu. Coba jawab sendiri sebelum membuka.',
+]
+document.querySelector('#loading-tip').textContent = TIPS[Math.floor(Math.random() * TIPS.length)]
 
 // ---------- three.js ----------
 const canvas = $('#c'), stage = $('#stage')
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false })
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true })
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-renderer.setClearColor(0x161b22)
+renderer.setClearColor(0x000000, 0)
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(35, 1, 0.002, 20)
 const labelRenderer = new CSS2DRenderer({ element: $('#labels') })
@@ -112,7 +125,7 @@ controls.dampingFactor = 0.12
 controls.rotateSpeed = 0.8
 controls.minDistance = 0.02
 controls.maxDistance = 4
-scene.add(new THREE.HemisphereLight(0xffffff, 0x404050, 1.6))
+scene.add(new THREE.HemisphereLight(0xffffff, 0x8890a0, 1.5))
 const headlight = new THREE.DirectionalLight(0xffffff, 1.8)
 camera.add(headlight); headlight.position.set(0.3, 0.4, 1)
 scene.add(camera)
@@ -135,6 +148,11 @@ new ResizeObserver(resize).observe(stage)
 let meta, meshes = new Map(), steps = [], cur = 0
 let boneState = 'hilang', dalam = false
 let anim = null
+let quiz = null // { pool, urutan, idx, q, opsi, dijawab, benar, streak }
+const PANJANG_KUIS = 10
+
+// Yang sedang ditampilkan: soal kuis (kalau mode kuis) atau langkah biasa.
+const view = () => (quiz ? { type: 'item', data: quiz.q, grup: 'Kuis' } : steps[cur])
 
 function buildSteps() {
   steps = []
@@ -150,7 +168,7 @@ function itemSets(step) {
 
 // Satu fungsi yang menentukan tampilan SEMUA mesh. Selalu boolean untuk .visible.
 function applyState() {
-  const step = steps[cur]
+  const step = view()
   const { sel, ctx } = itemSets(step)
   const d = step.data
   const isOrient = step.type === 'orientasi'
@@ -267,10 +285,15 @@ function updateDirLabels() {
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
 const para = (s) => esc(s).split('\n').map((l) => `<div>${l}</div>`).join('')
 const BADGE = {
-  ada: ['ok', 'Ada di model 3D'],
-  terkait: ['warn', 'Ditunjukkan lewat struktur terkait'],
-  'tidak-ada': ['none', 'Tidak ada di model 3D'],
+  ada: ['ok', '✅ Ada di model 3D'],
+  terkait: ['warn', '🔗 Lewat struktur terkait'],
+  'tidak-ada': ['none', '📄 Tidak ada di model 3D (teks saja)'],
 }
+const LEGENDA = `<div class="legend-warna"><span><i style="background:#ffc21a"></i>terpilih</span><span><i style="background:#c8373b"></i>arteri</span><span><i style="background:#3c63c4"></i>vena</span><span><i style="background:#e6dfcf;border:1px solid #cbbfa8"></i>tulang</span></div>`
+const BENAR = ['Mantap! 🎉', 'Tepat sekali! 💯', 'Keren, calon dokter! 🩺', 'Yes! Kamu hafal ini 😎', 'Betul! Lanjut terus 🚀']
+const SALAH = ['Hampir! 💪', 'Belum tepat, tapi gapapa 🙂', 'Oops! Ingat-ingat lagi ya 🤔']
+const acak = (arr) => arr[Math.floor(Math.random() * arr.length)]
+function kocok(arr) { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]] } return a }
 
 function renderInfo() {
   const step = steps[cur], d = step.data
@@ -279,23 +302,24 @@ function renderInfo() {
   if (step.type === 'orientasi') {
     $('#latin').textContent = d.judul
     $('#indo').textContent = `Orientasi ${step.i + 1} dari ${meta.orientasi.length}`
-    $('#badge').innerHTML = '<span class="badge info">Mode orientasi</span>'
-    $('#body').innerHTML = `<p>${para(d.teks)}</p><p class="muted small">Kuning = struktur terpilih · merah = arteri · biru = vena · krem = tulang.</p>`
+    $('#badge').innerHTML = `<span class="badge info">🧭 ${step.i === 0 ? 'Yuk kenalan dulu dengan letaknya' : 'Orientasi'}</span>`
+    $('#body').innerHTML = `<p>${para(d.teks)}</p>${LEGENDA}`
   } else {
     const [cls, txt] = BADGE[d.status]
     $('#latin').textContent = d.latin
     $('#indo').textContent = d.indonesia || ''
-    $('#badge').innerHTML = `<span class="badge ${cls}">${txt}</span>`
+    const sudah = seen.has(d.key) ? '<span class="badge seen">✓ sudah dilihat</span>' : ''
+    $('#badge').innerHTML = `<span class="badge ${cls}">${txt}</span>${sudah}`
     let h = ''
-    if (d.catatanModel) h += `<div class="box note"><strong>Tentang model 3D</strong>${para(d.catatanModel)}</div>`
-    if (d.ringkas) h += `<h3>Penjelasan</h3><p>${para(d.ringkas)}</p>`
-    if (d.pertanyaan) h += `<div class="box q"><strong>Daftar tilik no. ${esc(d.pertanyaan.no)}</strong><div>${esc(d.pertanyaan.teks)}</div>
-      <details><summary>Lihat jawaban</summary>${para(d.pertanyaan.jawaban)}</details></div>`
-    if (d.klinis) h += `<h3>Makna klinis</h3><p>${para(d.klinis)}</p>`
-    if (d.asalNama) h += `<h3>Asal-usul nama</h3><p>${para(d.asalNama)}</p>`
-    if (d.funFact) h += `<h3>Tahukah kamu?</h3><p>${para(d.funFact)}</p>`
-    if (d.jembatanKeledai) h += `<div class="box mnemo"><strong>Jembatan keledai</strong>${para(d.jembatanKeledai)}</div>`
-    if (d.perluDicek?.length) h += `<div class="box check"><strong>PERLU DICEK</strong>${d.perluDicek.map((x) => `<div>• ${esc(x)}</div>`).join('')}</div>`
+    if (d.ringkas) h += `<h3>📖 Penjelasan</h3><p>${para(d.ringkas)}</p>`
+    if (d.pertanyaan) h += `<div class="box q"><strong>📝 Daftar tilik no. ${esc(d.pertanyaan.no)}</strong><div>${esc(d.pertanyaan.teks)}</div>
+      <details><summary>Coba jawab dulu, lalu lihat jawaban 👀</summary>${para(d.pertanyaan.jawaban)}</details></div>`
+    if (d.jembatanKeledai) h += `<div class="box mnemo"><strong>🧠 Jembatan keledai</strong>${para(d.jembatanKeledai)}</div>`
+    if (d.klinis) h += `<div class="box klinis"><strong>🏥 Makna klinis</strong>${para(d.klinis)}</div>`
+    if (d.funFact) h += `<h3>💡 Tahukah kamu?</h3><p>${para(d.funFact)}</p>`
+    if (d.asalNama) h += `<h3>🔤 Asal-usul nama</h3><p>${para(d.asalNama)}</p>`
+    if (d.catatanModel) h += `<div class="box note"><strong>ℹ️ Tentang model 3D</strong>${para(d.catatanModel)}</div>`
+    if (d.perluDicek?.length) h += `<div class="box check"><strong>⚠️ PERLU DICEK</strong>${d.perluDicek.map((x) => `<div>• ${esc(x)}</div>`).join('')}</div>`
     $('#body').innerHTML = h
   }
   $('#btn-prev').disabled = cur === 0
@@ -328,8 +352,151 @@ function go(i, { instant = false, keepView = false } = {}) {
     const { focus } = itemSets(step)
     flyTo(d.kamera?.fokusPin && pin ? [] : focus, d.kamera?.arah || 'depan', pin, instant, d.kamera?.zoom || 1)
   }
+  catatDilihat(step)
   renderInfo()
   history.replaceState(null, '', `?p=${PID}#${step.type === 'item' ? d.key : 'orientasi-' + (step.i + 1)}`)
+}
+
+// ---------- progres & perayaan ----------
+let seen = new Set()
+const semuaItem = () => steps.filter((s) => s.type === 'item')
+function updateProgress() {
+  const total = semuaItem().length, n = semuaItem().filter((s) => seen.has(s.data.key)).length
+  $('#top-progress').style.width = `${(n / total) * 100}%`
+  $('#drawer-progress').textContent = `${n} dari ${total} struktur sudah kamu lihat ${n === total ? '🏆' : '✨'}`
+  document.querySelectorAll('#daftar .row').forEach((r) => {
+    const s = steps[+r.dataset.i]
+    r.querySelector('.seen-mark').textContent = s.type === 'item' && seen.has(s.data.key) ? '✓' : ''
+  })
+}
+function catatDilihat(step) {
+  if (step.type !== 'item') return
+  if (!progres.tandaiDilihat(PID, step.data.key)) return
+  seen.add(step.data.key)
+  updateProgress()
+  const grupItems = semuaItem().filter((s) => s.grup === step.grup)
+  const total = semuaItem()
+  if (total.every((s) => seen.has(s.data.key))) {
+    if (progres.tandaiSelesai(PID)) setTimeout(() => rayakan(), 500)
+  } else if (grupItems.every((s) => seen.has(s.data.key))) {
+    toast(`✨ Subtopik "${step.grup}" selesai!`)
+  }
+}
+function konfeti() {
+  const em = ['🎉', '✨', '🫀', '⭐', '💖', '🩺']
+  for (let i = 0; i < 26; i++) {
+    const el = document.createElement('div')
+    el.className = 'confetti'; el.textContent = acak(em)
+    el.style.left = `${Math.random() * 100}vw`
+    el.style.animationDuration = `${1.8 + Math.random() * 1.6}s`
+    el.style.animationDelay = `${Math.random() * 0.4}s`
+    document.body.appendChild(el)
+    setTimeout(() => el.remove(), 4000)
+  }
+}
+function tampilkanKartu(html, tombol) {
+  $('#celebrate-card').innerHTML = html + tombol.map((t, i) => `<button class="btn ${i === 0 ? 'btn-primary' : 'btn-ghost'}" data-i="${i}">${t.label}</button>`).join('')
+  $('#celebrate').hidden = false
+  $('#celebrate-card').onclick = (e) => {
+    const b = e.target.closest('[data-i]'); if (!b) return
+    $('#celebrate').hidden = true; tombol[+b.dataset.i].aksi?.()
+  }
+}
+function rayakan() {
+  konfeti()
+  tampilkanKartu(`<div class="celebrate-emoji">🎉</div><h2>Hebat!</h2><p>Kamu sudah menelusuri <b>semua ${semuaItem().length} struktur</b> ${esc(meta.judul)}. Sekarang uji ingatanmu, yuk!</p>`,
+    [{ label: '🎯 Coba kuis', aksi: mulaiKuis }, { label: 'Nanti saja' }])
+}
+
+// ---------- kuis ----------
+function buatPool() {
+  // Struktur yang benar-benar ada mesh-nya; satu entri per kumpulan mesh (hindari soal kembar).
+  const tanda = new Set(), pool = []
+  for (const s of semuaItem()) {
+    const d = s.data
+    if (d.status !== 'ada' || !d.mesh.length || d.rongga || d.warnaAsli) continue
+    const sig = [...d.mesh].sort().join(',')
+    if (tanda.has(sig)) continue
+    tanda.add(sig); pool.push({ ...d, _grup: s.grup })
+  }
+  return pool
+}
+function mulaiKuis() {
+  const pool = buatPool()
+  if (pool.length < 4) { toast('Struktur di praktikum ini belum cukup untuk kuis'); return }
+  quiz = { pool, urutan: kocok(pool).slice(0, Math.min(PANJANG_KUIS, pool.length)), idx: 0, benar: 0, streak: 0 }
+  document.body.classList.add('quiz')
+  $('#drawer').hidden = true
+  soalKuis()
+}
+function keluarKuis() {
+  quiz = null
+  document.body.classList.remove('quiz')
+  go(cur)
+}
+// Nama di pilihan kuis: tanpa keterangan dalam kurung, mis. "(dari ventrikel kanan)".
+const namaKuis = (x) => x.latin.replace(/\s*\([^)]*\)\s*$/, '')
+function soalKuis() {
+  const q = quiz.urutan[quiz.idx]
+  const nama = (x) => namaKuis(x)
+  const lain = kocok(quiz.pool.filter((x) => x.key !== q.key && nama(x) !== nama(q)))
+  const sama = lain.filter((x) => x._grup === q._grup), beda = lain.filter((x) => x._grup !== q._grup)
+  const pengecoh = [...sama, ...beda].slice(0, 3)
+  quiz.q = q; quiz.dijawab = false
+  quiz.opsi = kocok([q, ...pengecoh])
+  boneState = q.tulang || 'hilang'
+  dalam = q.mode === 'dalam'
+  applyState()
+  if (pinObj) { scene.remove(pinObj); pinObj = null }
+  flyTo(q.mesh, q.kamera?.arah || 'depan', null, false, q.kamera?.zoom || 1)
+  renderKuis()
+}
+function renderKuis(pesan = '', pilihan = null) {
+  const q = quiz.q
+  const opsi = quiz.opsi.map((o, i) => {
+    let cls = ''
+    if (quiz.dijawab && o.key === q.key) cls = 'benar'
+    else if (quiz.dijawab && i === pilihan) cls = 'salah'
+    return `<button class="quiz-opt ${cls}" data-i="${i}" ${quiz.dijawab ? 'disabled' : ''}>${esc(namaKuis(o))}</button>`
+  }).join('')
+  const terakhir = quiz.idx === quiz.urutan.length - 1
+  $('#quiz').innerHTML = `
+    <div class="quiz-top"><span class="quiz-score">🎯 Soal ${quiz.idx + 1}/${quiz.urutan.length} · ⭐ ${quiz.benar}${quiz.streak >= 2 ? ` <span class="quiz-streak">🔥 ${quiz.streak} beruntun</span>` : ''}</span>
+      <button class="btn btn-ghost" id="kuis-keluar" style="padding:6px 10px">✕ Keluar</button></div>
+    <div class="quiz-q">Struktur <span class="hl">kuning</span> ini namanya apa?</div>
+    <div class="quiz-hint">Putar dan zoom modelnya dulu kalau perlu 🔍</div>
+    <div class="quiz-opts">${opsi}</div>
+    ${pesan ? `<div class="quiz-feedback">${pesan}</div>` : ''}
+    ${quiz.dijawab ? `<div class="quiz-actions"><button class="btn btn-ghost" id="kuis-materi">📖 Lihat materi</button><button class="btn btn-primary" id="kuis-lanjut">${terakhir ? 'Lihat hasil 🏁' : 'Soal berikutnya ▶'}</button></div>` : ''}`
+  $('#kuis-keluar').onclick = keluarKuis
+  $('#quiz .quiz-opts').onclick = (e) => {
+    const b = e.target.closest('.quiz-opt'); if (!b || quiz.dijawab) return
+    const i = +b.dataset.i, ok = quiz.opsi[i].key === q.key
+    quiz.dijawab = true
+    if (ok) { quiz.benar++; quiz.streak++ } else quiz.streak = 0
+    renderKuis(ok ? acak(BENAR) : `${acak(SALAH)} Jawabannya <b>${esc(namaKuis(q))}</b>.`, i)
+  }
+  if (quiz.dijawab) {
+    $('#kuis-lanjut').onclick = () => { if (terakhir) hasilKuis(); else { quiz.idx++; soalKuis() } }
+    $('#kuis-materi').onclick = () => {
+      const i = steps.findIndex((s) => s.type === 'item' && s.data.key === q.key)
+      quiz = null; document.body.classList.remove('quiz'); go(i)
+      document.body.classList.add('sheet-open')
+    }
+  }
+}
+function hasilKuis() {
+  const n = quiz.benar, total = quiz.urutan.length
+  const rekor = progres.simpanSkorKuis(PID, n)
+  const r = n / total
+  const [emoji, judul, teks] = r === 1 ? ['🏆', 'Sempurna!', 'Semua benar. Kamu siap praktikum!']
+    : r >= 0.8 ? ['🌟', 'Hebat banget!', 'Tinggal sedikit lagi menuju sempurna.']
+    : r >= 0.5 ? ['💪', 'Lumayan!', 'Ulangi sekali lagi biar makin lancar.']
+    : ['📚', 'Gapapa, namanya juga belajar!', 'Telusuri lagi strukturnya, lalu coba lagi.']
+  if (r >= 0.8) konfeti()
+  quiz = null; document.body.classList.remove('quiz'); go(cur)
+  tampilkanKartu(`<div class="celebrate-emoji">${emoji}</div><h2>${judul}</h2><p>Skor kamu <b>${n} dari ${total}</b>${rekor ? ' (rekor baru! 🎊)' : ''}. ${teks}</p>`,
+    [{ label: '🔁 Main lagi', aksi: mulaiKuis }, { label: 'Kembali belajar' }])
 }
 
 function buildList() {
@@ -338,9 +505,9 @@ function buildList() {
     if (s.grup !== lastGrup) { h += `<div class="grp">${esc(s.grup)}</div>`; lastGrup = s.grup }
     const icon = s.type === 'orientasi' ? '🧭' : { ada: '●', terkait: '◐', 'tidak-ada': '○' }[s.data.status]
     const name = s.type === 'orientasi' ? s.data.judul : s.data.latin
-    h += `<button class="row" data-i="${i}"><span class="st st-${s.type === 'orientasi' ? 'o' : s.data.status}">${icon}</span><span>${esc(name)}</span></button>`
+    h += `<button class="row" data-i="${i}"><span class="st st-${s.type === 'orientasi' ? 'o' : s.data.status}">${icon}</span><span>${esc(name)}</span><span class="seen-mark"></span></button>`
   })
-  h += `<p class="muted small legend">● ada di model · ◐ lewat struktur terkait · ○ tidak ada di model (hanya teks)</p>`
+  h += `<p class="muted small legend">● ada di model · ◐ lewat struktur terkait · ○ tidak ada di model (hanya teks) · ✓ sudah kamu lihat</p>`
   $('#daftar').innerHTML = h
   $('#daftar').onclick = (e) => {
     const b = e.target.closest('.row'); if (!b) return
@@ -369,7 +536,7 @@ const ray = new THREE.Raycaster(), ndc = new THREE.Vector2()
 let down = null
 canvas.addEventListener('pointerdown', (e) => { down = { x: e.clientX, y: e.clientY, t: performance.now() } })
 canvas.addEventListener('pointerup', (e) => {
-  if (!down) return
+  if (!down || quiz) { down = null; return }
   const moved = Math.hypot(e.clientX - down.x, e.clientY - down.y)
   const quick = performance.now() - down.t < 500
   down = null
@@ -385,14 +552,15 @@ canvas.addEventListener('pointerup', (e) => {
     const i = meshToStep.get(id)
     if (i !== cur) go(i)
   } else {
-    toast(`${hit.object.userData.part.name} (tidak ada di daftar tilik)`)
+    toast(`🔎 ${hit.object.userData.part.name} (tidak ada di daftar tilik)`)
   }
 })
 
 $('#views').innerHTML = '<span class="views-lbl">Lihat dari</span>' + Object.keys(ARAH).map((k) => `<button class="chip" data-arah="${k}" title="${ARAH_TITLE[k]}" aria-label="${ARAH_TITLE[k]}">${ARAH_LABEL[k]}</button>`).join('')
 $('#views').onclick = (e) => {
   const b = e.target.closest('[data-arah]'); if (!b) return
-  const step = steps[cur]
+  const step = view()
+  if (quiz) { flyTo(quiz.q.mesh, b.dataset.arah, null, false, quiz.q.kamera?.zoom || 1); return }
   flyTo(step.data.kamera?.fokusPin && pinObj ? [] : itemSets(step).focus, b.dataset.arah, pinObj?.position, false, step.data.kamera?.zoom || 1)
 }
 $('#btn-tulang').onclick = () => { boneState = TULANG[(TULANG.indexOf(boneState) + 1) % 3]; applyState() }
@@ -401,6 +569,7 @@ $('#btn-prev').onclick = () => go(cur - 1)
 $('#btn-next').onclick = () => go(cur + 1)
 $('#btn-daftar').onclick = () => { $('#drawer').hidden = false; $('#daftar .row.active')?.scrollIntoView({ block: 'center' }) }
 $('#btn-tutup').onclick = () => { $('#drawer').hidden = true }
+$('#btn-kuis').onclick = () => (quiz ? keluarKuis() : mulaiKuis())
 const toggleSheet = () => document.body.classList.toggle('sheet-open')
 $('#btn-info').onclick = toggleSheet
 $('#sheet-handle').onclick = toggleSheet
@@ -427,17 +596,18 @@ async function main() {
       meshes.set(p.id, m); scene.add(m)
     }
     document.title = `${meta.judul} · Atlas 3D Praktikum Anatomi`
-    $('#judul').textContent = meta.judul
-    buildSteps(); buildList(); buildPickMap()
+    $('#judul').textContent = `${meta.ikon || ''} ${meta.judul}`.trim()
+    seen = progres.get(PID).seen
+    buildSteps(); buildList(); buildPickMap(); updateProgress()
     const hash = decodeURIComponent(location.hash.slice(1))
     let start = steps.findIndex((s) => s.type === 'item' && s.data.key === hash)
     if (start < 0) { const m = hash.match(/^orientasi-(\d+)$/); start = m ? +m[1] - 1 : 0 }
     go(start, { instant: true })
     $('#loading').remove()
-    window.__atlas = { ready: true, meshes, camera, controls, go: (i) => go(i, { instant: true }), steps: () => steps.map((s) => (s.type === 'item' ? s.data.key : `orientasi-${s.i + 1}`)), cur: () => cur }
+    window.__atlas = { ready: true, meshes, camera, controls, go: (i) => go(i, { instant: true }), kuis: () => mulaiKuis(), soal: () => quiz && { kunci: quiz.q.key, opsi: quiz.opsi.map((o) => o.key) }, steps: () => steps.map((s) => (s.type === 'item' ? s.data.key : `orientasi-${s.i + 1}`)), cur: () => cur }
   } catch (err) {
     console.error(err)
-    $('#loading').innerHTML = `<div>Gagal memuat: ${esc(err.message)}</div><a class="btn" href="${BASE}">Kembali</a>`
+    $('#loading').innerHTML = `<div class="loading-emoji">😵</div><div class="loading-title">Waduh, gagal memuat</div><div class="loading-tip">${esc(err.message)}. Coba muat ulang halaman.</div><a class="btn btn-primary" href="${BASE}">Kembali</a>`
   }
   requestAnimationFrame(loop)
 }
