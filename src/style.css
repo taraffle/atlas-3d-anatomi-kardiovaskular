@@ -292,3 +292,8 @@ body.quiz .sheet-head, body.quiz .nav, body.quiz .sheet-body { display: none !im
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 [data-theme="dark"] .card-icon { background: var(--panel-2); background: color-mix(in srgb, var(--card-color) 22%, var(--panel)); }
+
+/* Mode rekam video: sembunyikan UI, model memenuhi layar. */
+body.video .topbar, body.video .toolbar, body.video .sheet, body.video .dir-from, body.video .toast { display: none !important; }
+body.video #stage { grid-column: 1 / -1; grid-row: 1 / -1; }
+body.video .dir-top { top: 12px; }

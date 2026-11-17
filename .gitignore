@@ -2,3 +2,4 @@ node_modules/
 dist/
 *.pdf
 public/data/
+tools/video/work/

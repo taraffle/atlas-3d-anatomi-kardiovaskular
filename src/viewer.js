@@ -578,7 +578,19 @@ $('#btn-info').onclick = toggleSheet
 $('#sheet-handle').onclick = toggleSheet
 
 // ---------- start ----------
+// Mode rekam (?video=1): dipakai script pembuat video. Loop otomatis dimatikan; kamera dan render
+// dikendalikan frame per frame lewat window.__atlas.renderAt(). Tidak memengaruhi pengguna biasa.
+const VIDEO = params.get('video') === '1'
+if (VIDEO) document.body.classList.add('video')
+function renderAt(pos, target) {
+  camera.position.set(...pos); controls.target.set(...target); camera.lookAt(...target)
+  updateDirLabels()
+  renderer.render(scene, camera)
+  labelRenderer.render(scene, camera)
+}
+
 function loop(now) {
+  if (VIDEO) return
   stepAnim(now)
   controls.update()
   updateDirLabels()
@@ -607,7 +619,7 @@ async function main() {
     if (start < 0) { const m = hash.match(/^orientasi-(\d+)$/); start = m ? +m[1] - 1 : 0 }
     go(start, { instant: true })
     $('#loading').remove()
-    window.__atlas = { ready: true, meshes, camera, controls, go: (i) => go(i, { instant: true }), kuis: () => mulaiKuis(), soal: () => quiz && { kunci: quiz.q.key, opsi: quiz.opsi.map((o) => o.key) }, steps: () => steps.map((s) => (s.type === 'item' ? s.data.key : `orientasi-${s.i + 1}`)), cur: () => cur }
+    window.__atlas = { ready: true, meshes, camera, controls, go: (i) => go(i, { instant: true }), kuis: () => mulaiKuis(), soal: () => quiz && { kunci: quiz.q.key, opsi: quiz.opsi.map((o) => o.key) }, steps: () => steps.map((s) => (s.type === 'item' ? s.data.key : `orientasi-${s.i + 1}`)), cur: () => cur, pose: () => ({ pos: camera.position.toArray(), target: controls.target.toArray() }), renderAt, meta: () => meta }
   } catch (err) {
     console.error(err)
     $('#loading').innerHTML = `<div class="loading-emoji">😵</div><div class="loading-title">Waduh, gagal memuat</div><div class="loading-tip">${esc(err.message)}. Coba muat ulang halaman.</div><a class="btn btn-primary" href="${BASE}">Kembali</a>`
