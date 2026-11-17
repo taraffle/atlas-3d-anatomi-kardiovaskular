@@ -119,13 +119,18 @@ body.sheet-open #btn-info { border-color: var(--accent); color: var(--accent); }
 .legend { padding: 12px 8px; }
 
 @media (min-width: 900px) {
-  body.viewer { flex-direction: row; flex-wrap: wrap; }
-  .topbar { width: 100%; }
-  #stage { height: calc(100dvh - 53px); }
-  .sheet { width: 400px; max-height: none; height: calc(100dvh - 53px); border-top: 0; border-left: 1px solid var(--line); }
-  .sheet-body { display: block; flex: 1; }
+  /* Layar lebar (laptop, iPad miring): model 3D di kiri, panel info di kanan. */
+  body.viewer { display: grid; grid-template-columns: minmax(0, 1fr) 380px; grid-template-rows: auto minmax(0, 1fr); }
+  .topbar { grid-column: 1 / -1; }
+  #stage { grid-column: 1; grid-row: 2; min-width: 0; min-height: 0; }
+  .sheet { grid-column: 2; grid-row: 2; max-height: none; min-height: 0; border-top: 0; border-left: 1px solid var(--line); }
+  .sheet-body { display: block; flex: 1; min-height: 0; }
   .sheet-handle, #btn-info { display: none; }
   .nav { grid-template-columns: 1fr 1fr; }
+  .views .chip, .chip { font-size: 13.5px; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover, .btn:hover, .row:hover, .icon-btn:hover { filter: brightness(1.15); }
 }
 .views-lbl { flex: none; align-self: center; font-size: 11px; color: var(--muted); padding: 0 2px; }
 .views .chip { padding: 6px 9px; }

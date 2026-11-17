@@ -7,14 +7,15 @@ app.innerHTML = `
   <main class="home-wrap">
     <header class="home-head">
       <h1>Atlas 3D Praktikum Anatomi</h1>
-      <p class="muted">Modul Kardiovaskular. Putar, perbesar, dan telusuri struktur yang ada di daftar tilik, langsung dari HP.</p>
+      <p class="muted">Modul Kardiovaskular. Putar, perbesar, dan telusuri struktur yang ada di daftar tilik, dari HP, tablet, atau komputer.</p>
     </header>
     <section id="list" class="cards"><p class="muted">Memuat daftar praktikum…</p></section>
     <section class="howto">
       <h2>Cara pakai</h2>
       <ul>
-        <li><b>Satu jari</b>: putar model. <b>Dua jari</b>: cubit untuk zoom, geser untuk menggeser.</li>
-        <li><b>Ketuk</b> sebuah struktur untuk memilihnya. Struktur terpilih berwarna <span class="hl">kuning</span>.</li>
+        <li><b>HP/tablet</b>: satu jari untuk memutar; dua jari dicubit untuk zoom, digeser untuk menggeser.</li>
+        <li><b>Komputer</b>: drag mouse untuk memutar, scroll untuk zoom, klik kanan + drag untuk menggeser.</li>
+        <li><b>Ketuk/klik</b> sebuah struktur untuk memilihnya. Struktur terpilih berwarna <span class="hl">kuning</span>.</li>
         <li><b>Lanjut / Kembali</b> untuk menelusuri semua struktur berurutan. <b>☰</b> untuk daftar lengkap.</li>
         <li><b>Tulang</b>: hilang / tembus / utuh. <b>Lihat dalam</b>: dinding jantung dibuat transparan.</li>
         <li>Tiap praktikum dimulai dengan <b>Orientasi</b> supaya kamu tahu letak organ di dalam tubuh.</li>
