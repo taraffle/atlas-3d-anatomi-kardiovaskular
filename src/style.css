@@ -305,3 +305,4 @@ body.quiz .sheet-head, body.quiz .nav, body.quiz .sheet-body { display: none !im
 body.video .topbar, body.video .toolbar, body.video .sheet, body.video .dir-from, body.video .toast { display: none !important; }
 body.video #stage { grid-column: 1 / -1; grid-row: 1 / -1; }
 body.video .dir-top { top: 12px; }
+.tag-sorot { font: 800 12px/1.2 Nunito, system-ui, sans-serif; color: #062b28; background: #2ee6d6; padding: 3px 9px; border-radius: 9px; white-space: nowrap; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35); pointer-events: none; }

@@ -5,8 +5,10 @@ import json, os, re, subprocess, sys, wave
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-TTS = os.environ.get('TTS_DIR', os.path.join(HERE, '..', 'tts'))  # folder berisi venv/bin/piper + model suara
-WORK = os.path.join(HERE, 'work'); os.makedirs(os.path.join(WORK, 'vo'), exist_ok=True)
+TTS = os.environ.get('TTS_DIR', os.path.join(HERE, '..', 'tts'))  # folder berisi venv/bin/edge-tts atau piper
+WORK = os.path.join(HERE, 'work')
+VO = os.path.join(WORK, 'vo-' + os.environ.get('TTS_VOICE', 'id-ID-GadisNeural') if os.environ.get('TTS_ENGINE', 'edge') == 'edge' else 'vo')
+os.makedirs(VO, exist_ok=True)
 sys.path.insert(0, HERE)
 from naskah import B  # noqa: E402
 
@@ -24,11 +26,26 @@ def ejaan(t):
     assert not re.search(r'\b(a|v|m|n|r|aa|vv|mm|rr|lig)\.\s', t), f'singkatan tertinggal: {t}'
     return t
 
+# Mesin suara: 'edge' = suara neural Microsoft (id-ID-GadisNeural / id-ID-ArdiNeural), 'piper' = Piper lokal.
+ENGINE = os.environ.get('TTS_ENGINE', 'edge')
+VOICE = os.environ.get('TTS_VOICE', 'id-ID-GadisNeural')
+RATE = os.environ.get('TTS_RATE', '+6%')
 def tts(text, path):
     if os.path.exists(path): return
-    subprocess.run([os.path.join(TTS, 'venv/bin/piper'), '-m', os.path.join(TTS, 'id_ID-news_tts-medium.onnx'),
-                    '--length-scale', '0.94', '--sentence-silence', '0.15', '-f', path],
-                   input=text.encode(), check=True, capture_output=True)
+    if ENGINE == 'edge':
+        mp3 = path + '.mp3'
+        for coba in range(4):
+            r = subprocess.run([os.path.join(TTS, 'venv/bin/edge-tts'), '--voice', VOICE, f'--rate={RATE}', '--text', text, '--write-media', mp3]
+                               + (['--proxy', os.environ['HTTPS_PROXY']] if os.environ.get('HTTPS_PROXY') else []), capture_output=True)
+            if r.returncode == 0 and os.path.getsize(mp3) > 1000: break
+        else:
+            raise RuntimeError(r.stderr.decode()[-500:])
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', mp3, '-ar', str(SR), '-ac', '1', path], check=True)
+        os.remove(mp3)
+    else:
+        subprocess.run([os.path.join(TTS, 'venv/bin/piper'), '-m', os.path.join(TTS, 'id_ID-news_tts-medium.onnx'),
+                        '--length-scale', '0.94', '--sentence-silence', '0.15', '-f', path],
+                       input=text.encode(), check=True, capture_output=True)
 
 def baca(path):
     with wave.open(path) as w:
@@ -68,11 +85,13 @@ for i, b in enumerate(B):
         dur = float(b['countdown']) + 0.4
         for s in range(int(b['countdown'])):
             klip.append((waktu + s, SFX['tick']))
+        prev = beats[-1] if beats else {}
         beats.append(dict(t0=waktu, t1=waktu + dur, step=step, kicker=kicker, title=title, sub_title=sub_title, card=card,
-                          sub='', countdown=int(b['countdown'])))
+                          sub='', countdown=int(b['countdown']), sorot=prev.get('sorot', []), arah=prev.get('arah'), zoom=prev.get('zoom')))
         waktu += dur
         continue
-    path = os.path.join(WORK, 'vo', f'{i:03d}.wav')
+    import hashlib
+    path = os.path.join(VO, hashlib.md5(ejaan(b['say']).encode()).hexdigest()[:12] + '.wav')
     tts(ejaan(b['say']), path)
     a = baca(path)
     if b.get('sfx'):
@@ -80,7 +99,8 @@ for i, b in enumerate(B):
     mulai_suara = waktu + (0.25 if b.get('sfx') in ('whoosh', 'pop') else 0.0)
     klip.append((mulai_suara, a))
     dur = (mulai_suara - waktu) + len(a) / SR + b['hold']
-    beats.append(dict(t0=waktu, t1=waktu + dur, step=step, kicker=kicker, title=title, sub_title=sub_title, card=card, sub=b['sub']))
+    beats.append(dict(t0=waktu, t1=waktu + dur, step=step, kicker=kicker, title=title, sub_title=sub_title, card=card, sub=b['sub'],
+                      sorot=b.get('sorot', []), arah=b.get('arah'), zoom=b.get('zoom')))
     waktu += dur
 total = waktu + 1.2
 print(f'{len(beats)} beat, durasi {total / 60:.1f} menit')
@@ -88,12 +108,13 @@ print(f'{len(beats)} beat, durasi {total / 60:.1f} menit')
 # Rentang waktu tiap "shot" (beat berurutan dengan step sama) untuk gerak kamera.
 shots, cur = [], None
 for b in beats:
-    if not cur or cur['step'] != b['step']:
-        cur = dict(step=b['step'], t0=b['t0'], t1=b['t1']); shots.append(cur)
+    key = json.dumps([b['step'], b['sorot'], b['arah'], b['zoom']])
+    if not cur or cur['key'] != key:
+        cur = dict(key=key, t0=b['t0'], t1=b['t1']); shots.append(cur)
     else: cur['t1'] = b['t1']
+    b['shot'] = len(shots) - 1
 for b in beats:
-    s = next(s for s in shots if s['t0'] <= b['t0'] < s['t1'] + 1e-6 and s['step'] == b['step'])
-    b['shot_t0'], b['shot_t1'] = s['t0'], s['t1']
+    b['shot_t0'], b['shot_t1'] = shots[b['shot']]['t0'], shots[b['shot']]['t1']
 
 json.dump(dict(total=total, beats=beats), open(os.path.join(WORK, 'timeline.json'), 'w'), ensure_ascii=False, indent=1)
 

@@ -32,7 +32,7 @@ const TULANG = ['hilang', 'tembus', 'utuh']
 const TULANG_LABEL = { hilang: 'Tulang: hilang', tembus: 'Tulang: tembus', utuh: 'Tulang: utuh' }
 const WARNA = {
   arterial: 0xc8373b, venous: 0x3c63c4, cardiac: 0xc9786a, valve: 0xf0e3c2, muscular: 0xa9554b,
-  skeletal: 0xe6dfcf, cavityL: 0xe0484d, cavityR: 0x4d78dc, other: 0xb9a48f, highlight: 0xffc21a,
+  skeletal: 0xe6dfcf, cavityL: 0xe0484d, cavityR: 0x4d78dc, other: 0xb9a48f, highlight: 0xffc21a, sorot: 0x2ee6d6,
 }
 // Pembuluh paru: arteri membawa darah miskin O2 (biru), vena kaya O2 (merah), sesuai konvensi atlas.
 const PULMONAL_BIRU = new Set(['FJ2966', 'FJ3019', 'FJ2924'])
@@ -152,6 +152,8 @@ new ResizeObserver(resize).observe(stage)
 let meta, meshes = new Map(), steps = [], cur = 0
 let boneState = 'hilang', dalam = false
 let anim = null
+let sorotan = [] // [{ ids, label }]: struktur yang sedang disebut (dipakai video)
+const labelSorot = []
 let quiz = null // { pool, urutan, idx, q, opsi, dijawab, benar, streak }
 const PANJANG_KUIS = 10
 
@@ -215,6 +217,12 @@ function applyState() {
     mat.depthWrite = opacity >= 1
     m.renderOrder = opacity < 1 ? 2 : 0
   }
+  for (const g of sorotan) for (const id of g.ids) {
+    const m = meshes.get(id); if (!m) continue
+    m.visible = true
+    m.material.color.setHex(WARNA.sorot); m.material.emissive.setHex(0x0b4a44)
+    m.material.opacity = 1; m.material.transparent = false; m.material.depthWrite = true; m.renderOrder = 0
+  }
   updateToggles()
 }
 
@@ -269,6 +277,30 @@ function stepAnim(now) {
   camera.position.copy(target).addScaledVector(dir, len)
   controls.target.copy(target)
   if (k >= 1) anim = null
+}
+
+// ---------- sorotan kedua + label nama (untuk video) ----------
+function sorot(groups) {
+  for (const o of labelSorot.splice(0)) scene.remove(o)
+  sorotan = (groups || []).map((g) => ({ ids: g.ids.filter((id) => meshes.has(id)), label: g.label })).filter((g) => g.ids.length)
+  applyState()
+  for (const g of sorotan) {
+    if (!g.label) continue
+    const box = boundsOf(g.ids), el = document.createElement('div')
+    el.className = 'tag-sorot'; el.textContent = g.label
+    const o = new CSS2DObject(el); box.getCenter(o.position)
+    scene.add(o); labelSorot.push(o)
+  }
+}
+// Pose kamera untuk membingkai sekumpulan mesh, tanpa menggerakkan kamera.
+function framePose(ids, arah, zoom = 1, extra) {
+  const box = boundsOf(ids); if (extra) box.expandByPoint(new THREE.Vector3(...extra))
+  if (box.isEmpty()) return null
+  const sphere = box.getBoundingSphere(new THREE.Sphere()), r = Math.max(sphere.radius, MIN_RADIUS)
+  const vfov = THREE.MathUtils.degToRad(camera.fov), hfov = 2 * Math.atan(Math.tan(vfov / 2) * camera.aspect)
+  const dist = (r / Math.sin(Math.min(vfov, hfov) / 2)) * 1.08 * zoom
+  const pos = sphere.center.clone().addScaledVector(arahVec(arah), dist)
+  return { pos: pos.toArray(), target: sphere.center.toArray() }
 }
 
 // ---------- label arah di tepi layar ----------
@@ -694,7 +726,7 @@ async function main() {
     if (start < 0) { const m = hash.match(/^orientasi-(\d+)$/); start = m ? +m[1] - 1 : 0 }
     go(start, { instant: true })
     $('#loading').remove()
-    window.__atlas = { ready: true, meshes, camera, controls, go: (i) => go(i, { instant: true }), kuis: () => mulaiKuis(), soal: () => quiz && { kunci: quiz.q.key, opsi: quiz.opsi.map((o) => o.key) }, steps: () => steps.map((s) => (s.type === 'item' ? s.data.key : `orientasi-${s.i + 1}`)), cur: () => cur, pose: () => ({ pos: camera.position.toArray(), target: controls.target.toArray() }), renderAt, meta: () => meta, pick: (x, y) => pickAt(x, y)?.object.userData.part.id ?? null }
+    window.__atlas = { ready: true, meshes, camera, controls, go: (i) => go(i, { instant: true }), kuis: () => mulaiKuis(), soal: () => quiz && { kunci: quiz.q.key, opsi: quiz.opsi.map((o) => o.key) }, steps: () => steps.map((s) => (s.type === 'item' ? s.data.key : `orientasi-${s.i + 1}`)), cur: () => cur, pose: () => ({ pos: camera.position.toArray(), target: controls.target.toArray() }), renderAt, meta: () => meta, pick: (x, y) => pickAt(x, y)?.object.userData.part.id ?? null, sorot, framePose, langkah: (i) => steps[i] }
   } catch (err) {
     console.error(err)
     $('#loading').innerHTML = `<div class="loading-emoji">😵</div><div class="loading-title">Waduh, gagal memuat</div><div class="loading-tip">${esc(err.message)}. Coba muat ulang halaman.</div><a class="btn btn-primary" href="${BASE}">Kembali</a>`

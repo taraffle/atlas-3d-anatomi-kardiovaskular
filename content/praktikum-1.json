@@ -315,16 +315,33 @@
       "@azygos",
       "@iliaka",
       "@thorasikaInterna"
+    ],
+    "sekitar": [
+      "FJ3131",
+      "FJ2563",
+      "FJ2541",
+      "FJ2450",
+      "FJ2539",
+      "FJ1431",
+      "FJ1431M"
     ]
   },
   "scene": [
     "@jantung",
     "@rongga",
     "@pembuluhBesar",
-    "FJ3427"
+    "FJ3427",
+    "@sekitar"
   ],
   "hanyaSaatDipilih": [
-    "FJ3427"
+    "FJ3427",
+    "FJ3131",
+    "FJ2563",
+    "FJ2541",
+    "FJ2450",
+    "FJ2539",
+    "FJ1431",
+    "FJ1431M"
   ],
   "orientasi": [
     {

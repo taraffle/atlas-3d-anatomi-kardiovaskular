@@ -55,7 +55,18 @@ function beatAt(t) { return TL.beats.find((b) => t >= b.t0 && t < b.t1) || TL.be
   }, CSS)
   await page.waitForTimeout(500)
   const keys = await page.evaluate(() => window.__atlas.steps())
-  let lastStep = null, lastPanel = null, lastSub = null, lastCd = null, lastBab = null, pose = null
+  // Terjemahkan penanda sorot ('item:key' / 'name:regex' / 'FJxxxx') menjadi daftar ID mesh.
+  const meta = await page.evaluate(() => window.__atlas.meta())
+  const itemMesh = {}; for (const g of meta.grup) for (const it of g.item) itemMesh[it.key] = it.mesh
+  function resolve(spec) {
+    if (spec.startsWith('item:')) { const m = itemMesh[spec.slice(5)]; if (!m) throw new Error('item tidak ada: ' + spec); return m }
+    if (spec.startsWith('name:')) { const re = new RegExp(spec.slice(5)); const ids = meta.parts.filter((p) => re.test(p.name)).map((p) => p.id); if (!ids.length) throw new Error('nama tidak cocok: ' + spec); return ids }
+    if (!meta.parts.some((p) => p.id === spec)) throw new Error('mesh tidak ada: ' + spec)
+    return [spec]
+  }
+  for (const bt of TL.beats) bt._sorot = (bt.sorot || []).map(([label, spec]) => ({ label, ids: resolve(spec) }))
+  let lastStep = null, lastPanel = null, lastSub = null, lastCd = null, lastBab = null
+  let stepPose = null, base = null, lastShot = null, lastSorotKey = null, prevCam = null, blend = null
   const t0 = Date.now()
   const daftar = SAMPLE || Array.from({ length: f1 - f0 }, (_, i) => f0 + i)
   for (const f of daftar) {
@@ -63,8 +74,31 @@ function beatAt(t) { return TL.beats.find((b) => t >= b.t0 && t < b.t1) || TL.be
     if (bt.step !== lastStep) {
       const i = keys.indexOf(bt.step); if (i < 0) throw new Error('step tidak ada: ' + bt.step)
       await page.evaluate((i) => window.__atlas.go(i), i)
-      await page.evaluate(() => window.dispatchEvent(new Event('resize')))
-      pose = await page.evaluate(() => window.__atlas.pose()); lastStep = bt.step
+      stepPose = await page.evaluate(() => window.__atlas.pose()); lastStep = bt.step; lastSorotKey = null
+    }
+    const sorotKey = JSON.stringify(bt._sorot)
+    if (sorotKey !== lastSorotKey) { await page.evaluate((g) => window.__atlas.sorot(g), bt._sorot); lastSorotKey = sorotKey }
+    if (bt.shot !== lastShot) {
+      // Pose dasar shot ini: bingkai struktur utama + struktur yang disebut (dibatasi supaya tidak terlalu jauh).
+      base = stepPose
+      if (bt._sorot.length || bt.arah || bt.zoom) {
+        base = await page.evaluate(([i, sorot, arah, zoom]) => {
+          const A = window.__atlas, st = A.langkah(i), d = st.data
+          const fokus = st.type === 'orientasi' ? d.fokus : (d.mesh.length ? d.mesh : d.konteks)
+          const a = arah || d.kamera?.arah || 'depan', z = zoom || d.kamera?.zoom || 1
+          const pin = d.pin ? A.meta().landmarks[d.pin] : null
+          const dasar = A.framePose(fokus, a, z, pin)
+          const gabung = A.framePose([...fokus, ...sorot.flatMap((g) => g.ids)], a, z, pin)
+          const jarak = (p) => Math.hypot(p.pos[0] - p.target[0], p.pos[1] - p.target[1], p.pos[2] - p.target[2])
+          if (!gabung || jarak(gabung) <= jarak(dasar) * 1.9) return gabung || dasar
+          // terlalu jauh: tetap pusatkan di struktur utama, mundur secukupnya
+          const k = (jarak(dasar) * 1.9) / jarak(gabung)
+          const t = gabung.target.map((v, j) => dasar.target[j] * 0.7 + v * 0.3)
+          return { target: t, pos: t.map((v, j) => v + (gabung.pos[j] - gabung.target[j]) * k) }
+        }, [keys.indexOf(bt.step), bt._sorot, bt.arah, bt.zoom])
+      }
+      blend = prevCam && !SAMPLE ? { from: prevCam, t0: t } : null
+      lastShot = bt.shot
     }
     // Panel kanan (judul + kartu). Kartu "bab" tampil sebagai banner besar di area 3D.
     const card = bt.card && bt.card.type !== 'bab' ? bt.card : null
@@ -84,14 +118,29 @@ function beatAt(t) { return TL.beats.find((b) => t >= b.t0 && t < b.t1) || TL.be
       }, [panel, esc(sub), cd, bab])
       lastPanel = panel; lastSub = sub; lastCd = cd; lastBab = bab
     }
-    // Kamera: putar pelan mengelilingi target sepanjang shot (−14° → +14°) + zoom-in halus 6%.
+    // Kamera: putar pelan mengelilingi target sepanjang shot (−10° → +10°) + zoom-in halus 5%.
     const k = Math.min(1, (t - bt.shot_t0) / Math.max(0.5, bt.shot_t1 - bt.shot_t0))
     const e = k * k * (3 - 2 * k)
-    const ang = (-14 + 28 * e) * Math.PI / 180, zoom = 1 - 0.06 * e
-    const [px, py, pz] = pose.pos, [tx, ty, tz] = pose.target
+    const ang = (-10 + 20 * e) * Math.PI / 180, zoom = 1 - 0.05 * e
+    const [px, py, pz] = base.pos, [tx, ty, tz] = base.target
     const dx = px - tx, dz = pz - tz
-    const p = [tx + (dx * Math.cos(ang) + dz * Math.sin(ang)) * zoom, ty + (py - ty) * zoom, tz + (-dx * Math.sin(ang) + dz * Math.cos(ang)) * zoom]
-    await page.evaluate(([p, tg]) => window.__atlas.renderAt(p, tg), [p, pose.target])
+    let cam = { pos: [tx + (dx * Math.cos(ang) + dz * Math.sin(ang)) * zoom, ty + (py - ty) * zoom, tz + (-dx * Math.sin(ang) + dz * Math.cos(ang)) * zoom], target: base.target }
+    // Transisi halus 0,8 dtk dari posisi kamera sebelumnya (memutar di sekitar target, bukan menembus model).
+    if (blend) {
+      const u = Math.min(1, (t - blend.t0) / 0.8), w = u * u * (3 - 2 * u)
+      if (u >= 1) blend = null
+      else {
+        const lerp = (a, b) => a.map((v, j) => v + (b[j] - v) * w)
+        const tg = lerp(blend.from.target, cam.target)
+        const o1 = blend.from.pos.map((v, j) => v - blend.from.target[j]), o2 = cam.pos.map((v, j) => v - cam.target[j])
+        const L = (o) => Math.hypot(...o), n1 = o1.map((v) => v / L(o1)), n2 = o2.map((v) => v / L(o2))
+        let d = lerp(n1, n2); const ld = L(d) || 1; d = d.map((v) => v / ld)
+        const len = L(o1) + (L(o2) - L(o1)) * w
+        cam = { pos: tg.map((v, j) => v + d[j] * len), target: tg }
+      }
+    }
+    prevCam = cam
+    await page.evaluate(([p, tg]) => window.__atlas.renderAt(p, tg), [cam.pos, cam.target])
     await page.screenshot({ path: path.join(SAMPLE ? path.join(__dirname, 'work') : OUT, `${SAMPLE ? 'sample-' : ''}${String(f).padStart(6, '0')}.jpg`), type: 'jpeg', quality: 90 })
     if ((f - f0) % 300 === 0) console.log(`[w${W}] ${f - f0}/${f1 - f0} frame, ${((Date.now() - t0) / 1000 / 60).toFixed(1)} menit`)
   }
