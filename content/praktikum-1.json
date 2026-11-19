@@ -324,6 +324,28 @@
       "FJ2539",
       "FJ1431",
       "FJ1431M"
+    ],
+    "ilustrasiP1": [
+      "X_PERIKARDIUM",
+      "X_LIG_ARTERIOSUM",
+      "X_N_PHRENICUS_D",
+      "X_N_PHRENICUS_S",
+      "X_A_PCP_D",
+      "X_V_PCP_D",
+      "X_A_PCP_S",
+      "X_V_PCP_S",
+      "X_N_VAGUS_S",
+      "X_N_RECURRENS_S"
+    ],
+    "phrenicus": [
+      "X_N_PHRENICUS_D",
+      "X_N_PHRENICUS_S"
+    ],
+    "pcp": [
+      "X_A_PCP_D",
+      "X_V_PCP_D",
+      "X_A_PCP_S",
+      "X_V_PCP_S"
     ]
   },
   "scene": [
@@ -331,7 +353,8 @@
     "@rongga",
     "@pembuluhBesar",
     "FJ3427",
-    "@sekitar"
+    "@sekitar",
+    "@ilustrasiP1"
   ],
   "hanyaSaatDipilih": [
     "FJ3427",
@@ -341,7 +364,8 @@
     "FJ2450",
     "FJ2539",
     "FJ1431",
-    "FJ1431M"
+    "FJ1431M",
+    "X_PERIKARDIUM"
   ],
   "orientasi": [
     {
@@ -410,16 +434,26 @@
           "key": "pericardium-fibrosum",
           "latin": "Pericardium fibrosum",
           "indonesia": "Perikardium fibrosa",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_PERIKARDIUM"
+          ],
           "konteks": [
-            "@dinding"
+            "@dinding",
+            "FJ3413",
+            "FJ2966",
+            "FJ3645",
+            "FJ3131"
           ],
           "kamera": {
-            "arah": "depan"
+            "arah": [
+              0.3,
+              0.1,
+              1
+            ]
           },
           "tulang": "tembus",
-          "catatanModel": "BodyParts3D tidak memodelkan perikardium. Yang disorot adalah jantung yang dibungkusnya.",
+          "catatanModel": "Bentuk ini ILUSTRASI BUATAN: BodyParts3D tidak memodelkan perikardium. Letaknya dihitung dari struktur asli di sekitarnya, jadi bentuk dan tebalnya perkiraan. Kantong ini menggambarkan perikardium fibrosa yang membungkus jantung dan pangkal pembuluh besar; ditampilkan transparan supaya jantung di dalamnya tetap terlihat.",
           "ringkas": "Kantong jaringan ikat padat, lapisan terluar pembungkus jantung. Di bawah melekat ke centrum tendineum diaphragma, di atas menyatu dengan tunika adventitia pembuluh-pembuluh besar. Karena sifatnya tidak elastis, ia mencegah jantung meregang berlebihan.",
           "asalNama": "Peri- (Yunani: sekitar) + kardia (jantung). Fibrosum = berserat.",
           "klinis": "Karena tidak bisa melar, penumpukan cairan atau darah di cavum pericardii dengan cepat bisa menekan jantung (tamponade jantung)."
@@ -428,16 +462,25 @@
           "key": "pericardium-serosum-parietale",
           "latin": "Pericardium serosum: lamina parietalis",
           "indonesia": "Perikardium serosa, lapisan parietal",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_PERIKARDIUM"
+          ],
           "konteks": [
-            "@dinding"
+            "@dinding",
+            "FJ3413",
+            "FJ2966",
+            "FJ3645"
           ],
           "kamera": {
-            "arah": "depan"
+            "arah": [
+              0.3,
+              0.1,
+              1
+            ]
           },
           "tulang": "tembus",
-          "catatanModel": "Tidak dimodelkan di BodyParts3D.",
+          "catatanModel": "Bentuk ini ILUSTRASI BUATAN: BodyParts3D tidak memodelkan perikardium. Letaknya dihitung dari struktur asli di sekitarnya, jadi bentuk dan tebalnya perkiraan. Lamina parietalis melapisi sisi dalam kantong ini (terlalu tipis untuk dibedakan di 3D).",
           "ringkas": "Lapisan serosa yang melapisi permukaan dalam perikardium fibrosa. Di pangkal pembuluh besar, lapisan ini berbalik (refleksi) menjadi lamina visceralis.",
           "asalNama": "Parietalis dari paries (Latin: dinding), yaitu lapisan yang menempel ke dinding kantong."
         },
@@ -465,6 +508,7 @@
           "status": "tidak-ada",
           "mesh": [],
           "konteks": [
+            "X_PERIKARDIUM",
             "FJ3413",
             "FJ2966",
             "FJ3645",
@@ -495,18 +539,26 @@
           "key": "n-phrenicus",
           "latin": "Nervus phrenicus",
           "indonesia": "Saraf frenikus",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "@phrenicus"
+          ],
           "konteks": [
+            "X_PERIKARDIUM",
             "@dinding",
+            "FJ3131",
             "@vVBrakiosefalika",
-            "FJ3645"
+            "FJ3645",
+            "FJ3579",
+            "FJ3479",
+            "FJ3587",
+            "FJ3486"
           ],
           "kamera": {
             "arah": "depan"
           },
-          "tulang": "tembus",
-          "catatanModel": "BodyParts3D tidak memuat n. phrenicus. Di cadaver, cari di permukaan lateral perikardium fibrosa, di depan radix pulmonis, bersama a./v. pericardiacophrenica.",
+          "tulang": "hilang",
+          "catatanModel": "Bentuk ini ILUSTRASI BUATAN: BodyParts3D tidak memodelkan saraf perifer sama sekali. Letaknya dihitung dari struktur asli di sekitarnya, jadi bentuk dan tebalnya perkiraan. Jalurnya: dari leher, lewat di antara a. dan v. subclavia, turun di permukaan perikardium (kanan di sisi VCS & atrium kanan, kiri di atas ventrikel kiri), lalu ke diafragma.",
           "ringkas": "Berasal dari rami anteriores C3–C5. Turun melalui toraks di antara perikardium fibrosa dan pleura mediastinalis, di depan radix pulmonis, menuju diaphragma. N. phrenicus dexter berjalan di sisi kanan VCS dan atrium kanan. N. phrenicus sinister berjalan di atas ventrikel kiri.",
           "asalNama": "Phren (Yunani) = diafragma. Dulu orang Yunani mengira jiwa berada di diafragma, sehingga kata ini juga menjadi akar kata 'frenetik' dan 'skizofrenia'.",
           "jembatanKeledai": "\"C3, 4, 5 keeps the diaphragm alive.\"",
@@ -520,17 +572,25 @@
           "key": "a-v-pericardiacophrenica",
           "latin": "A. & V. pericardiacophrenica",
           "indonesia": "Arteri dan vena perikardiakofrenika",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "@pcp"
+          ],
           "konteks": [
+            "@phrenicus",
+            "X_PERIKARDIUM",
             "@thorasikaInterna",
-            "@dinding"
+            "FJ3131"
           ],
           "kamera": {
-            "arah": "depan"
+            "arah": [
+              -0.6,
+              0,
+              1
+            ]
           },
-          "tulang": "tembus",
-          "catatanModel": "Tidak ada di model. Yang disorot adalah a. thoracica interna, asal arteri ini.",
+          "tulang": "hilang",
+          "catatanModel": "Bentuk ini ILUSTRASI BUATAN: BodyParts3D tidak memodelkan a./v. pericardiacophrenica. Letaknya dihitung dari struktur asli di sekitarnya, jadi bentuk dan tebalnya perkiraan. Pembuluh ini digambar menyertai n. phrenicus (arteri merah, vena biru).",
           "ringkas": "A. pericardiacophrenica adalah cabang a. thoracica interna. Ia berjalan bersama n. phrenicus di antara perikardium fibrosa dan pleura mediastinalis, memperdarahi perikardium, pleura, dan diaphragma. Venanya bermuara ke v. thoracica interna atau v. brachiocephalica.",
           "asalNama": "Pericardio- (perikardium) + phrenica (diafragma): sesuai dua daerah yang diperdarahinya.",
           "perluDicek": [
@@ -731,24 +791,28 @@
           "key": "lig-arteriosum",
           "latin": "Ligamentum arteriosum (Botalli)",
           "indonesia": "Ligamentum arteriosum",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_LIG_ARTERIOSUM"
+          ],
           "konteks": [
             "FJ3411",
             "FJ2924",
-            "FJ2966"
+            "FJ2966",
+            "X_N_VAGUS_S",
+            "X_N_RECURRENS_S"
           ],
-          "pin": "ligArteriosum",
-          "pinLabel": "Lig. arteriosum (perkiraan)",
+          "pin": null,
           "kamera": {
             "arah": [
-              0.9,
-              0.2,
-              0.5
-            ]
+              1,
+              -0.2,
+              0.45
+            ],
+            "zoom": 0.8
           },
           "tulang": "hilang",
-          "catatanModel": "Ligamentum ini tidak dimodelkan. Pin diletakkan di titik terdekat antara arcus aortae dan a. pulmonalis sinistra, tempat ligamentum ini seharusnya berada.",
+          "catatanModel": "Bentuk ini ILUSTRASI BUATAN: BodyParts3D tidak memodelkan ligamentum arteriosum. Letaknya dihitung dari struktur asli di sekitarnya, jadi bentuk dan tebalnya perkiraan. Pita ini dibuat di titik terdekat antara arcus aortae dan a. pulmonalis sinistra. N. vagus kiri dan n. laryngeus recurrens kiri (juga ilustrasi buatan) ditampilkan untuk menjelaskan makna klinisnya.",
           "ringkas": "Pita jaringan ikat dari pangkal a. pulmonalis sinistra ke permukaan bawah arcus aortae. Ini sisa ductus arteriosus janin, yaitu pembuluh yang mengalirkan darah dari truncus pulmonalis ke aorta sehingga melewati paru yang belum berfungsi.",
           "asalNama": "Eponim dari Leonardo Botallo, ahli bedah Italia abad ke-16.",
           "funFact": "Ductus ini sebenarnya sudah dideskripsikan jauh sebelumnya oleh Galen, jadi eponim 'Botalli' sering disebut 'salah alamat'.",
@@ -759,7 +823,8 @@
           },
           "perluDicek": [
             "Klaim historis Galen vs Botallo: cek ke buku sejarah anatomi bila ingin dikutip."
-          ]
+          ],
+          "konteksTransparan": true
         },
         {
           "key": "aorta-descendens",

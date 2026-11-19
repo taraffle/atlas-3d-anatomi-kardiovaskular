@@ -12,6 +12,7 @@ import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs'
 import { gunzipSync, gzipSync, constants } from 'node:zlib'
 import { createRequire } from 'node:module'
 import { dirname, join } from 'node:path'
+import { buatGenerator } from './buatan.mjs'
 
 const require = createRequire(import.meta.url)
 const ROOT = join(dirname(new URL(import.meta.url).pathname), '..')
@@ -187,8 +188,14 @@ function splitVentricles() {
   return ventSplit
 }
 
+let buatan = null
 function getGeom(id) {
   if (id.startsWith('VENT_')) return splitVentricles()[id]
+  if (id.startsWith('X_')) {
+    buatan ||= buatGenerator({ geometry })
+    const g = buatan(id); if (!g) throw new Error(`Struktur buatan ${id} tidak dikenal`)
+    return g
+  }
   return geometry(id)
 }
 
@@ -273,7 +280,7 @@ function buildPraktikum(file) {
   // Validasi: setiap item status "ada" harus punya mesh.
   for (const it of items) {
     if (it.status === 'ada' && !it.mesh.length) throw new Error(`${it.key}: status "ada" tapi mesh kosong`)
-    if (!['ada', 'terkait', 'tidak-ada'].includes(it.status)) throw new Error(`${it.key}: status tidak dikenal`)
+    if (!['ada', 'terkait', 'ilustrasi', 'tidak-ada'].includes(it.status)) throw new Error(`${it.key}: status tidak dikenal`)
     if (it.pin && !LANDMARKS[it.pin]) throw new Error(`${it.key}: landmark ${it.pin} tidak dikenal`)
   }
 
@@ -304,6 +311,7 @@ function buildPraktikum(file) {
       vertexCount: n, indexCount: idx.length, posOffset: offset, idxOffset: offset + q.byteLength,
       bounds: [bmin, bmax].map((v) => v.map((x) => +x.toFixed(5))),
       ...(g.derivedFrom ? { derivedFrom: g.derivedFrom } : {}),
+      ...(g.buatan ? { buatan: true, gaya: g.gaya } : {}),
     })
     buffers.push(Buffer.from(q.buffer), Buffer.from(idx.buffer))
     offset += q.byteLength + idx.byteLength

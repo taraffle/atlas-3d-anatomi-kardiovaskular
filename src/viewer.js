@@ -32,7 +32,7 @@ const TULANG = ['hilang', 'tembus', 'utuh']
 const TULANG_LABEL = { hilang: 'Tulang: hilang', tembus: 'Tulang: tembus', utuh: 'Tulang: utuh' }
 const WARNA = {
   arterial: 0xc8373b, venous: 0x3c63c4, cardiac: 0xc9786a, valve: 0xf0e3c2, muscular: 0xa9554b,
-  skeletal: 0xe6dfcf, cavityL: 0xe0484d, cavityR: 0x4d78dc, other: 0xb9a48f, highlight: 0xffc21a, sorot: 0x2ee6d6,
+  skeletal: 0xe6dfcf, cavityL: 0xe0484d, cavityR: 0x4d78dc, other: 0xb9a48f, highlight: 0xffc21a, sorot: 0x2ee6d6, saraf: 0xd7e66a, ligamen: 0xd9cfbd, kantong: 0xe8c3a0,
 }
 // Pembuluh paru: arteri membawa darah miskin O2 (biru), vena kaya O2 (merah), sesuai konvensi atlas.
 const PULMONAL_BIRU = new Set(['FJ2966', 'FJ3019', 'FJ2924'])
@@ -40,6 +40,9 @@ const PULMONAL_MERAH = new Set(['FJ3020', 'FJ3040', 'FJ2925', 'FJ2933', 'FJ2944'
 const DINDING_JANTUNG = new Set(['FJ2439', 'FJ2438', 'VENT_R', 'VENT_L', 'FJ2428'])
 
 function baseColor(p) {
+  if (p.gaya === 'saraf') return WARNA.saraf
+  if (p.gaya === 'ligamen') return WARNA.ligamen
+  if (p.gaya === 'kantong') return WARNA.kantong
   if (PULMONAL_BIRU.has(p.id)) return WARNA.venous
   if (PULMONAL_MERAH.has(p.id)) return WARNA.arterial
   if (p.system === 'skeletal') return WARNA.skeletal
@@ -193,7 +196,8 @@ function applyState() {
       visible = !isOrient && !!d.rongga && sel.has(id)
       opacity = 0.75
     } else if (hanyaDipilih.has(id)) {
-      visible = sel.has(id)
+      // Struktur tambahan (mis. perikardium ilustrasi) hanya tampil saat dipilih atau jadi konteks.
+      visible = sel.has(id) || ctx.has(id)
     } else {
       visible = true
     }
@@ -204,11 +208,14 @@ function applyState() {
         emissive = d.warnaAsli ? 0x222222 : 0x553300
         opacity = isCavity ? 0.75 : 1
       } else if (ctx.has(id)) {
-        opacity = dalam && DINDING_JANTUNG.has(id) ? 0.14 : 1
+        // konteksTransparan: struktur sekitar dibuat setengah tembus supaya struktur terpilih di baliknya terlihat
+        opacity = dalam && DINDING_JANTUNG.has(id) ? 0.14 : d.konteksTransparan && p.system !== 'nervous' ? 0.32 : 1
       } else {
         opacity = dalam && DINDING_JANTUNG.has(id) ? 0.06 : 0.1
       }
     }
+    // Kantong perikardium (ilustrasi) selalu transparan supaya jantung di dalamnya tetap terlihat.
+    if (p.gaya === 'kantong' && visible) opacity = sel.has(id) ? 0.36 : ctx.has(id) ? 0.22 : 0.08
     m.visible = !!visible
     mat.color.setHex(color)
     mat.emissive.setHex(emissive)
@@ -323,6 +330,7 @@ const para = (s) => esc(s).split('\n').map((l) => `<div>${l}</div>`).join('')
 const BADGE = {
   ada: ['ok', '✅ Ada di model 3D'],
   terkait: ['warn', '🔗 Lewat struktur terkait'],
+  ilustrasi: ['ilus', '🎨 Ilustrasi buatan (bukan data asli)'],
   'tidak-ada': ['none', '📄 Tidak ada di model 3D (teks saja)'],
 }
 const LEGENDA = `<div class="legend-warna"><span><i style="background:#ffc21a"></i>terpilih</span><span><i style="background:#c8373b"></i>arteri</span><span><i style="background:#3c63c4"></i>vena</span><span><i style="background:#e6dfcf;border:1px solid #cbbfa8"></i>tulang</span></div>`
@@ -541,11 +549,11 @@ function buildList() {
   let h = '', lastGrup = null
   steps.forEach((s, i) => {
     if (s.grup !== lastGrup) { h += `<div class="grp">${esc(s.grup)}</div>`; lastGrup = s.grup }
-    const icon = s.type === 'orientasi' ? '🧭' : { ada: '●', terkait: '◐', 'tidak-ada': '○' }[s.data.status]
+    const icon = s.type === 'orientasi' ? '🧭' : { ada: '●', terkait: '◐', ilustrasi: '◆', 'tidak-ada': '○' }[s.data.status]
     const name = s.type === 'orientasi' ? s.data.judul : s.data.latin
     h += `<button class="row" data-i="${i}"><span class="st st-${s.type === 'orientasi' ? 'o' : s.data.status}">${icon}</span><span>${esc(name)}</span><span class="seen-mark"></span></button>`
   })
-  h += `<p class="muted small legend">● ada di model · ◐ lewat struktur terkait · ○ tidak ada di model (hanya teks) · ✓ sudah kamu lihat</p>`
+  h += `<p class="muted small legend">● ada di model · ◐ lewat struktur terkait · ◆ ilustrasi buatan · ○ tidak ada di model (hanya teks) · ✓ sudah kamu lihat</p>`
   $('#daftar').innerHTML = h
   $('#daftar').onclick = (e) => {
     const b = e.target.closest('.row'); if (!b) return
@@ -562,7 +570,7 @@ function toast(msg) {
 const meshToStep = new Map()
 function buildPickMap() {
   // Utamakan struktur yang memang "ada" di model; baru setelah itu yang "terkait".
-  for (const status of ['ada', 'terkait']) {
+  for (const status of ['ada', 'terkait', 'ilustrasi']) {
     steps.forEach((s, i) => {
       if (s.type !== 'item' || s.data.status !== status || s.data.rongga) return
       for (const id of s.data.mesh) if (!meshToStep.has(id)) meshToStep.set(id, i)

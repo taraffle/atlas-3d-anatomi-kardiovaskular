@@ -35,7 +35,7 @@ Buka `content/praktikum-N.json` dan ubah teksnya. Tiap struktur punya kolom beri
 | Kolom | Isi |
 |---|---|
 | `latin`, `indonesia` | Nama struktur |
-| `status` | `"ada"` (ada mesh), `"terkait"` (ditunjukkan lewat mesh lain), `"tidak-ada"` (hanya teks) |
+| `status` | `"ada"` (ada mesh), `"terkait"` (ditunjukkan lewat mesh lain), `"ilustrasi"` (bentuk buatan dari `scripts/buatan.mjs`, ID diawali `X_`), `"tidak-ada"` (hanya teks) |
 | `mesh` | ID mesh yang disorot kuning, misal `["FJ3645"]`, atau nama set seperti `"@vci"` |
 | `konteks` | Mesh yang ditampilkan normal di sekitarnya. Mesh lain otomatis diredupkan |
 | `kamera` | `{"arah": "depan"}`. Pilihan: depan, belakang, kiri, kanan, atas, bawah, atau vektor `[x, y, z]`. Tambahan opsional: `"zoom": 0.7` (lebih dekat) / `1.5` (lebih jauh) |

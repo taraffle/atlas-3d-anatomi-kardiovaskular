@@ -7,6 +7,7 @@ Format `atlas.json` sudah aku cek dan cocok dengan catatanmu: positions float32 
 
 - ✅ **Ada**: ada mesh khusus untuk struktur ini.
 - 🟡 **Lewat struktur terkait**: tidak ada mesh sendiri. Ditunjukkan lewat mesh lain yang benar secara anatomi (misal sulkus ditunjukkan lewat pembuluh yang berjalan di dalamnya), dan di UI ditulis jelas "tidak ada mesh tersendiri".
+- ◆ **Ilustrasi buatan**: tidak ada di data asli, jadi bentuknya dibuat sendiri (`scripts/buatan.mjs`) dengan letak yang dihitung dari struktur asli di sekitarnya. Selalu diberi label "ilustrasi buatan".
 - ❌ **Tidak ada di model**: tidak dipaksakan. Di UI tetap muncul di daftar (supaya daftar tilik lengkap) dengan label "Tidak ada di model 3D", berisi teks materi saja.
 
 ID yang ditulis "kanan / kiri" artinya mesh sisi kanan / kiri pasien.
@@ -19,12 +20,12 @@ ID yang ditulis "kanan / kiri" artinya mesh sisi kanan / kiri pasien.
 
 | Struktur | Status | Mesh | Catatan |
 |---|---|---|---|
-| Pericardium fibrosum | ❌ | – | Tidak ada perikardium sama sekali di BodyParts3D |
-| Pericardium serosum, lamina parietalis | ❌ | – | |
+| Pericardium fibrosum | ◆ | X_PERIKARDIUM | Kantong buatan membungkus jantung + pangkal pembuluh besar, transparan |
+| Pericardium serosum, lamina parietalis | ◆ | X_PERIKARDIUM | Melapisi sisi dalam kantong buatan |
 | Lamina visceralis / epicardium | ❌ | – | Epikardium melekat ke dinding jantung, tidak dimodelkan terpisah |
 | Cavum pericardii, sinus transversus, sinus obliquus (pertanyaan 1) | ❌ | – | Hanya teks. Bisa ditambah tampilan "lokasi kira-kira" lewat aorta + truncus pulmonalis (sinus transversus) dan vv. pulmonales + VCI (sinus obliquus), tapi ini **opsional**, lihat pertanyaan B |
-| Nervus phrenicus | ❌ | – | Model hanya punya saraf kranial/otak, tidak ada n. phrenicus |
-| A. & V. pericardiacophrenica | ❌ | – | Tidak ada (yang ada a./v. musculophrenica, itu struktur lain) |
+| Nervus phrenicus | ◆ | X_N_PHRENICUS_D, X_N_PHRENICUS_S | BodyParts3D tidak punya saraf perifer; jalur dihitung dari subclavia, VCS/atrium kanan, ventrikel kiri, diafragma |
+| A. & V. pericardiacophrenica | ◆ | X_A_PCP_*, X_V_PCP_* | Digambar menyertai n. phrenicus |
 
 ### Jantung in situ dan pembuluh darah besar
 
@@ -38,7 +39,7 @@ ID yang ditulis "kanan / kiri" artinya mesh sisi kanan / kiri pasien.
 | Vv. pulmonales | ✅ | kanan: FJ3020, FJ3040; kiri: FJ2925, FJ2933, FJ2944, FJ2950, FJ2955 | 4 vena (sup/inf kanan-kiri), tersusun dari 7 mesh |
 | Aorta ascendens | ✅ | FJ3413 | |
 | Arcus aortae | ✅ | FJ3411 | Untuk pertanyaan 3, cabangnya ditampilkan juga: truncus brachiocephalicus FJ3417, a. carotis communis sinistra FJ3483, a. subclavia sinistra FJ3479 |
-| Ligamentum arteriosum (Botalli) | ❌ | – | Tidak dimodelkan. Bisa ditunjukkan "lokasi"-nya: antara arcus aortae dan pangkal a. pulmonalis sinistra |
+| Ligamentum arteriosum (Botalli) | ◆ | X_LIG_ARTERIOSUM | Pita buatan di titik kontak arcus–a. pulmonalis sinistra (di model keduanya hampir menempel, 0,6 mm). Ditambah n. vagus & n. laryngeus recurrens kiri (buatan) |
 | Aorta descendens | ✅ | FJ3427 | **Perlu dicek visual:** mesh ini tumpang tindih dengan dua mesh di bawah (rentang tingginya mencakup keduanya). Saat satu ditampilkan, yang lain disembunyikan supaya tidak "berkedip" |
 | Aorta thoracica | ✅ | FJ1931 | |
 | Aorta abdominalis | ✅ | FJ1932 | |
