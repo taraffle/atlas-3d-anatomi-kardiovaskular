@@ -80,6 +80,23 @@
       "FJ2276",
       "FJ2278",
       "FJ1935"
+    ],
+    "sarafLengan": [
+      "X_N_AXILLARIS",
+      "X_N_RADIALIS",
+      "X_N_MEDIANUS",
+      "X_N_ULNARIS"
+    ],
+    "ilustrasiP2": [
+      "X_A_CAROTIS_EXT",
+      "X_V_JUG_EXT",
+      "X_A_THORACICA_SUP",
+      "X_V_THORACICA_SUP",
+      "X_A_THORACOACROMIALIS",
+      "X_V_THORACOACROMIALIS",
+      "X_V_CX_HUMERI_POST",
+      "X_V_PROFUNDA_BRACHII",
+      "@sarafLengan"
     ]
   },
   "scene": [
@@ -99,7 +116,10 @@
     "@profundaCabang",
     "@lenganBawah",
     "@tangan",
-    "@superfisial"
+    "@superfisial",
+    "@ilustrasiP2",
+    "X_V_MEDIANA_CEPHALICA",
+    "X_V_MEDIANA_BASILICA"
   ],
   "orientasi": [
     {
@@ -143,6 +163,24 @@
       "fokus": [
         "@superfisial"
       ]
+    },
+    {
+      "judul": "Saraf-saraf penting (ilustrasi)",
+      "teks": "Saraf berjalan berdampingan dengan pembuluh, dan daftar tilik sering menanyakannya. N. axillaris menyertai a. circumflexa humeri posterior di collum chirurgicum, n. radialis menyertai a. profunda brachii di sulcus nervi radialis, n. medianus menyertai a. brachialis, dan n. ulnaris lewat di belakang epicondylus medialis. BodyParts3D tidak punya saraf perifer sama sekali. Saraf (hijau-kuning) di sini ilustrasi buatan yang jalurnya mengikuti pembuluh/tulang asli.",
+      "kamera": {
+        "arah": [
+          -0.4,
+          0,
+          1
+        ],
+        "zoom": 1.05
+      },
+      "tulang": "tembus",
+      "fokus": [
+        "@sarafLengan",
+        "FJ2268",
+        "FJ2271"
+      ]
     }
   ],
   "grup": [
@@ -153,11 +191,14 @@
           "key": "v-jugularis-externa",
           "latin": "V. jugularis externa",
           "indonesia": "Vena jugularis eksterna",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_V_JUG_EXT"
+          ],
           "konteks": [
             "FJ3585",
-            "FJ3587"
+            "FJ3587",
+            "FJ3289"
           ],
           "kamera": {
             "arah": [
@@ -167,7 +208,7 @@
             ]
           },
           "tulang": "tembus",
-          "catatanModel": "Tidak ada di BodyParts3D. Yang disorot sebagai konteks: v. jugularis interna dan v. subclavia, tempat v. jugularis externa biasanya bermuara.",
+          "catatanModel": "ILUSTRASI BUATAN: BodyParts3D tidak memodelkan v. jugularis externa. Bentuk & jalurnya dibuat sendiri, letaknya dihitung dari struktur asli di sekitarnya, jadi perkiraan. Digambar dari belakang angulus mandibulae, menyilang permukaan m. sternocleidomastoideus, ke v. subclavia.",
           "ringkas": "Dibentuk di dekat angulus mandibulae, umumnya dari pertemuan v. retromandibularis (cabang posterior) dan v. auricularis posterior. Turun menyilang permukaan m. sternocleidomastoideus di bawah platysma, lalu menembus fascia profunda di atas klavikula dan bermuara ke v. subclavia.",
           "asalNama": "Jugulum (Latin) = leher/tenggorokan.",
           "klinis": "Sering terlihat menonjol saat tekanan vena sentral naik (misalnya gagal jantung kanan) dan bisa dipakai untuk akses vena.",
@@ -256,8 +297,10 @@
           "key": "a-carotis-externa",
           "latin": "A. carotis externa",
           "indonesia": "Arteri karotis eksterna",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_A_CAROTIS_EXT"
+          ],
           "konteks": [
             "FJ3564",
             "FJ1682"
@@ -270,7 +313,7 @@
             ]
           },
           "tulang": "tembus",
-          "catatanModel": "Tidak ada di BodyParts3D. Arteri ini keluar dari percabangan a. carotis communis (disorot sebagai konteks), di sebelah anteromedial a. carotis interna.",
+          "catatanModel": "ILUSTRASI BUATAN: BodyParts3D tidak memodelkan a. carotis externa. Bentuk & jalurnya dibuat sendiri, letaknya dihitung dari struktur asli di sekitarnya, jadi perkiraan. Digambar keluar dari percabangan a. carotis communis, di anteromedial a. carotis interna.",
           "ringkas": "Memperdarahi leher bagian depan, wajah, kulit kepala, dan sebagian besar struktur di luar kranium. Cabangnya: a. thyroidea superior, a. pharyngea ascendens, a. lingualis, a. facialis, a. occipitalis, a. auricularis posterior, lalu cabang terminal a. maxillaris dan a. temporalis superficialis.",
           "jembatanKeledai": "\"Some Anatomists Like Freaking Out Poor Medical Students\": Superior thyroid, Ascending pharyngeal, Lingual, Facial, Occipital, Posterior auricular, Maxillary, Superficial temporal."
         },
@@ -435,7 +478,8 @@
             "FJ1938",
             "FJ2298",
             "FJ2264",
-            "@cxHumeriPost"
+            "@cxHumeriPost",
+            "@sarafLengan"
           ],
           "kamera": {
             "arah": [
@@ -453,8 +497,11 @@
           "key": "thoracica-superior",
           "latin": "A. & V. thoracica superior",
           "indonesia": "Arteri dan vena torakika superior",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_A_THORACICA_SUP",
+            "X_V_THORACICA_SUP"
+          ],
           "konteks": [
             "@aksila"
           ],
@@ -466,7 +513,7 @@
             ]
           },
           "tulang": "tembus",
-          "catatanModel": "Tidak ada di model. Pangkalnya ada di bagian pertama a. axillaris (disorot sebagai konteks).",
+          "catatanModel": "ILUSTRASI BUATAN: BodyParts3D tidak memodelkan a./v. thoracica superior. Bentuk & jalurnya dibuat sendiri, letaknya dihitung dari struktur asli di sekitarnya, jadi perkiraan. Digambar dari bagian pertama a. axillaris.",
           "ringkas": "Satu-satunya cabang bagian pertama a. axillaris. Pembuluh kecil yang memperdarahi spatium intercostale I–II dan m. serratus anterior bagian atas."
         },
         {
@@ -496,10 +543,14 @@
           "key": "thoracoacromialis",
           "latin": "A. & V. thoracoacromialis",
           "indonesia": "Arteri dan vena torakoakromialis",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_A_THORACOACROMIALIS",
+            "X_V_THORACOACROMIALIS"
+          ],
           "konteks": [
-            "@aksila"
+            "@aksila",
+            "FJ3384"
           ],
           "kamera": {
             "arah": [
@@ -509,7 +560,7 @@
             ]
           },
           "tulang": "tembus",
-          "catatanModel": "Tidak ada di model. Pangkalnya ada di bagian kedua a. axillaris, di balik m. pectoralis minor.",
+          "catatanModel": "ILUSTRASI BUATAN: BodyParts3D tidak memodelkan a./v. thoracoacromialis. Bentuk & jalurnya dibuat sendiri, letaknya dihitung dari struktur asli di sekitarnya, jadi perkiraan. Batang pendek dari bagian kedua a. axillaris dengan 4 cabang: acromialis, deltoideus, pectoralis, clavicularis.",
           "ringkas": "Batang pendek dari bagian kedua a. axillaris yang menembus fascia clavipectoralis lalu bercabang empat: r. pectoralis, r. deltoideus, r. acromialis, dan r. clavicularis.",
           "jembatanKeledai": "4 cabang: \"CAD-P\" → Clavicular, Acromial, Deltoid, Pectoral."
         },
@@ -570,11 +621,13 @@
           "indonesia": "Arteri dan vena sirkumfleksa humeri posterior",
           "status": "ada",
           "mesh": [
-            "@cxHumeriPost"
+            "@cxHumeriPost",
+            "X_V_CX_HUMERI_POST"
           ],
           "konteks": [
             "@aksila",
-            "FJ2264"
+            "FJ2264",
+            "X_N_AXILLARIS"
           ],
           "kamera": {
             "arah": [
@@ -584,7 +637,7 @@
             ]
           },
           "tulang": "utuh",
-          "catatanModel": "Hanya arterinya yang ada di model (2 potongan mesh). V. circumflexa humeri posterior tidak ada.",
+          "catatanModel": "Arteri dari data asli (2 potongan mesh). Venanya dan n. axillaris (hijau) adalah ilustrasi buatan yang mengikuti arteri. BodyParts3D tidak punya saraf perifer sama sekali. Saraf (hijau-kuning) di sini ilustrasi buatan yang jalurnya mengikuti pembuluh/tulang asli.",
           "ringkas": "Lebih besar dari a. circumflexa humeri anterior. Keluar dari bagian ketiga a. axillaris, lalu berjalan ke belakang melewati spatium quadrangulare (celah segi empat) dan melingkari collum chirurgicum humeri dari belakang.",
           "pertanyaan": {
             "no": 14,
@@ -611,7 +664,9 @@
             "@aksila",
             "FJ2277",
             "FJ2294",
-            "FJ2310"
+            "FJ2310",
+            "X_N_MEDIANUS",
+            "X_N_ULNARIS"
           ],
           "kamera": {
             "arah": [
@@ -632,11 +687,13 @@
           "indonesia": "Arteri dan vena brakialis profunda",
           "status": "ada",
           "mesh": [
-            "FJ2277"
+            "FJ2277",
+            "X_V_PROFUNDA_BRACHII"
           ],
           "konteks": [
             "FJ2271",
-            "@profundaCabang"
+            "@profundaCabang",
+            "X_N_RADIALIS"
           ],
           "kamera": {
             "arah": [
@@ -646,7 +703,7 @@
             ]
           },
           "tulang": "utuh",
-          "catatanModel": "Hanya arterinya yang ada di model. Cabang terminalnya (a. collateralis media dan a. collateralis radialis) ikut ditampilkan.",
+          "catatanModel": "Arteri dari data asli. Venanya dan n. radialis (hijau) adalah ilustrasi buatan yang mengikuti arteri di sulcus nervi radialis. BodyParts3D tidak punya saraf perifer sama sekali. Saraf (hijau-kuning) di sini ilustrasi buatan yang jalurnya mengikuti pembuluh/tulang asli.",
           "ringkas": "Cabang besar a. brachialis yang berjalan ke belakang, mengitari humerus di sulcus nervi radialis, lalu berakhir sebagai a. collateralis media dan a. collateralis radialis, yang ikut membentuk anastomosis di sekitar siku.",
           "pertanyaan": {
             "no": 15,
@@ -670,7 +727,8 @@
           ],
           "konteks": [
             "FJ2271",
-            "FJ2279"
+            "FJ2279",
+            "X_N_RADIALIS"
           ],
           "kamera": {
             "arah": [
@@ -695,7 +753,8 @@
           ],
           "konteks": [
             "FJ2271",
-            "FJ2300"
+            "FJ2300",
+            "X_N_ULNARIS"
           ],
           "kamera": {
             "arah": [
@@ -724,7 +783,9 @@
           "konteks": [
             "FJ2310",
             "FJ2294",
-            "FJ2279"
+            "FJ2279",
+            "X_N_MEDIANUS",
+            "X_N_ULNARIS"
           ],
           "kamera": {
             "arah": [
@@ -870,7 +931,8 @@
             "FJ2270",
             "FJ2272",
             "FJ2286",
-            "FJ2271"
+            "FJ2271",
+            "X_N_MEDIANUS"
           ],
           "kamera": {
             "arah": [
@@ -893,11 +955,15 @@
           "key": "v-mediana-cephalica",
           "latin": "Vena mediana cephalica",
           "indonesia": "Vena mediana sefalika",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_V_MEDIANA_CEPHALICA"
+          ],
           "konteks": [
             "FJ2272",
-            "FJ2286"
+            "FJ2286",
+            "FJ2270",
+            "X_V_MEDIANA_BASILICA"
           ],
           "kamera": {
             "arah": [
@@ -908,18 +974,22 @@
             "zoom": 0.8
           },
           "tulang": "tembus",
-          "catatanModel": "Tidak ada di model. BodyParts3D memakai pola v. mediana cubiti (satu vena penghubung), bukan pola 'M'.",
+          "catatanModel": "Pada model ini polanya v. mediana cubiti (satu vena penghubung). V. mediana cephalica di sini ILUSTRASI BUATAN untuk VARIASI pola \"M\": v. mediana antebrachii bercabang dua di fossa cubiti.",
           "ringkas": "Pada pola vena berbentuk 'M' di fossa cubiti, v. mediana antebrachii bercabang dua. Cabang lateralnya, v. mediana cephalica, bermuara ke v. cephalica."
         },
         {
           "key": "v-mediana-basilica",
           "latin": "Vena mediana basilica",
           "indonesia": "Vena mediana basilika",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_V_MEDIANA_BASILICA"
+          ],
           "konteks": [
             "FJ2270",
-            "FJ2286"
+            "FJ2286",
+            "FJ2272",
+            "X_V_MEDIANA_CEPHALICA"
           ],
           "kamera": {
             "arah": [
@@ -930,10 +1000,14 @@
             "zoom": 0.8
           },
           "tulang": "tembus",
-          "catatanModel": "Tidak ada di model (lihat catatan v. mediana cephalica).",
+          "catatanModel": "ILUSTRASI BUATAN untuk VARIASI pola \"M\" (lihat v. mediana cephalica). Model ini sendiri memakai pola v. mediana cubiti.",
           "ringkas": "Cabang medial v. mediana antebrachii pada pola 'M', bermuara ke v. basilica. Letaknya dekat a. brachialis yang hanya dipisahkan oleh aponeurosis bicipitalis, jadi pungsi di vena ini harus hati-hati."
         }
       ]
     }
+  ],
+  "hanyaSaatDipilih": [
+    "X_V_MEDIANA_BASILICA",
+    "X_V_MEDIANA_CEPHALICA"
   ]
 }

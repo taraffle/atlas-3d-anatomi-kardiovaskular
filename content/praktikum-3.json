@@ -72,6 +72,27 @@
     "saphena": [
       "FJ2145",
       "FJ2176"
+    ],
+    "sarafTungkai": [
+      "X_N_FEMORALIS",
+      "X_N_SAPHENUS",
+      "X_N_ISCHIADICUS",
+      "X_N_TIBIALIS",
+      "X_N_FIBULARIS_COM",
+      "X_N_SURALIS",
+      "X_N_GLUTEUS_SUP",
+      "X_N_PUDENDUS"
+    ],
+    "ilustrasiP3": [
+      "X_A_GLUTEA_SUP",
+      "X_A_GLUTEA_INF",
+      "X_A_PUDENDA_INT",
+      "X_A_CX_FEM_MED",
+      "X_A_FIBULARIS",
+      "X_A_PROFUNDA_FEM",
+      "X_A_CX_ILIUM_SUP",
+      "X_AA_PUDENDAE_EXT",
+      "@sarafTungkai"
     ]
   },
   "scene": [
@@ -88,7 +109,8 @@
     "@tibial",
     "@vFibular",
     "@kaki",
-    "@saphena"
+    "@saphena",
+    "@ilustrasiP3"
   ],
   "orientasi": [
     {
@@ -139,6 +161,22 @@
         "@genus",
         "FJ2176"
       ]
+    },
+    {
+      "judul": "Saraf-saraf penting (ilustrasi)",
+      "teks": "N. femoralis berjalan di lateral a. femoralis (urutan NAVEL). N. ischiadicus keluar di bawah m. piriformis, turun di belakang paha, lalu bercabang di fossa poplitea menjadi n. tibialis (menyertai a. tibialis posterior) dan n. fibularis communis (melingkari collum fibulae). N. saphenus menyertai v. saphena magna, dan n. suralis menyertai v. saphena parva. BodyParts3D tidak punya saraf perifer sama sekali. Saraf (hijau-kuning) di sini ilustrasi buatan yang jalurnya mengikuti pembuluh/tulang asli.",
+      "kamera": {
+        "arah": [
+          -0.5,
+          0,
+          -1
+        ],
+        "zoom": 1.05
+      },
+      "tulang": "tembus",
+      "fokus": [
+        "@sarafTungkai"
+      ]
     }
   ],
   "grup": [
@@ -151,10 +189,12 @@
           "indonesia": "Arteri dan vena gluteal superior",
           "status": "ada",
           "mesh": [
-            "FJ3616"
+            "FJ3616",
+            "X_A_GLUTEA_SUP"
           ],
           "konteks": [
-            "@iliaka"
+            "@iliaka",
+            "X_N_GLUTEUS_SUP"
           ],
           "kamera": {
             "arah": [
@@ -164,7 +204,7 @@
             ]
           },
           "tulang": "tembus",
-          "catatanModel": "Hanya VENA glutea superior yang ada di model. A. glutea superior tidak ada.",
+          "catatanModel": "Vena dari data asli; ARTERINYA ilustrasi buatan yang digambar mengikuti vena pendampingnya. BodyParts3D tidak punya saraf perifer sama sekali. Saraf (hijau-kuning) di sini ilustrasi buatan yang jalurnya mengikuti pembuluh/tulang asli.",
           "ringkas": "A. glutea superior adalah cabang terbesar divisi posterior a. iliaca interna. Keluar dari pelvis melalui foramen ischiadicum majus di ATAS m. piriformis, bersama n. gluteus superior, untuk memperdarahi m. gluteus medius, minimus, dan maximus. Vv. gluteae superiores (venae comitantes) menyertainya dan bermuara ke v. iliaca interna.",
           "jembatanKeledai": "Di atas piriformis hanya \"superior\": a./v./n. gluteus superior. Sisanya lewat di bawah piriformis."
         },
@@ -174,11 +214,13 @@
           "indonesia": "Arteri dan vena gluteal inferior",
           "status": "ada",
           "mesh": [
-            "FJ3606"
+            "FJ3606",
+            "X_A_GLUTEA_INF"
           ],
           "konteks": [
             "@iliaka",
-            "FJ3616"
+            "FJ3616",
+            "X_N_ISCHIADICUS"
           ],
           "kamera": {
             "arah": [
@@ -188,7 +230,7 @@
             ]
           },
           "tulang": "tembus",
-          "catatanModel": "Hanya VENA glutea inferior yang ada di model. A. glutea inferior tidak ada.",
+          "catatanModel": "Vena dari data asli; ARTERINYA ilustrasi buatan yang digambar mengikuti vena pendampingnya. BodyParts3D tidak punya saraf perifer sama sekali. Saraf (hijau-kuning) di sini ilustrasi buatan yang jalurnya mengikuti pembuluh/tulang asli.",
           "ringkas": "A. glutea inferior adalah cabang divisi anterior a. iliaca interna. Keluar melalui foramen ischiadicum majus di BAWAH m. piriformis, bersama n. gluteus inferior dan n. ischiadicus, terutama untuk memperdarahi m. gluteus maximus. Venanya bermuara ke v. iliaca interna."
         },
         {
@@ -197,11 +239,13 @@
           "indonesia": "Arteri dan vena pudenda interna",
           "status": "ada",
           "mesh": [
-            "FJ3610"
+            "FJ3610",
+            "X_A_PUDENDA_INT"
           ],
           "konteks": [
             "@iliaka",
-            "FJ3606"
+            "FJ3606",
+            "X_N_PUDENDUS"
           ],
           "kamera": {
             "arah": [
@@ -211,7 +255,7 @@
             ]
           },
           "tulang": "tembus",
-          "catatanModel": "Hanya VENA pudenda interna yang ada di model. A. pudenda interna tidak ada.",
+          "catatanModel": "Vena dari data asli; ARTERINYA ilustrasi buatan yang digambar mengikuti vena pendampingnya. BodyParts3D tidak punya saraf perifer sama sekali. Saraf (hijau-kuning) di sini ilustrasi buatan yang jalurnya mengikuti pembuluh/tulang asli.",
           "ringkas": "A. pudenda interna adalah cabang divisi anterior a. iliaca interna dan arteri utama perineum. Keluar dari pelvis melalui foramen ischiadicum majus (di bawah piriformis), melingkari spina ischiadica, lalu masuk ke perineum melalui foramen ischiadicum minus. Di perineum ia berjalan di canalis pudendalis (Alcock) bersama n. pudendus.",
           "asalNama": "Pudendum (Latin) = alat kelamin luar."
         }
@@ -231,7 +275,8 @@
           "konteks": [
             "FJ2143",
             "FJ2145",
-            "FJ3568"
+            "FJ3568",
+            "X_N_FEMORALIS"
           ],
           "kamera": {
             "arah": [
@@ -258,7 +303,9 @@
             "FJ3567",
             "FJ3614",
             "@lcfa",
-            "FJ2170"
+            "FJ2170",
+            "X_N_FEMORALIS",
+            "X_A_PROFUNDA_FEM"
           ],
           "kamera": {
             "arah": [
@@ -297,8 +344,10 @@
           "key": "circumflexa-iliaca-superficialis",
           "latin": "A. circumflexa iliaca superficialis",
           "indonesia": "Arteri sirkumfleksa iliaka superfisialis",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_A_CX_ILIUM_SUP"
+          ],
           "konteks": [
             "FJ2143",
             "FJ3614"
@@ -311,15 +360,17 @@
             ]
           },
           "tulang": "tembus",
-          "catatanModel": "Tidak ada di model. Pangkalnya di a. femoralis dekat ligamentum inguinale (disorot sebagai konteks).",
+          "catatanModel": "ILUSTRASI BUATAN: BodyParts3D tidak memodelkan a. circumflexa ilium superficialis. Bentuk & jalurnya dibuat sendiri, letaknya dihitung dari struktur asli di sekitarnya, jadi perkiraan. Digambar dari a. femoralis tepat di bawah lig. inguinale, ke arah SIAS.",
           "ringkas": "Cabang superfisial kecil a. femoralis yang berjalan ke lateral, sejajar di bawah ligamentum inguinale, ke arah SIAS."
         },
         {
           "key": "pudendae-externae",
           "latin": "Aa. pudendae externae",
           "indonesia": "Arteri pudenda eksterna",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_AA_PUDENDAE_EXT"
+          ],
           "konteks": [
             "FJ2143",
             "FJ2145"
@@ -332,15 +383,17 @@
             ]
           },
           "tulang": "tembus",
-          "catatanModel": "Tidak ada di model.",
+          "catatanModel": "ILUSTRASI BUATAN: BodyParts3D tidak memodelkan aa. pudendae externae. Bentuk & jalurnya dibuat sendiri, letaknya dihitung dari struktur asli di sekitarnya, jadi perkiraan. Digambar dari a. femoralis ke arah medial (regio pubis).",
           "ringkas": "Cabang superfisial dan profunda a. femoralis yang berjalan ke medial untuk memperdarahi kulit regio pubis dan genitalia eksterna (scrotum/labia majora)."
         },
         {
           "key": "profunda-femoris",
           "latin": "A. profunda femoris",
           "indonesia": "Arteri femoralis profunda",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_A_PROFUNDA_FEM"
+          ],
           "konteks": [
             "FJ2143",
             "@lcfa",
@@ -355,7 +408,7 @@
             ]
           },
           "tulang": "tembus",
-          "catatanModel": "Batang a. profunda femoris tidak ada di model. Yang disorot sebagai konteks: a. femoralis, cabang-cabang a. profunda femoris yang ada di model (a. circumflexa femoris lateralis dan aa. perforantes), serta v. profunda femoris. (Daftar concept BodyParts3D mengelompokkan 'deep femoral artery' ke mesh lain, jadi tidak dipakai.)",
+          "catatanModel": "ILUSTRASI BUATAN: BodyParts3D tidak memodelkan batang a. profunda femoris. Bentuk & jalurnya dibuat sendiri, letaknya dihitung dari struktur asli di sekitarnya, jadi perkiraan. Digambar dari a. femoralis ±4 cm di bawah lig. inguinale, berjalan ke posterolateral lalu turun dan menyambung ke aa. perforantes (yang ada di data).",
           "ringkas": "Cabang terbesar a. femoralis, keluar dari sisi lateral-posterior sekitar 3–4 cm di bawah ligamentum inguinale. Turun di belakang a. femoralis, di antara m. adductor longus dan m. pectineus/adductor brevis, dan merupakan arteri utama paha.",
           "jembatanKeledai": "Cabang a. profunda femoris: \"LMP\" → circumflexa femoris Lateralis, circumflexa femoris Medialis, Perforantes (biasanya 3, ditambah ujung terminalnya sebagai perforans ke-4).",
           "perluDicek": [
@@ -388,8 +441,10 @@
           "key": "circumflexa-femoris-medialis",
           "latin": "A. circumflexa medialis femoris",
           "indonesia": "Arteri sirkumfleksa femoris medialis",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_A_CX_FEM_MED"
+          ],
           "konteks": [
             "FJ2202",
             "FJ2143"
@@ -402,7 +457,7 @@
             ]
           },
           "tulang": "utuh",
-          "catatanModel": "Arterinya tidak ada di model. Yang disorot sebagai konteks adalah VENA circumflexa femoris medialis (FJ2202) yang menyertainya, sebagai petunjuk lokasi.",
+          "catatanModel": "ILUSTRASI BUATAN: BodyParts3D tidak memodelkan a. circumflexa femoris medialis. Bentuk & jalurnya dibuat sendiri, letaknya dihitung dari struktur asli di sekitarnya, jadi perkiraan. Digambar mengikuti VENA circumflexa femoris medialis yang ada di data.",
           "ringkas": "Biasanya cabang a. profunda femoris. Berjalan ke medial-posterior di antara m. iliopsoas dan m. pectineus, mengitari collum femoris dari belakang.",
           "klinis": "Pemasok darah utama caput dan collum femoris. Fraktur collum femoris dapat merusak cabang-cabangnya dan menyebabkan nekrosis avaskular caput femoris."
         },
@@ -416,7 +471,8 @@
           ],
           "konteks": [
             "FJ2143",
-            "@lcfa"
+            "@lcfa",
+            "X_A_PROFUNDA_FEM"
           ],
           "kamera": {
             "arah": [
@@ -446,7 +502,9 @@
           "konteks": [
             "@genus",
             "@tibial",
-            "FJ2143"
+            "FJ2143",
+            "X_N_TIBIALIS",
+            "X_N_FIBULARIS_COM"
           ],
           "kamera": {
             "arah": "belakang"
@@ -472,7 +530,8 @@
           ],
           "konteks": [
             "FJ2170",
-            "FJ2176"
+            "FJ2176",
+            "X_N_TIBIALIS"
           ],
           "kamera": {
             "arah": "belakang"
@@ -496,7 +555,8 @@
           ],
           "konteks": [
             "FJ2170",
-            "FJ2055"
+            "FJ2055",
+            "X_N_FIBULARIS_COM"
           ],
           "kamera": {
             "arah": [
@@ -520,7 +580,8 @@
           "konteks": [
             "FJ2170",
             "FJ2159",
-            "FJ2164"
+            "FJ2164",
+            "X_N_TIBIALIS"
           ],
           "kamera": {
             "arah": [
@@ -538,8 +599,10 @@
           "key": "a-fibularis",
           "latin": "A. fibularis / A. peronea",
           "indonesia": "Arteri fibularis (peroneal)",
-          "status": "tidak-ada",
-          "mesh": [],
+          "status": "ilustrasi",
+          "mesh": [
+            "X_A_FIBULARIS"
+          ],
           "konteks": [
             "@vFibular",
             "FJ2172"
@@ -549,12 +612,14 @@
               -0.6,
               0,
               -0.8
-            ]
+            ],
+            "zoom": 0.55
           },
           "tulang": "tembus",
-          "catatanModel": "Arterinya tidak ada di model. Yang disorot sebagai konteks adalah VENA fibularis yang menyertainya, sebagai petunjuk lokasi, serta a. tibialis posterior (asalnya).",
+          "catatanModel": "ILUSTRASI BUATAN: BodyParts3D tidak memodelkan a. fibularis. Bentuk & jalurnya dibuat sendiri, letaknya dihitung dari struktur asli di sekitarnya, jadi perkiraan. Digambar dari a. tibialis posterior, mengikuti v. fibularis yang ada di data.",
           "ringkas": "Cabang terbesar a. tibialis posterior, keluar sedikit di bawah m. popliteus. Turun di sisi lateral kompartemen posterior, dekat fibula (di dalam atau di belakang m. flexor hallucis longus), memperdarahi otot-otot sekitarnya dan fibula.",
-          "asalNama": "Fibula (Latin) = peniti/bros; peronē (Yunani) juga berarti peniti."
+          "asalNama": "Fibula (Latin) = peniti/bros; peronē (Yunani) juga berarti peniti.",
+          "konteksTransparan": true
         }
       ]
     },
@@ -672,7 +737,8 @@
             "FJ2145"
           ],
           "konteks": [
-            "FJ2144"
+            "FJ2144",
+            "X_N_SAPHENUS"
           ],
           "kamera": {
             "arah": [
@@ -703,7 +769,9 @@
           "mesh": [
             "FJ2145"
           ],
-          "konteks": [],
+          "konteks": [
+            "X_N_SAPHENUS"
+          ],
           "kamera": {
             "arah": [
               -0.6,
@@ -732,7 +800,8 @@
             "FJ2176"
           ],
           "konteks": [
-            "FJ2171"
+            "FJ2171",
+            "X_N_SURALIS"
           ],
           "kamera": {
             "arah": "belakang"

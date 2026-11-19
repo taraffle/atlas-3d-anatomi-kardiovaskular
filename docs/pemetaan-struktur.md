@@ -209,3 +209,20 @@ Catatan: nama cusp di BodyParts3D memakai sistem lama (anterior/left posterior/r
 Dinding ventrikel kanan dan kiri adalah satu mesh (FJ2428). Tiap segitiga diberi label "kanan" atau "kiri" berdasarkan rongga ventrikel terdekat (FJ2423 vs FJ2422), lalu dihaluskan dengan voting tetangga. UI menuliskan bahwa batas ini hasil pembagian otomatis.
 
 Saat diuji, ternyata FJ2428 hanya berupa cangkang luar, tanpa lembaran septum di dalamnya. Jadi septum interventriculare **tidak** dibuat dari mesh ini, melainkan ditunjukkan lewat kedua rongga ventrikel (kanan biru, kiri merah) dan pin di titik terdekat di antara keduanya.
+
+## Tambahan: struktur ilustrasi buatan (◆) di Praktikum 2 & 3
+
+BodyParts3D **tidak punya saraf perifer sama sekali** dan tidak memuat beberapa pembuluh. Struktur berikut dibuat di `scripts/buatan.mjs`. Jalurnya mengikuti garis tengah pembuluh asli atau titik acuan tulang asli, dan di website selalu diberi label "ilustrasi buatan".
+
+| Praktikum | Struktur buatan | Cara menentukan letak |
+|---|---|---|
+| 2 | V. jugularis externa | angulus mandibulae → menyilang m. SCM → v. subclavia |
+| 2 | A. carotis externa | dari ujung atas a. carotis communis, anteromedial a. carotis interna |
+| 2 | A./V. thoracica superior, A./V. thoracoacromialis (4 cabang) | dari bagian 1 / 2 a. axillaris |
+| 2 | V. circumflexa humeri posterior, V. profunda brachii | mengikuti arterinya |
+| 2 | V. mediana cephalica & basilica | variasi pola "M"; model sendiri memakai pola v. mediana cubiti |
+| 2 | N. axillaris, N. radialis, N. medianus, N. ulnaris | mengikuti a. circumflexa humeri post., a. profunda brachii, a. brachialis/ulnaris, epicondylus |
+| 3 | A. glutea sup./inf., A. pudenda interna, A. circumflexa femoris medialis, A. fibularis | mengikuti vena pendamping yang ada di data |
+| 3 | Batang A. profunda femoris | dari a. femoralis ±4 cm di bawah lig. inguinale → aa. perforantes |
+| 3 | A. circumflexa ilium superficialis, Aa. pudendae externae | dari a. femoralis ke arah SIAS / pubis |
+| 3 | N. femoralis, saphenus, ischiadicus, tibialis, fibularis communis/profundus, suralis, gluteus superior, pudendus | mengikuti a. femoralis, v. saphena magna/parva, a. tibialis ant./post., femur, collum fibulae |
