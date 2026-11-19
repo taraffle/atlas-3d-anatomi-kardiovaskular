@@ -514,6 +514,9 @@ function renderKuis(pesan = '', pilihan = null) {
     ${pesan ? `<div class="quiz-feedback">${pesan}</div>` : ''}
     ${quiz.dijawab ? `<div class="quiz-actions"><button class="btn btn-ghost" id="kuis-materi">📖 Lihat materi</button><button class="btn btn-primary" id="kuis-lanjut">${terakhir ? 'Lihat hasil 🏁' : 'Soal berikutnya ▶'}</button></div>` : ''}`
   if (posisiSheet !== 'tutup') requestAnimationFrame(() => aturSheet(posisiSheet === 'buka' ? 'buka' : 'ringkas'))
+  // Setelah menjawab, gulir ke bawah supaya tombol "Soal berikutnya" selalu terlihat.
+  if (quiz.dijawab) setTimeout(() => { const el = $('#quiz'); el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' }) }, 60)
+  else $('#quiz').scrollTop = 0
   $('#kuis-keluar').onclick = keluarKuis
   $('#quiz .quiz-opts').onclick = (e) => {
     const b = e.target.closest('.quiz-opt'); if (!b || quiz.dijawab) return
@@ -690,7 +693,8 @@ window.addEventListener('pointerup', (e) => {
 })
 $('#sheet-handle').addEventListener('pointerdown', mulaiSeret)
 sheet.querySelector('.sheet-head').addEventListener('pointerdown', mulaiSeret)
-$('#quiz').addEventListener('pointerdown', (e) => { if (!e.target.closest('.quiz-opts, button')) mulaiSeret(e) })
+// Kuis bisa panjang → isinya di-scroll; seret sheet hanya dari baris atas kuis.
+$('#quiz').addEventListener('pointerdown', (e) => { if (e.target.closest('.quiz-top') && !e.target.closest('button')) mulaiSeret(e) })
 
 // ---------- start ----------
 // Mode rekam (?video=1): dipakai script pembuat video. Loop otomatis dimatikan; kamera dan render
