@@ -1,11 +1,29 @@
-# Pembuat video (Praktikum 1)
+# Pembuat video tutorial (opsional)
 
-Video dibuat dari model 3D asli di viewer (mode rekam `viewer.html?p=1&video=1`) + voiceover TTS bahasa Indonesia.
+Alat untuk membuat video tur 3D per praktikum: voiceover Bahasa Indonesia, sorotan per kalimat,
+daftar tilik yang dicentang otomatis (zoom → ✓), kartu gambar (ilustrasi / foto cadaver / lukisan diseksi),
+dan animasi alat klinis 3D (jarum, skalpel, klem). Tidak dipakai oleh website.
 
-1. **Naskah**: `naskah.py`. Semua fakta diambil dari `content/praktikum-1.json`. `say` = teks untuk suara, `sub` = subtitle, `sorot` = struktur yang sedang disebut (menyala cyan + label), `arah`/`zoom` = sudut kamera khusus kalimat itu.
-2. **Suara** (`audio.py`): bawaan memakai suara neural Microsoft lewat paket `edge-tts` (`TTS_VOICE=id-ID-GadisNeural` atau `id-ID-ArdiNeural`; perlu akses ke `speech.platform.bing.com`). Alternatif lokal: `TTS_ENGINE=piper` dengan suara `id_ID-news_tts-medium` (lebih kaku). Folder mesin suara ditunjuk env `TTS_DIR`. Hasil: `work/audio.wav` + `work/timeline.json`.
-3. **Frame** (`render.cjs`): jalankan `npm run build && npx vite preview --port 4173`, lalu `node render.cjs <worker> <jumlahWorker>` (bisa paralel). Cek tampilan dulu dengan `SAMPLE="2,60.5" node render.cjs 0 1`.
-4. **Gabung** (`gabung.sh`): frame + audio → `Praktikum1_Jantung_Atlas3D.mp4`.
-5. (Opsional) `cek_suara.py`: transkrip beberapa klip dengan Whisper untuk mengecek kejelasan ucapan.
+## Langkah
 
-Folder `work/` tidak di-commit (berisi ribuan frame).
+1. **Naskah**: `naskah_p1.py`, `naskah_p2.py`, `naskah_p3.py` (alat bantunya di `naskah_umum.py`, lihat komentar di atas file itu).
+   Semua fakta diambil dari `content/praktikum-N.json`. Daftar tilik di video hanya memakai **nama struktur** dari JSON itu.
+2. **Suara + timeline** (`audio.py`): butuh folder `../tts` berisi venv dengan `edge-tts`
+   (`python -m venv ../tts/venv && ../tts/venv/bin/pip install edge-tts numpy`).
+   ```bash
+   PRAKTIKUM=2 TTS_VOICE=id-ID-GadisNeural ../tts/venv/bin/python audio.py
+   ```
+   Hasil: `work-p2/audio.wav` + `work-p2/timeline.json`.
+3. **Gambar**: taruh file di `gambar/` (tidak ikut di-commit). Daftar file & lisensinya ada di `gambar/KREDIT.md`.
+   Semua dari Wikimedia Commons: Gray's Anatomy 1918 & Ellis–Ford 1867 (domain publik), foto Anatomist90 (CC BY-SA 3.0).
+4. **Frame** (`render.cjs`): jalankan `npm run build && npx vite preview --port 4173`, lalu
+   ```bash
+   PRAKTIKUM=2 node render.cjs 0 3   # worker 0 dari 3; jalankan juga 1 dan 2 secara paralel
+   ```
+   Cek tampilan dulu: `PRAKTIKUM=2 SAMPLE="60,350.5" node render.cjs 0 1`.
+5. **Gabung** (`gabung.sh`): `PRAKTIKUM=2 ./gabung.sh "Judul video" NamaFile.mp4`.
+6. **Cek suara** (`cek_suara.py`, opsional): transkrip ulang dengan faster-whisper untuk memeriksa pelafalan.
+
+## Kredit di deskripsi video
+Model 3D: BodyParts3D © The Database Center for Life Science, CC BY 4.0.
+Gambar: lihat `gambar/KREDIT.md`. Bukan materi resmi departemen mana pun.

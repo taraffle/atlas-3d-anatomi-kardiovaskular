@@ -1,16 +1,19 @@
-"""Bikin voiceover (Piper TTS, suara id_ID-news_tts-medium) + efek suara, dan timeline untuk perekam frame.
-Output: work/timeline.json, work/audio.wav
+"""Bikin voiceover + efek suara + timeline untuk perekam frame, untuk praktikum mana pun.
+Pakai: PRAKTIKUM=2 python audio.py   (naskah: naskah_p2.py, output: work-p2/timeline.json & audio.wav)
 """
 import json, os, re, subprocess, sys, wave
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-TTS = os.environ.get('TTS_DIR', os.path.join(HERE, '..', 'tts'))  # folder berisi venv/bin/edge-tts atau piper
-WORK = os.path.join(HERE, 'work')
-VO = os.path.join(WORK, 'vo-' + os.environ.get('TTS_VOICE', 'id-ID-GadisNeural') if os.environ.get('TTS_ENGINE', 'edge') == 'edge' else 'vo')
+TTS = os.path.join(HERE, '..', 'tts')
+PRAKTIKUM = os.environ.get('PRAKTIKUM', '1')
+WORK = os.path.join(HERE, f'work-p{PRAKTIKUM}')
+os.makedirs(WORK, exist_ok=True)
+VO = os.path.join(HERE, 'vo-' + os.environ.get('TTS_VOICE', 'id-ID-GadisNeural') if os.environ.get('TTS_ENGINE', 'edge') == 'edge' else 'vo')  # cache bersama semua praktikum
 os.makedirs(VO, exist_ok=True)
 sys.path.insert(0, HERE)
-from naskah import B  # noqa: E402
+import importlib
+B = importlib.import_module(f'naskah_p{PRAKTIKUM}').B
 
 SR = 22050
 LEAD_IN = 0.6  # detik hening di awal
@@ -69,6 +72,7 @@ n = int(SR * 0.6); t = np.arange(n) / SR
 noise = np.random.default_rng(1).standard_normal(n)
 kern = np.ones(40) / 40
 SFX['whoosh'] = 0.18 * np.convolve(noise, kern, 'same') * np.sin(np.pi * t / 0.6) ** 2
+SFX['centang'] = np.concatenate([nada(880, 0.08, 0.03, 0.2), nada(1320, 0.18, 0.07, 0.22)])   # bunyi 'ting-ting' saat dicentang
 
 # ---------- timeline ----------
 beats, waktu, step, kicker, title, sub_title, card = [], LEAD_IN, None, None, None, None, None
@@ -99,8 +103,15 @@ for i, b in enumerate(B):
     mulai_suara = waktu + (0.25 if b.get('sfx') in ('whoosh', 'pop') else 0.0)
     klip.append((mulai_suara, a))
     dur = (mulai_suara - waktu) + len(a) / SR + b['hold']
+    # Jeda centang: kalau beat berikutnya pindah ke struktur lain, beri 0,9 dtk untuk animasi ✓ daftar tilik.
+    nxt = next((x for x in B[i + 1:] if not x.get('countdown')), None)
+    pindah = step and not str(step).startswith('orientasi') and (nxt is None or (nxt.get('step') and nxt['step'] != step))
+    if pindah:
+        dur += 0.9
+        klip.append((waktu + dur - 0.55, SFX['centang']))
     beats.append(dict(t0=waktu, t1=waktu + dur, step=step, kicker=kicker, title=title, sub_title=sub_title, card=card, sub=b['sub'],
-                      sorot=b.get('sorot', []), arah=b.get('arah'), zoom=b.get('zoom')))
+                      sorot=b.get('sorot', []), arah=b.get('arah'), zoom=b.get('zoom'), gambar=b.get('gambar'), alat=b.get('alat'),
+                      centang=step if pindah else None))
     waktu += dur
 total = waktu + 1.2
 print(f'{len(beats)} beat, durasi {total / 60:.1f} menit')

@@ -735,6 +735,8 @@ async function main() {
     go(start, { instant: true })
     $('#loading').remove()
     window.__atlas = { ready: true, meshes, camera, controls, go: (i) => go(i, { instant: true }), kuis: () => mulaiKuis(), soal: () => quiz && { kunci: quiz.q.key, opsi: quiz.opsi.map((o) => o.key) }, steps: () => steps.map((s) => (s.type === 'item' ? s.data.key : `orientasi-${s.i + 1}`)), cur: () => cur, pose: () => ({ pos: camera.position.toArray(), target: controls.target.toArray() }), renderAt, meta: () => meta, pick: (x, y) => pickAt(x, y)?.object.userData.part.id ?? null, sorot, framePose, langkah: (i) => steps[i] }
+    // Mode rekam video: perekam butuh akses ke scene untuk menambahkan alat klinis (jarum, skalpel, klem).
+    if (VIDEO) Object.assign(window.__atlas, { THREE, scene })
   } catch (err) {
     console.error(err)
     $('#loading').innerHTML = `<div class="loading-emoji">😵</div><div class="loading-title">Waduh, gagal memuat</div><div class="loading-tip">${esc(err.message)}. Coba muat ulang halaman.</div><a class="btn btn-primary" href="${BASE}">Kembali</a>`
